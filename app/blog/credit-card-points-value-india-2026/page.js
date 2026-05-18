@@ -46,41 +46,41 @@ const faqJsonLd = {
 
 export default function BlogPost() {
   return (
-    <div className="min-h-screen bg-[#060608]">
+    <div className="min-h-screen">
       <article className="max-w-2xl mx-auto px-5 py-16">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 mb-8 text-[13px]" style={{ color: 'rgba(255,255,255,0.3)' }}>
-          <a href="/" className="hover:text-white/50 transition-colors">PointsMax</a>
+        <div className="flex items-center gap-2 mb-8 text-[13px]" style={{ color: 'var(--text-m)' }}>
+          <a href="/" className="hover:text-black/50 transition-colors">PointsMax</a>
           <span>/</span>
-          <a href="/blog" className="hover:text-white/50 transition-colors">Blog</a>
+          <a href="/blog" className="hover:text-black/50 transition-colors">Blog</a>
           <span>/</span>
-          <span style={{ color: 'rgba(255,255,255,0.5)' }}>Points Value 2026</span>
+          <span style={{ color: 'var(--text-s)' }}>Points Value 2026</span>
         </div>
 
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded" style={{ color: '#6ee7b7', background: 'rgba(110,231,183,0.08)' }}>Guide</span>
-          <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.25)' }}>May 18, 2026</span>
-          <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.25)' }}>8 min read</span>
+          <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded" style={{ color: 'var(--green)', background: 'rgba(110,231,183,0.08)' }}>Guide</span>
+          <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>May 18, 2026</span>
+          <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>8 min read</span>
         </div>
 
-        <h1 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 36px)', lineHeight: 1.15, letterSpacing: '-0.025em', color: '#e2e8f0' }}>
+        <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 36px)', lineHeight: 1.15, letterSpacing: '-0.025em', color: 'var(--text)' }}>
           What Are Your Credit Card Points Actually Worth? The 2026 Reality Check
         </h1>
 
-        <p className="mt-4 text-[16px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+        <p className="mt-4 text-[16px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
           Every major Indian bank slashed rewards this year. Here's what your points are <em>really</em> worth now — card by card, method by method.
         </p>
 
         {/* Body */}
-        <div className="mt-10 space-y-6 text-[15px] leading-[1.85]" style={{ color: 'rgba(255,255,255,0.55)' }}>
+        <div className="mt-10 space-y-6 text-[15px] leading-[1.85]" style={{ color: 'var(--text-s)' }}>
 
           {/* ── HOOK ── */}
           <p>
             Let's start with a number that might sting a little.
           </p>
           <p>
-            If you have 50,000 HDFC Infinia reward points sitting in your account right now, they could be worth <strong style={{ color: '#4ade80' }}>₹50,000</strong> or <strong style={{ color: '#f87171' }}>₹10,000</strong>. Same points. Same card. The difference? How you choose to use them.
+            If you have 50,000 HDFC Infinia reward points sitting in your account right now, they could be worth <strong style={{ color: 'var(--green)' }}>₹50,000</strong> or <strong style={{ color: 'var(--red)' }}>₹10,000</strong>. Same points. Same card. The difference? How you choose to use them.
           </p>
           <p>
             And that 5x gap isn't even the worst of it. Between January and April 2026, every major Indian bank — HDFC, Axis, SBI, ICICI, Amex — quietly made your points worth less. Cashback caps got tighter. Transfer partners disappeared overnight. Earn rates dropped. Lounge access got locked behind spend thresholds.
@@ -93,7 +93,7 @@ export default function BlogPost() {
           </p>
 
           {/* ── SECTION: THE TABLE ── */}
-          <h2 className="pt-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-4" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             The cheat sheet: what 1 point is worth across banks
           </h2>
 
@@ -104,10 +104,10 @@ export default function BlogPost() {
             <table className="w-full text-[13px]" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
               <thead>
                 <tr>
-                  <th className="text-left py-3 px-3 font-semibold" style={{ color: 'rgba(255,255,255,0.5)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Card</th>
-                  <th className="text-center py-3 px-2 font-semibold" style={{ color: '#4ade80', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Best ₹/pt</th>
-                  <th className="text-left py-3 px-2 font-semibold" style={{ color: 'rgba(255,255,255,0.5)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Best method</th>
-                  <th className="text-center py-3 px-2 font-semibold" style={{ color: '#f87171', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Worst ₹/pt</th>
+                  <th className="text-left py-3 px-3 font-semibold" style={{ color: 'var(--text-s)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Card</th>
+                  <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--green)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Best ₹/pt</th>
+                  <th className="text-left py-3 px-2 font-semibold" style={{ color: 'var(--text-s)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Best method</th>
+                  <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--red)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Worst ₹/pt</th>
                 </tr>
               </thead>
               <tbody>
@@ -124,24 +124,24 @@ export default function BlogPost() {
                   ['Amex Gold', '₹0.50', 'Travel redemption', '₹0.30'],
                 ].map(([card, best, method, worst], i) => (
                   <tr key={i}>
-                    <td className="py-2.5 px-3 font-medium" style={{ color: 'rgba(255,255,255,0.75)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>{card}</td>
-                    <td className="py-2.5 px-2 text-center font-mono font-bold" style={{ color: '#4ade80', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>{best}</td>
-                    <td className="py-2.5 px-2" style={{ color: 'rgba(255,255,255,0.4)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>{method}</td>
-                    <td className="py-2.5 px-2 text-center font-mono" style={{ color: '#f87171', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>{worst}</td>
+                    <td className="py-2.5 px-3 font-medium" style={{ color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>{card}</td>
+                    <td className="py-2.5 px-2 text-center font-mono font-bold" style={{ color: 'var(--green)', borderBottom: '1px solid var(--border)' }}>{best}</td>
+                    <td className="py-2.5 px-2" style={{ color: 'var(--text-s)', borderBottom: '1px solid var(--border)' }}>{method}</td>
+                    <td className="py-2.5 px-2 text-center font-mono" style={{ color: 'var(--red)', borderBottom: '1px solid var(--border)' }}>{worst}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <div className="p-4 rounded-xl" style={{ background: 'rgba(103,232,249,0.04)', border: '1px solid rgba(103,232,249,0.08)' }}>
-            <p className="text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              <strong style={{ color: '#67e8f9' }}>Want the exact calculation for your card?</strong> Head to <a href="/" style={{ color: '#67e8f9', textDecoration: 'underline' }}>PointsMax</a> — select your card, enter your points, and see every option ranked.
+          <div className="p-4 rounded-xl" style={{ background: '#ECFEFF', border: '1px solid #CFFAFE' }}>
+            <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
+              <strong style={{ color: 'var(--gold)' }}>Want the exact calculation for your card?</strong> Head to <a href="/" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>PointsMax</a> — select your card, enter your points, and see every option ranked.
             </p>
           </div>
 
           {/* ── SECTION: HDFC ── */}
-          <h2 className="pt-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             HDFC Bank: still the king, but the crown got heavier
           </h2>
 
@@ -153,31 +153,31 @@ export default function BlogPost() {
           </p>
           <ul className="space-y-2 pl-1" style={{ listStyleType: 'none' }}>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>SmartBuy bonus earn rate dropped from <strong style={{ color: 'rgba(255,255,255,0.7)' }}>5x to 3x</strong> in January 2026. That's a 40% cut to your accelerated earning.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>SmartBuy bonus earn rate dropped from <strong style={{ color: 'var(--text)' }}>5x to 3x</strong> in January 2026. That's a 40% cut to your accelerated earning.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>Monthly redemptions capped at <strong style={{ color: 'rgba(255,255,255,0.7)' }}>5 times per month</strong> (February 2026). Power users who split redemptions across categories feel this.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>Monthly redemptions capped at <strong style={{ color: 'var(--text)' }}>5 times per month</strong> (February 2026). Power users who split redemptions across categories feel this.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>Transfer partner ratios for <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Turkish Airlines and Avianca</strong> went from 1:1 to 2:1. Your points buy half the miles they used to.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>Transfer partner ratios for <strong style={{ color: 'var(--text)' }}>Turkish Airlines and Avianca</strong> went from 1:1 to 2:1. Your points buy half the miles they used to.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>Infinia now requires <strong style={{ color: 'rgba(255,255,255,0.7)' }}>₹18 lakh annual spend</strong> (or ₹50 lakh banking relationship) to retain. Don't hit it? Risk a downgrade.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>Infinia now requires <strong style={{ color: 'var(--text)' }}>₹18 lakh annual spend</strong> (or ₹50 lakh banking relationship) to retain. Don't hit it? Risk a downgrade.</span>
             </li>
           </ul>
           <p>
             The base reward rate — 5 points per ₹150, or 3.3% on SmartBuy travel — still makes Infinia the best card in India by a mile. But the bar to keep it keeps going up.
           </p>
           <p>
-            <strong style={{ color: 'rgba(255,255,255,0.7)' }}>The play:</strong> If you have Infinia, always redeem via SmartBuy for travel at ₹1/point. Never use the product catalogue (₹0.20/point). Transfer to airlines only for specific business class bookings — Singapore Airlines KrisFlyer and Finnair Plus are still 1:1. Everything else has been devalued.
+            <strong style={{ color: 'var(--text)' }}>The play:</strong> If you have Infinia, always redeem via SmartBuy for travel at ₹1/point. Never use the product catalogue (₹0.20/point). Transfer to airlines only for specific business class bookings — Singapore Airlines KrisFlyer and Finnair Plus are still 1:1. Everything else has been devalued.
           </p>
 
           {/* ── SECTION: AXIS ── */}
-          <h2 className="pt-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             Axis Bank: the one that hurt the most
           </h2>
 
@@ -185,22 +185,22 @@ export default function BlogPost() {
             Axis dropped a bomb in April 2026.
           </p>
           <p>
-            Overnight, they removed <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Marriott Bonvoy, Accor Live Limitless, and Qatar Airways Privilege Club</strong> as transfer partners. If you'd been saving Axis EDGE points for a Marriott hotel redemption — sorry. Gone.
+            Overnight, they removed <strong style={{ color: 'var(--text)' }}>Marriott Bonvoy, Accor Live Limitless, and Qatar Airways Privilege Club</strong> as transfer partners. If you'd been saving Axis EDGE points for a Marriott hotel redemption — sorry. Gone.
           </p>
           <p>
             On top of that:
           </p>
           <ul className="space-y-2 pl-1" style={{ listStyleType: 'none' }}>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
               <span>Several transfer ratios were reduced. You now get less miles per EDGE point across remaining partners.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>The Airtel Axis Card's cashback is now <strong style={{ color: 'rgba(255,255,255,0.7)' }}>linked to general spending</strong>. Use it only for Airtel bills? Your cashback could effectively be ₹0.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>The Airtel Axis Card's cashback is now <strong style={{ color: 'var(--text)' }}>linked to general spending</strong>. Use it only for Airtel bills? Your cashback could effectively be ₹0.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
               <span>Lounge access on several Axis cards was quietly discontinued or made spend-linked.</span>
             </li>
           </ul>
@@ -209,7 +209,7 @@ export default function BlogPost() {
           </p>
 
           {/* ── SECTION: SBI ── */}
-          <h2 className="pt-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             SBI Card: death by a thousand caps
           </h2>
 
@@ -218,19 +218,19 @@ export default function BlogPost() {
           </p>
           <ul className="space-y-2 pl-1" style={{ listStyleType: 'none' }}>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>Cashback on the SBI Cashback Card: 5% online capped at <strong style={{ color: 'rgba(255,255,255,0.7)' }}>₹2,000/month</strong> (was ₹5,000)</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>Cashback on the SBI Cashback Card: 5% online capped at <strong style={{ color: 'var(--text)' }}>₹2,000/month</strong> (was ₹5,000)</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>Statement credit redemption: only in <strong style={{ color: 'rgba(255,255,255,0.7)' }}>multiples of 4,000 points</strong>. Have 3,999 points? You can't redeem any.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>Statement credit redemption: only in <strong style={{ color: 'var(--text)' }}>multiples of 4,000 points</strong>. Have 3,999 points? You can't redeem any.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
-              <span>Monthly cap: <strong style={{ color: 'rgba(255,255,255,0.7)' }}>60,000 points maximum</strong> across several cards.</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
+              <span>Monthly cap: <strong style={{ color: 'var(--text)' }}>60,000 points maximum</strong> across several cards.</span>
             </li>
             <li className="flex gap-2">
-              <span style={{ color: '#f87171' }}>→</span>
+              <span style={{ color: 'var(--red)' }}>→</span>
               <span>Gaming, toll, and government payments no longer earn cashback.</span>
             </li>
           </ul>
@@ -239,36 +239,36 @@ export default function BlogPost() {
           </p>
 
           {/* ── SECTION: 3 MISTAKES ── */}
-          <h2 className="pt-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             The 3 mistakes that are costing you money
           </h2>
 
           {/* Mistake 1 */}
-          <div className="p-5 rounded-xl" style={{ background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.1)' }}>
-            <p className="text-[13px] font-bold uppercase tracking-wide mb-2" style={{ color: '#f87171' }}>Mistake #1</p>
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+          <div className="p-5 rounded-xl" style={{ background: '#FDF1EF', border: '1px solid #E8C5BF' }}>
+            <p className="text-[13px] font-bold uppercase tracking-wide mb-2" style={{ color: 'var(--red)' }}>Mistake #1</p>
+            <p style={{ color: 'var(--text)' }}>
               <strong>Redeeming for the product catalogue.</strong> On HDFC Infinia, catalogue redemption gives you ₹0.20/point. SmartBuy travel gives ₹1/point. That means 10,000 points is worth either ₹2,000 or ₹10,000. The catalogue literally costs you 80% of your points' value.
             </p>
           </div>
 
           {/* Mistake 2 */}
-          <div className="p-5 rounded-xl mt-3" style={{ background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.1)' }}>
-            <p className="text-[13px] font-bold uppercase tracking-wide mb-2" style={{ color: '#f87171' }}>Mistake #2</p>
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+          <div className="p-5 rounded-xl mt-3" style={{ background: '#FDF1EF', border: '1px solid #E8C5BF' }}>
+            <p className="text-[13px] font-bold uppercase tracking-wide mb-2" style={{ color: 'var(--red)' }}>Mistake #2</p>
+            <p style={{ color: 'var(--text)' }}>
               <strong>Transferring points without a booking in mind.</strong> People transfer to airline miles thinking "I'll use them someday." Then the program devalues (Axis + Marriott, anyone?) and your points are stuck in a worse currency. Only transfer when you have a specific flight or hotel in sight.
             </p>
           </div>
 
           {/* Mistake 3 */}
-          <div className="p-5 rounded-xl mt-3" style={{ background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.1)' }}>
-            <p className="text-[13px] font-bold uppercase tracking-wide mb-2" style={{ color: '#f87171' }}>Mistake #3</p>
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+          <div className="p-5 rounded-xl mt-3" style={{ background: '#FDF1EF', border: '1px solid #E8C5BF' }}>
+            <p className="text-[13px] font-bold uppercase tracking-wide mb-2" style={{ color: 'var(--red)' }}>Mistake #3</p>
+            <p style={{ color: 'var(--text)' }}>
               <strong>Hoarding points and waiting for "something better."</strong> In 2026, the trend is clear: points get less valuable over time, not more. Every devaluation makes your balance worth fewer rupees. If you have points, use them. The best time to redeem was yesterday.
             </p>
           </div>
 
           {/* ── SECTION: WHAT TO DO ── */}
-          <h2 className="pt-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             Okay, so what should I actually do?
           </h2>
 
@@ -276,21 +276,21 @@ export default function BlogPost() {
 
           <div className="space-y-4 mt-2">
             <div className="flex gap-3">
-              <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: '#4ade80', background: 'rgba(74,222,128,0.08)' }}>1</span>
-              <p><strong style={{ color: 'rgba(255,255,255,0.7)' }}>Check your actual per-point value.</strong> Use <a href="/" style={{ color: '#67e8f9', textDecoration: 'underline' }}>PointsMax</a> to see exactly what your points are worth across every redemption method. You might be surprised at how much value you're leaving on the table.</p>
+              <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: 'var(--green)', background: '#EDF5F0' }}>1</span>
+              <p><strong style={{ color: 'var(--text)' }}>Check your actual per-point value.</strong> Use <a href="/" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>PointsMax</a> to see exactly what your points are worth across every redemption method. You might be surprised at how much value you're leaving on the table.</p>
             </div>
             <div className="flex gap-3">
-              <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: '#4ade80', background: 'rgba(74,222,128,0.08)' }}>2</span>
-              <p><strong style={{ color: 'rgba(255,255,255,0.7)' }}>Redeem before the next devaluation.</strong> If you have points sitting idle, book a trip. Buy vouchers at the best rate. Don't let them collect dust while banks chip away at their value.</p>
+              <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: 'var(--green)', background: '#EDF5F0' }}>2</span>
+              <p><strong style={{ color: 'var(--text)' }}>Redeem before the next devaluation.</strong> If you have points sitting idle, book a trip. Buy vouchers at the best rate. Don't let them collect dust while banks chip away at their value.</p>
             </div>
             <div className="flex gap-3">
-              <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: '#4ade80', background: 'rgba(74,222,128,0.08)' }}>3</span>
-              <p><strong style={{ color: 'rgba(255,255,255,0.7)' }}>Stop paying annual fees for benefits you can't use.</strong> If you're spending ₹5 lakh a year, a lifetime-free card portfolio (Amazon Pay ICICI + BoB Eterna + Scapia Federal) will outperform most paid premium cards after devaluations. Do the math before auto-paying that ₹10,000 renewal.</p>
+              <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: 'var(--green)', background: '#EDF5F0' }}>3</span>
+              <p><strong style={{ color: 'var(--text)' }}>Stop paying annual fees for benefits you can't use.</strong> If you're spending ₹5 lakh a year, a lifetime-free card portfolio (Amazon Pay ICICI + BoB Eterna + Scapia Federal) will outperform most paid premium cards after devaluations. Do the math before auto-paying that ₹10,000 renewal.</p>
             </div>
           </div>
 
           {/* ── SECTION: BOTTOM LINE ── */}
-          <h2 className="pt-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.01em' }}>
+          <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             The bottom line
           </h2>
 
@@ -305,35 +305,35 @@ export default function BlogPost() {
           </p>
 
           {/* CTA */}
-          <div className="p-6 rounded-2xl text-center mt-8" style={{ background: 'linear-gradient(135deg, rgba(52,211,153,0.06), rgba(6,182,212,0.04))', border: '1px solid rgba(52,211,153,0.12)' }}>
-            <p className="text-[16px] font-semibold" style={{ color: 'rgba(255,255,255,0.8)' }}>
+          <div className="p-6 rounded-2xl text-center mt-8" style={{ background: '#EDF5F0', border: '1px solid rgba(45,106,79,0.12)' }}>
+            <p className="text-[16px] font-semibold" style={{ color: 'var(--text)' }}>
               Check your points value now
             </p>
-            <p className="text-[13px] mt-1 mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p className="text-[13px] mt-1 mb-4" style={{ color: 'var(--text-s)' }}>
               25+ Indian cards. Every redemption option ranked.
             </p>
             <a href="/" className="inline-block px-6 py-2.5 rounded-xl text-[14px] font-semibold transition-all duration-200"
-              style={{ background: 'rgba(52,211,153,0.12)', color: '#6ee7b7', border: '1px solid rgba(52,211,153,0.2)' }}>
+              style={{ background: 'rgba(45,106,79,0.1)', color: 'var(--green)', border: '1px solid #C8DDD0' }}>
               Open PointsMax →
             </a>
           </div>
 
           {/* Disclaimer */}
-          <p className="text-[11px] mt-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.15)' }}>
+          <p className="text-[11px] mt-8 leading-relaxed" style={{ color: 'var(--text-m)' }}>
             <strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial advice. Reward point values, redemption rates, and card benefits change frequently. Always verify current terms on your bank's official website before making redemption decisions. PointsMax is not affiliated with any bank or financial institution.
           </p>
         </div>
       </article>
 
       {/* Footer */}
-      <footer className="py-10 px-5" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
+      <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-[12px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
-            <a href="/" className="hover:text-white/40 transition-colors">PointsMax</a>
+          <p className="text-[12px]" style={{ color: 'var(--text-m)' }}>
+            <a href="/" className="hover:text-black/40 transition-colors">PointsMax</a>
             <span className="mx-2">·</span>
-            <a href="/blog" className="hover:text-white/40 transition-colors">Blog</a>
+            <a href="/blog" className="hover:text-black/40 transition-colors">Blog</a>
             <span className="mx-2">·</span>
-            <a href="/privacy" className="hover:text-white/40 transition-colors">Privacy</a>
+            <a href="/privacy" className="hover:text-black/40 transition-colors">Privacy</a>
           </p>
         </div>
       </footer>
