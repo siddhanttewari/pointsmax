@@ -85,7 +85,7 @@ export default function Home() {
       </nav>
 
       {/* ── HERO ── */}
-      <header className="py-16 px-5">
+      <header className="pt-10 pb-6 px-5">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase mb-5"
             style={{ background: 'rgba(45,106,79,0.08)', color: 'var(--green)', border: '1px solid rgba(45,106,79,0.12)' }}>
@@ -112,7 +112,7 @@ export default function Home() {
       <main className="max-w-3xl mx-auto px-5 pb-32">
 
         {/* ── CARD SELECTOR ── */}
-        <section className="mt-6">
+        <section className="mt-2">
           <label className="block text-[13px] font-semibold mb-3" style={{ color: 'var(--text-m)' }}>Select your card</label>
 
           <div className="flex gap-1.5 flex-wrap mb-3">
