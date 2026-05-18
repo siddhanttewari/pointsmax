@@ -24,10 +24,8 @@ export default function Blog() {
 
         <div className="mt-10 space-y-6">
           {posts.map(p => (
-            <a key={p.slug} href={'/blog/' + p.slug} className="block p-6 rounded-2xl transition-all duration-200"
-              style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}>
+            <a key={p.slug} href={'/blog/' + p.slug} className="block p-6 rounded-2xl transition-all duration-200 hover:border-white/[0.12]"
+              style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded" style={{ color: '#6ee7b7', background: 'rgba(110,231,183,0.08)' }}>{p.tag}</span>
                 <span className="text-[12px]" style={{ color: 'rgba(255,255,255,0.25)' }}>{p.date}</span>
