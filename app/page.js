@@ -324,21 +324,57 @@ export default function Home() {
           </section>
         )}
 
-        {/* SEO Content */}
+        {/* SEO + AEO/GEO Content — answer-first structure, question-based H2s, independently extractable sections */}
         <section className="mt-20 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <h2 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.02em' }}>
-            How to Get Maximum Value From Credit Card Reward Points in India
+            How Much Are My Credit Card Reward Points Worth in India?
           </h2>
-          <div className="mt-6 space-y-5 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            <p>Indian credit cards offer reward points, cashback, or miles on every purchase — but the real value depends entirely on <em style={{ color: 'rgba(255,255,255,0.6)' }}>how you redeem them</em>. A single HDFC Infinia reward point can be worth ₹1 via SmartBuy, or just ₹0.20 through the product catalogue. That is a 5x difference.</p>
-            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>The Golden Rule: Travel Redemptions Beat Everything Else</h3>
-            <p>Across almost every Indian credit card — HDFC, Axis, SBI, ICICI, Amex — redeeming points for flights or hotels through the bank travel portal gives the highest per-point value. Statement credit and catalogues offer 40-80% less.</p>
-            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>Airline and Hotel Transfers: The Power Move</h3>
-            <p>Premium cards like HDFC Infinia, Diners Club Black, Axis Magnus, and Amex Platinum let you transfer points to airline programs (Singapore Airlines KrisFlyer, British Airways Avios, Air India) and hotel programs (Marriott Bonvoy, IHG, Accor). This unlocks business class flights at a fraction of the cash price.</p>
-            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>The 2026 Devaluation Wave</h3>
-            <p>Between January and April 2026, every major Indian bank devalued rewards. Axis removed Marriott, Accor, and Qatar Airways overnight. HDFC changed Turkish and Avianca ratios from 1:1 to 2:1. SBI capped cashback at ₹2,000 per month. This tool reflects all current data.</p>
-            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>Points Value Per Bank (2026)</h3>
-            <p>HDFC Infinia and Diners Black: ₹1/pt on SmartBuy, ₹0.50 on vouchers. Axis EDGE: ₹0.20-0.50. SBI: ₹0.25/pt. ICICI: ₹0.25/pt (₹0.50 Emeralde via InterMiles). Amex MR: ₹0.30-1.00.</p>
+          <div className="mt-4 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p>The value of credit card reward points in India ranges from ₹0.10 to ₹1.00 per point, depending on the card and redemption method. HDFC Infinia offers the highest at ₹1/point via SmartBuy travel bookings, while catalogue redemptions typically yield only ₹0.15-0.25/point.</p>
+            <p className="mt-3">The same 10,000 points can be worth ₹10,000 or just ₹2,000 — a 5x difference from choosing the right redemption channel. PointsMax calculates the exact rupee value across every method for 25+ Indian cards so you never leave money on the table.</p>
+          </div>
+
+          <h2 className="mt-10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '20px', color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.01em' }}>
+            What Is the Best Way to Redeem Credit Card Points in India in 2026?
+          </h2>
+          <div className="mt-4 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p>The best way to redeem credit card points in India is through the bank's travel portal for flight and hotel bookings. This consistently delivers the highest per-point value across HDFC, Axis, SBI, ICICI, and Amex cards. Statement credit and product catalogue redemptions offer 40-80% less value.</p>
+            <p className="mt-3">For premium cards, transferring points to airline frequent flyer programs like Singapore Airlines KrisFlyer or British Airways Avios can unlock even higher value — especially for business class award bookings where the cash price would be 3-5x what you effectively pay in points.</p>
+          </div>
+
+          <h2 className="mt-10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '20px', color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.01em' }}>
+            Credit Card Reward Points Value Per Bank in India (May 2026)
+          </h2>
+          <div className="mt-4 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p><strong style={{ color: 'rgba(255,255,255,0.65)' }}>HDFC Bank:</strong> Infinia and Diners Club Black reward points are worth ₹1.00/point when redeemed via SmartBuy for flights, hotels, Tanishq vouchers, or Apple products. Gift vouchers and statement credit yield ₹0.50/point. Product catalogue drops to ₹0.20/point. Regalia and Regalia Gold points are worth ₹0.50/point on SmartBuy.</p>
+            <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.65)' }}>Axis Bank:</strong> EDGE Reward Points are worth ₹0.20 to ₹0.50/point depending on the card tier. Magnus and Atlas cardholders get the best value at ₹0.50/point via the Travel EDGE portal. Standard Axis cards like Flipkart and ACE get ₹0.20-0.25/point.</p>
+            <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.65)' }}>SBI Card:</strong> Reward points are worth approximately ₹0.25/point. SBI Elite and SimplyCLICK offer the best redemption via vouchers and travel. Cashback is now capped at ₹2,000 per month as of April 2026.</p>
+            <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.65)' }}>ICICI Bank:</strong> Reward points are worth ₹0.25/point for most cards. Emeralde cardholders can get ₹0.50/point by converting to InterMiles for premium flight bookings.</p>
+            <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.65)' }}>American Express:</strong> Membership Rewards points range from ₹0.30 to ₹1.00/point. The highest value comes from transferring to airline partners like British Airways Avios or Singapore Airlines KrisFlyer at 1:1 ratio for premium cabin bookings.</p>
+          </div>
+
+          <h2 className="mt-10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '20px', color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.01em' }}>
+            Which Indian Credit Cards Let You Transfer Points to Airlines?
+          </h2>
+          <div className="mt-4 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p>In India, airline transfer partners are available on premium credit cards from HDFC Bank (Infinia, Diners Club Black, Regalia Gold), Axis Bank (Magnus, Atlas), and American Express (Platinum, Gold). These cards let you convert reward points to frequent flyer miles in programs like Singapore Airlines KrisFlyer, British Airways Avios, Air India Flying Returns, Finnair Plus, Turkish Airlines Miles&amp;Smiles, Etihad Guest, Japan Airlines Mileage Bank, and Emirates Skywards.</p>
+            <p className="mt-3">HDFC Infinia offers the most transfer partners (22 programs) with the best ratios — 1:1 to Singapore Airlines KrisFlyer and Finnair Plus, which represent the highest-value transfer options for business class redemptions on Star Alliance and Oneworld partners respectively.</p>
+          </div>
+
+          <h2 className="mt-10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '20px', color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.01em' }}>
+            What Changed in the April 2026 Credit Card Devaluations?
+          </h2>
+          <div className="mt-4 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p>Between January and April 2026, every major Indian bank devalued credit card reward programs. The most significant changes were: Axis Bank removed Marriott Bonvoy, Accor Live Limitless, and Qatar Airways Privilege Club as transfer partners entirely. HDFC Bank changed Turkish Airlines Miles&amp;Smiles and Avianca LifeMiles transfer ratios from 1:1 to 2:1 (effectively halving the value). SBI Card capped monthly cashback at ₹2,000.</p>
+            <p className="mt-3">PointsMax reflects all post-devaluation data as of May 2026. Cards with devalued transfer partners are flagged with a "DEVALUED" tag so you can avoid outdated redemption strategies.</p>
+          </div>
+
+          <h2 className="mt-10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '20px', color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.01em' }}>
+            How Does the PointsMax Credit Card Points Calculator Work?
+          </h2>
+          <div className="mt-4 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p>PointsMax is a free online tool that calculates the real rupee value of your credit card reward points across every available redemption method. Select your card from 25+ supported Indian credit cards, enter your points balance, and see all options ranked by value — from best to worst. The tool also shows airline and hotel transfer partners with exact conversion ratios, alliance affiliations, and devaluation warnings.</p>
+            <p className="mt-3">Data is sourced from official bank reward catalogues, SmartBuy and Travel EDGE portals, and transfer partner program pages. The database is updated whenever banks change redemption values or transfer ratios.</p>
           </div>
         </section>
       </main>

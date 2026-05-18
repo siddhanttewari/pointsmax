@@ -41,6 +41,14 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
+      name: 'How much are credit card reward points worth in India?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Credit card reward points in India are worth ₹0.10 to ₹1.00 per point depending on the card and redemption method. HDFC Infinia offers the highest value at ₹1/point via SmartBuy travel bookings. Catalogue redemptions typically yield only ₹0.15-0.25/point. The same 10,000 points can be worth ₹10,000 or ₹2,000 depending on how you redeem them.',
+      },
+    },
+    {
+      '@type': 'Question',
       name: 'What is the value of 1 HDFC Infinia reward point in rupees?',
       acceptedAnswer: {
         '@type': 'Answer',
@@ -52,15 +60,15 @@ const faqJsonLd = {
       name: 'What is the best way to redeem credit card reward points in India?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The best redemption method varies by card. For premium cards like HDFC Infinia and Diners Club Black, booking flights/hotels via SmartBuy at ₹1/point gives the highest value. For Axis Magnus, using the Travel EDGE portal is best. For mid-tier cards, gift vouchers typically offer better value than statement credit.',
+        text: 'The best way to redeem credit card points in India is through the bank travel portal for flights and hotels. This gives the highest per-point value across HDFC, Axis, SBI, ICICI, and Amex. For premium cards, transferring to airline programs like Singapore Airlines KrisFlyer or British Airways Avios can unlock even higher value for business class bookings.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Can I transfer credit card points to airline miles in India?',
+      name: 'Which Indian credit cards let you transfer points to airline miles?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Premium credit cards from HDFC (Infinia, Diners Club Black, Regalia Gold), Axis (Magnus, Atlas), and Amex support transfers to airline loyalty programs like Singapore Airlines KrisFlyer, British Airways Avios, Air India Flying Returns, and others.',
+        text: 'Premium credit cards from HDFC (Infinia, Diners Club Black, Regalia Gold), Axis (Magnus, Atlas), and American Express (Platinum, Gold) support transfers to airline loyalty programs including Singapore Airlines KrisFlyer, British Airways Avios, Air India Flying Returns, Finnair Plus, Turkish Airlines Miles&Smiles, Etihad Guest, and Emirates Skywards. HDFC Infinia has the most partners at 22 programs with best ratios.',
       },
     },
     {
@@ -68,7 +76,15 @@ const faqJsonLd = {
       name: 'Which Indian credit card gives the best reward points value?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'As of 2026, HDFC Infinia offers the highest per-point value at ₹1/point on SmartBuy travel and select vouchers. Axis Magnus offers ₹0.50/point on Travel EDGE. For lifetime-free cards, Amazon Pay ICICI gives 5% auto-cashback on Amazon.',
+        text: 'As of May 2026, HDFC Infinia offers the highest per-point value at ₹1/point on SmartBuy travel. Axis Magnus offers ₹0.50/point on Travel EDGE. SBI rewards are ₹0.25/point, ICICI is ₹0.25/point (₹0.50 for Emeralde via InterMiles), and Amex ranges from ₹0.30 to ₹1.00. For lifetime-free cards, Amazon Pay ICICI gives 5% auto-cashback on Amazon.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What changed in the April 2026 credit card devaluations in India?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Between January and April 2026, major Indian banks devalued reward programs. Axis Bank removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners. HDFC changed Turkish Airlines and Avianca transfer ratios from 1:1 to 2:1. SBI Card capped monthly cashback at ₹2,000. PointsMax reflects all post-devaluation data.',
       },
     },
   ],

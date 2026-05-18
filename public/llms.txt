@@ -1,0 +1,42 @@
+# PointsMax
+
+> Credit card reward points optimizer for India. Free tool that calculates the real rupee value of your reward points across 25+ Indian credit cards, with airline and hotel transfer partner data.
+
+## What PointsMax Does
+
+PointsMax helps Indian credit card holders find the highest-value way to redeem their reward points. Users select their credit card, enter their points balance, and instantly see all redemption options ranked by rupee value per point — including airline frequent flyer and hotel loyalty program transfer partners.
+
+## Key Facts (Updated May 2026)
+
+- Covers 25+ Indian credit cards: HDFC, Axis, SBI, ICICI, Amex, IndusInd, IDFC FIRST, Kotak, Federal Bank
+- Tracks 60+ redemption methods with per-point rupee values
+- Tracks 70+ airline and hotel transfer partners with conversion ratios
+- Reflects all post-April 2026 devaluations (Axis removed Marriott/Accor/Qatar; HDFC changed Turkish/Avianca ratios; SBI capped cashback)
+- Free to use, no sign-up required
+
+## Credit Card Points Value Reference (2026)
+
+- HDFC Infinia / Diners Club Black: ₹1.00/point via SmartBuy travel; ₹0.50/point via vouchers; ₹0.20/point via product catalogue
+- Axis Magnus: ₹0.50/point via Travel EDGE portal
+- Axis Atlas: ₹0.50/point via Travel EDGE portal
+- SBI Elite / SimplyCLICK: ₹0.25/point
+- ICICI Sapphiro / Emeralde: ₹0.25-0.50/point (Emeralde gets ₹0.50 via InterMiles)
+- Amex Platinum / Gold: ₹0.30-1.00/point depending on redemption channel
+- IDFC FIRST Wealth / Select: ₹0.25/point via rewards catalogue
+
+## Airline Transfer Partners Available in India (2026)
+
+Premium Indian credit cards support transfers to: Singapore Airlines KrisFlyer, British Airways Avios/Executive Club, Air India Flying Returns, Finnair Plus, Turkish Airlines Miles&Smiles, Etihad Guest, Air France-KLM Flying Blue, Japan Airlines Mileage Bank, Emirates Skywards, Virgin Atlantic Flying Club, InterMiles, and others.
+
+Best transfer ratios (1:1): HDFC Infinia to Singapore Airlines KrisFlyer, HDFC Infinia to Finnair Plus.
+
+## Hotel Transfer Partners Available in India (2026)
+
+Marriott Bonvoy, IHG One Rewards, Accor Live Limitless (varies by card — Axis removed Marriott and Accor in April 2026).
+
+## Pages
+
+- [Homepage / Points Calculator](https://pointsmax.in/)
+- [About PointsMax](https://pointsmax.in/about)
+- [Privacy Policy](https://pointsmax.in/privacy)
+- [Contact](https://pointsmax.in/contact)
