@@ -1,22 +1,10 @@
-export const metadata = {
+'use client'
+
+import { useState, useEffect } from 'react'
+
+const blogMeta = {
   title: 'What Are Your Credit Card Points Actually Worth in 2026? The Real Numbers',
   description: 'Every Indian bank slashed credit card rewards in 2026. Here\'s what your HDFC, Axis, SBI, ICICI, and Amex points are really worth now — per-point values, best redemption methods, and the mistakes costing you money.',
-  keywords: ['credit card points value India 2026', 'HDFC Infinia reward points value', 'Axis Magnus points value', 'SBI reward points value rupees', 'best way to redeem credit card points India', 'credit card devaluation 2026', 'credit card points worth India', 'HDFC SmartBuy points value', 'Axis EDGE points value', 'reward points calculator India'],
-  alternates: { canonical: 'https://www.pointsmax.in/blog/credit-card-points-value-india-2026' },
-  openGraph: {
-    title: 'What Are Your Credit Card Points Actually Worth in 2026?',
-    description: 'The real rupee value of your reward points after the 2026 devaluation wave. HDFC, Axis, SBI, ICICI, Amex — card by card.',
-    type: 'article',
-    url: 'https://www.pointsmax.in/blog/credit-card-points-value-india-2026',
-    siteName: 'PointsMax',
-    locale: 'en_IN',
-    publishedTime: '2026-05-18',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'What Are Your Credit Card Points Actually Worth in 2026?',
-    description: 'Real rupee values for HDFC, Axis, SBI, ICICI, Amex points after 2026 devaluations.',
-  },
 }
 
 const blogJsonLd = {
@@ -55,6 +43,14 @@ const faqJsonLd = {
 }
 
 export default function BlogPost() {
+  const [showBar, setShowBar] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setShowBar(window.scrollY > 600)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
@@ -250,6 +246,17 @@ export default function BlogPost() {
             SBI reward points are still worth about ₹0.25/point when redeemed for e-vouchers. Not exciting, but straightforward. The damage is mainly to cashback card users who relied on the higher caps.
           </p>
 
+          {/* Mid-article CTA */}
+          <div className="p-5 rounded-xl my-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
+            <div>
+              <p className="text-[14px] font-semibold">Have HDFC, Axis, or SBI points sitting idle?</p>
+              <p className="text-[12px] mt-1" style={{ color: 'rgba(250,248,245,0.5)' }}>See exactly what they're worth — ranked by value, not by what the bank wants you to pick.</p>
+            </div>
+            <a href="/" className="shrink-0 px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-200" style={{ background: 'var(--gold)', color: 'var(--dark)' }}>
+              Check My Points →
+            </a>
+          </div>
+
           {/* ── SECTION: 3 MISTAKES ── */}
           <h2 className="pt-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '22px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
             The 3 mistakes that are costing you money
@@ -349,6 +356,25 @@ export default function BlogPost() {
           </p>
         </div>
       </footer>
+
+      {/* Sticky bottom CTA */}
+      {showBar && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 transition-all duration-300"
+          style={{ background: 'var(--dark)', borderTop: '1px solid rgba(255,255,255,0.08)', padding: '10px 16px' }}>
+          <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
+            <p className="text-[13px] hidden sm:block" style={{ color: 'rgba(250,248,245,0.6)' }}>
+              What are <strong style={{ color: '#FAF8F5' }}>your</strong> points worth?
+            </p>
+            <p className="text-[13px] sm:hidden" style={{ color: 'rgba(250,248,245,0.6)' }}>
+              Check your points value
+            </p>
+            <a href="/" className="shrink-0 px-4 py-2 rounded-lg text-[13px] font-semibold"
+              style={{ background: 'var(--gold)', color: 'var(--dark)' }}>
+              Open Calculator →
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
