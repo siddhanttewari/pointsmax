@@ -36,7 +36,7 @@ Marriott Bonvoy, IHG One Rewards, Accor Live Limitless (varies by card — Axis 
 
 ## Pages
 
-- [Homepage / Points Calculator](https://pointsmax.in/)
-- [About PointsMax](https://pointsmax.in/about)
-- [Privacy Policy](https://pointsmax.in/privacy)
-- [Contact](https://pointsmax.in/contact)
+- [Homepage / Points Calculator](https://www.pointsmax.in/)
+- [About PointsMax](https://www.pointsmax.in/about)
+- [Privacy Policy](https://www.pointsmax.in/privacy)
+- [Contact](https://www.pointsmax.in/contact)

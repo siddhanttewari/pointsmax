@@ -20,7 +20,7 @@ export const metadata = {
     description: 'Calculate real ₹ value of your reward points. 25+ cards, transfer partners, post-2026 devaluation data.',
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://pointsmax.in' },
+  alternates: { canonical: 'https://www.pointsmax.in' },
 }
 
 const jsonLd = {
@@ -28,7 +28,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'PointsMax',
   description: 'Credit card reward points optimizer for Indian consumers. Compare redemption values across 25+ cards.',
-  url: 'https://pointsmax.in',
+  url: 'https://www.pointsmax.in',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'Web',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
