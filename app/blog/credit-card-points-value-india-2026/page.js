@@ -47,9 +47,6 @@ const faqJsonLd = {
 export default function BlogPost() {
   return (
     <div className="min-h-screen bg-[#060608]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-
       <article className="max-w-2xl mx-auto px-5 py-16">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-8 text-[13px]" style={{ color: 'rgba(255,255,255,0.3)' }}>
