@@ -173,7 +173,7 @@ export default function Home() {
             <div className="relative">
               <input type="number" placeholder="e.g. 10000" value={points}
                 onChange={e => { setPoints(e.target.value); track('enter_points', { card: slug, points: e.target.value }) }}
-                className="w-full py-4 px-5 rounded-2xl text-center text-[28px] font-mono font-bold outline-none transition-all duration-200"
+                className="w-full py-4 px-5 rounded-2xl text-center text-[22px] sm:text-[28px] font-mono font-bold outline-none transition-all duration-200"
                 style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--text)' }} />
               {pts > 0 && <p className="absolute -bottom-5 left-0 right-0 text-center text-[12px]" style={{ color: 'var(--text-m)' }}>{pts.toLocaleString('en-IN')} {card.point_name}</p>}
             </div>
@@ -194,7 +194,7 @@ export default function Home() {
                 </div>
                 <div className="text-right">
                   <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: 'var(--gold-l)' }}>Maximum value</p>
-                  <p className="text-[36px] font-mono font-extrabold leading-none" style={{ color: 'var(--gold-l)' }}>
+                  <p className="text-[28px] sm:text-[36px] font-mono font-extrabold leading-none" style={{ color: 'var(--gold-l)' }}>
                     ₹{(pts * best).toLocaleString('en-IN')}
                   </p>
                 </div>
@@ -361,24 +361,26 @@ function TCard({ t, pts, delay = 0 }) {
   const b = t.is_best
   const a = t.alliance ? ALLIANCE[t.alliance] : null
   return (
-    <div className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200" style={{
+    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-3.5 rounded-xl transition-all duration-200" style={{
       background: b ? '#EDF5F0' : 'var(--card)',
       border: '1px solid ' + (b ? '#C8DDD0' : 'var(--border)'),
       animation: 'fadeUp 0.3s ease both', animationDelay: delay + 'ms',
     }}>
-      <span className="text-lg shrink-0">{t.country_icon}</span>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-[13px] font-semibold" style={{ color: b ? 'var(--green)' : 'var(--text)' }}>{t.partner_name}</span>
-          {b && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: 'var(--green)', background: 'rgba(45,106,79,0.1)' }}>BEST</span>}
-          {a && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: a.color, background: a.bg }}>{t.alliance}</span>}
-          {w && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: '#92782A', background: '#FBF8F0' }}>DEVALUED</span>}
+      <div className="flex items-center gap-3 flex-1 min-w-0">
+        <span className="text-lg shrink-0">{t.country_icon}</span>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-[13px] font-semibold" style={{ color: b ? 'var(--green)' : 'var(--text)' }}>{t.partner_name}</span>
+            {b && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: 'var(--green)', background: 'rgba(45,106,79,0.1)' }}>BEST</span>}
+            {a && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: a.color, background: a.bg }}>{t.alliance}</span>}
+            {w && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: '#92782A', background: '#FBF8F0' }}>DEVALUED</span>}
+          </div>
+          <p className="text-[11px] mt-0.5 truncate" style={{ color: w ? '#92782A' : 'var(--text-m)' }}>{t.note}</p>
         </div>
-        <p className="text-[11px] mt-0.5 truncate" style={{ color: w ? '#92782A' : 'var(--text-m)' }}>{t.note}</p>
       </div>
-      <div className="flex items-center gap-3 shrink-0">
+      <div className="flex items-center gap-3 shrink-0 pl-9 sm:pl-0">
         <span className="text-[11px] font-mono font-semibold px-2 py-1 rounded-lg" style={{ background: w ? '#FBF8F0' : 'var(--bg-s)', color: w ? '#92782A' : 'var(--text-m)' }}>{t.transfer_ratio}</span>
-        <span className="text-[14px] font-mono font-bold min-w-[60px] text-right" style={{ color: b ? 'var(--green)' : w ? '#92782A' : 'var(--text-s)' }}>₹{val.toLocaleString('en-IN')}</span>
+        <span className="text-[14px] font-mono font-bold" style={{ color: b ? 'var(--green)' : w ? '#92782A' : 'var(--text-s)' }}>₹{val.toLocaleString('en-IN')}</span>
       </div>
     </div>
   )

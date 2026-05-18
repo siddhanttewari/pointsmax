@@ -46,6 +46,19 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] { -moz-appearance: textfield; }
 
+/* Mobile touch targets */
+@media (max-width: 640px) {
+  button, a { min-height: 44px; }
+  .space-y-1\.5 > * { min-height: 48px; }
+}
+
+/* Prevent iOS zoom on input focus */
+@media (max-width: 640px) {
+  input[type="text"], input[type="number"], select, textarea {
+    font-size: 16px !important;
+  }
+}
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(26,22,20,0.12); border-radius: 4px; }

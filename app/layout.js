@@ -1,5 +1,11 @@
 import './globals.css'
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata = {
   verification: {
     google: 'H8Ti6YZXVrOgtuwcfa6tYLF5VWn0E7ex3-QnoRK1hnc',
