@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { getCards, getRedemptions, getTransferPartners } from '@/lib/supabase'
-import { AuthGate, UserMenu, useAuth } from '@/components/AuthGate'
+// import { AuthGate, UserMenu, useAuth } from '@/components/AuthGate'
 import { HeaderAd, InFeedAd } from '@/components/AdUnit'
 
 const BANK_META = {
@@ -50,7 +50,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const resultsRef = useRef(null)
 
-  const { user } = useAuth()
+  // const { user } = useAuth() // Auth disabled for now
 
   useEffect(() => {
     getCards().then(data => {
@@ -93,8 +93,7 @@ export default function Home() {
 
   const airlineTransfers = transfers.filter(t => t.partner_type === 'airline')
   const hotelTransfers = transfers.filter(t => t.partner_type === 'hotel')
-  const freeRedemptions = redemptions.slice(0, 2)
-  const lockedRedemptions = redemptions.slice(2)
+  // Auth gating removed — all content shown freely
   const bestVal = redemptions[0]?.value_per_point || 0
   const worstVal = redemptions[redemptions.length - 1]?.value_per_point || 0
 
@@ -118,7 +117,7 @@ export default function Home() {
             </div>
             <span style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '17px', letterSpacing: '-0.02em' }}>PointsMax</span>
           </div>
-          <UserMenu />
+          {/* <UserMenu /> */}
         </div>
       </nav>
 
@@ -288,19 +287,13 @@ export default function Home() {
             {/* Redemptions Tab */}
             {activeTab === 'redeem' && (
               <div className="mt-4 space-y-2">
-                {freeRedemptions.map((r, i) => <RedemptionCard key={r.id} r={r} pts={pts} maxVal={bestVal} delay={i * 60} />)}
-                {lockedRedemptions.length > 0 && <InFeedAd />}
-                {lockedRedemptions.length > 0 && (
-                  <AuthGate lockedMessage="Sign in free to see all redemption options, transfer partners, and tips">
-                    <div className="space-y-2">{lockedRedemptions.map((r, i) => <RedemptionCard key={r.id} r={r} pts={pts} maxVal={bestVal} delay={(i + 2) * 60} />)}</div>
-                  </AuthGate>
-                )}
+                {redemptions.map((r, i) => <RedemptionCard key={r.id} r={r} pts={pts} maxVal={bestVal} delay={i * 60} />)}
+                {redemptions.length > 2 && <InFeedAd />}
               </div>
             )}
 
             {/* Transfer Tab */}
             {activeTab === 'transfer' && transfers.length > 0 && (
-              <AuthGate lockedMessage="Sign in free to see all airline & hotel transfer partners with live conversion ratios">
                 <div className="mt-4" style={{ animation: 'fadeUp 0.3s ease both' }}>
                   <p className="text-[12px] mb-4 leading-relaxed" style={{ color: 'rgba(255,255,255,0.3)' }}>Transfer points to airline/hotel loyalty programs. Best for premium cabin bookings.</p>
                   {airlineTransfers.length > 0 && (
@@ -319,7 +312,6 @@ export default function Home() {
                     <p className="text-[12px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.4)' }}><strong style={{ color: '#67e8f9' }}>Pro tip:</strong> Transfer only with a specific booking in mind. Transfers are irreversible.</p>
                   </div>
                 </div>
-              </AuthGate>
             )}
 
             {transfers.length === 0 && activeTab === 'transfer' && (
