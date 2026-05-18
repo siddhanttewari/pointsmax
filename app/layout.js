@@ -1,6 +1,9 @@
 import './globals.css'
 
 export const metadata = {
+  verification: {
+    google: 'H8Ti6YZXVrOgtuwcfa6tYLF5VWn0E7ex3-QnoRK1hnc',
+  },
   title: {
     default: 'PointsMax — Credit Card Reward Points Optimizer India 2026',
     template: '%s | PointsMax',
