@@ -389,6 +389,8 @@ export default function Home() {
             <span className="text-[13px] font-bold" style={{ color: 'rgba(255,255,255,0.4)' }}>PointsMax</span>
           </div>
           <p className="text-[12px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
+            <a href="/blog" className="hover:text-white/40 transition-colors">Blog</a>
+            <span className="mx-2">·</span>
             <a href="/privacy" className="hover:text-white/40 transition-colors">Privacy</a>
             <span className="mx-2">·</span>
             <a href="/about" className="hover:text-white/40 transition-colors">About</a>
