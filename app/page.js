@@ -1,37 +1,41 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { getCards, getRedemptions, getTransferPartners } from '@/lib/supabase'
 import { AuthGate, UserMenu, useAuth } from '@/components/AuthGate'
-import AdUnit, { HeaderAd, InFeedAd } from '@/components/AdUnit'
+import { HeaderAd, InFeedAd } from '@/components/AdUnit'
 
-const BANK_COLORS = {
-  HDFC: { bg: '#1a237e', accent: '#5c6bc0' },
-  Axis: { bg: '#880e4f', accent: '#ec407a' },
-  SBI: { bg: '#004d40', accent: '#26a69a' },
-  ICICI: { bg: '#b71c1c', accent: '#ef5350' },
-  'IDFC FIRST': { bg: '#1b5e20', accent: '#66bb6a' },
-  Amex: { bg: '#0d47a1', accent: '#42a5f5' },
-  IndusInd: { bg: '#4a148c', accent: '#ab47bc' },
-  Kotak: { bg: '#e65100', accent: '#ffa726' },
-  Federal: { bg: '#263238', accent: '#78909c' },
+const BANK_META = {
+  HDFC: { dot: '#6366f1' },
+  Axis: { dot: '#ec4899' },
+  SBI: { dot: '#10b981' },
+  ICICI: { dot: '#f97316' },
+  'IDFC FIRST': { dot: '#84cc16' },
+  Amex: { dot: '#06b6d4' },
+  IndusInd: { dot: '#a855f7' },
+  Kotak: { dot: '#eab308' },
+  Federal: { dot: '#94a3b8' },
 }
 
-const RANK_LABELS = {
-  1: { label: 'BEST', color: 'text-green-400', bg: 'bg-green-400/10' },
-  2: { label: 'GOOD', color: 'text-amber-400', bg: 'bg-amber-400/10' },
-  3: { label: 'OKAY', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-  4: { label: 'AVOID', color: 'text-red-400', bg: 'bg-red-400/10' },
+const RANK_CONFIG = {
+  1: { label: 'BEST VALUE', color: '#4ade80', bg: 'rgba(74,222,128,0.08)', border: 'rgba(74,222,128,0.15)' },
+  2: { label: 'GOOD', color: '#fbbf24', bg: 'rgba(251,191,36,0.06)', border: 'rgba(251,191,36,0.1)' },
+  3: { label: 'OKAY', color: '#fb923c', bg: 'rgba(251,146,60,0.06)', border: 'rgba(251,146,60,0.1)' },
+  4: { label: 'AVOID', color: '#f87171', bg: 'rgba(248,113,113,0.06)', border: 'rgba(248,113,113,0.1)' },
 }
 
-const ALLIANCE_COLORS = {
-  'Star Alliance': 'text-amber-400 bg-amber-400/10',
-  'Oneworld': 'text-red-400 bg-red-400/10',
-  'SkyTeam': 'text-blue-400 bg-blue-400/10',
-  'Multi': 'text-purple-400 bg-purple-400/10',
-  'LCC': 'text-zinc-400 bg-zinc-400/10',
-  'None': 'text-zinc-500 bg-zinc-500/10',
-  '': 'text-zinc-500 bg-zinc-500/10',
+const ALLIANCE_STYLE = {
+  'Star Alliance': { color: '#fbbf24', bg: 'rgba(251,191,36,0.1)' },
+  'Oneworld': { color: '#f87171', bg: 'rgba(248,113,113,0.1)' },
+  'SkyTeam': { color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+  'Multi': { color: '#c084fc', bg: 'rgba(192,132,252,0.1)' },
+  'LCC': { color: '#94a3b8', bg: 'rgba(148,163,184,0.08)' },
+}
+
+function trackEvent(name, params = {}) {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', name, params)
+  }
 }
 
 export default function Home() {
@@ -42,12 +46,12 @@ export default function Home() {
   const [transfers, setTransfers] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [bankFilter, setBankFilter] = useState('All')
-  const [showTransfers, setShowTransfers] = useState(false)
+  const [activeTab, setActiveTab] = useState('redeem')
   const [loading, setLoading] = useState(true)
+  const resultsRef = useRef(null)
 
   const { user } = useAuth()
 
-  // Fetch cards on mount
   useEffect(() => {
     getCards().then(data => {
       setCards(data || [])
@@ -55,13 +59,9 @@ export default function Home() {
     }).catch(() => setLoading(false))
   }, [])
 
-  // Fetch redemptions + transfers when card changes
   useEffect(() => {
     if (!selectedSlug) return
-    setRedemptions([])
-    setTransfers([])
-    setShowTransfers(false)
-
+    setActiveTab('redeem')
     Promise.all([
       getRedemptions(selectedSlug),
       getTransferPartners(selectedSlug),
@@ -69,12 +69,19 @@ export default function Home() {
       setRedemptions(r || [])
       setTransfers(t || [])
     })
+    trackEvent('select_card', { card: selectedSlug })
   }, [selectedSlug])
+
+  useEffect(() => {
+    if (redemptions.length > 0 && parseInt(points) > 0 && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [redemptions, points])
 
   const banks = useMemo(() => ['All', ...new Set(cards.map(c => c.bank))], [cards])
   const selectedCard = cards.find(c => c.slug === selectedSlug)
   const pts = parseInt(points) || 0
-  const bc = selectedCard ? BANK_COLORS[selectedCard.bank] || { bg: '#333', accent: '#888' } : null
+  const bm = selectedCard ? BANK_META[selectedCard.bank] || BANK_META['Federal'] : null
 
   const filteredCards = useMemo(() => {
     return cards.filter(c => {
@@ -86,416 +93,341 @@ export default function Home() {
 
   const airlineTransfers = transfers.filter(t => t.partner_type === 'airline')
   const hotelTransfers = transfers.filter(t => t.partner_type === 'hotel')
-
-  // FREE tier: show top 2 redemptions + lock the rest
   const freeRedemptions = redemptions.slice(0, 2)
   const lockedRedemptions = redemptions.slice(2)
+  const bestVal = redemptions[0]?.value_per_point || 0
+  const worstVal = redemptions[redemptions.length - 1]?.value_per_point || 0
 
   return (
-    <div className="min-h-screen">
-      {/* NAV */}
-      <nav className="sticky top-0 z-40 bg-surface-0/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">💳</span>
-            <span className="font-display font-bold text-base tracking-tight">PointsMax</span>
+    <div className="min-h-screen bg-[#060608]">
+      {/* Noise */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.015]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+      }} />
+
+      {/* Nav */}
+      <nav className="sticky top-0 z-50" style={{
+        background: 'rgba(6,6,8,0.7)',
+        backdropFilter: 'blur(20px) saturate(180%)',
+        borderBottom: '1px solid rgba(255,255,255,0.04)',
+      }}>
+        <div className="max-w-3xl mx-auto flex items-center justify-between px-5 py-3.5">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-400 grid place-items-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5" /></svg>
+            </div>
+            <span style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '17px', letterSpacing: '-0.02em' }}>PointsMax</span>
           </div>
           <UserMenu />
         </div>
       </nav>
 
-      {/* HERO */}
+      {/* Hero */}
       <header className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-transparent" />
-        <div className="relative max-w-2xl mx-auto px-4 pt-12 pb-8 text-center">
-          <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-zinc-500 mb-3">
-            India · 25+ Cards · Updated May 2026
-          </p>
-          <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            <span className="bg-gradient-to-r from-zinc-100 via-indigo-200 to-fuchsia-200 bg-clip-text text-transparent">
-              Credit Card Points Optimizer
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-20 blur-[100px]"
+          style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.3), rgba(6,182,212,0.15), transparent 70%)' }} />
+        <div className="relative max-w-3xl mx-auto px-5 pt-16 pb-10">
+          <div className="flex items-center justify-center gap-2 mb-5">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase"
+              style={{ background: 'rgba(52,211,153,0.08)', color: '#6ee7b7', border: '1px solid rgba(52,211,153,0.12)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Updated May 2026
+            </span>
+          </div>
+          <h1 className="text-center" style={{
+            fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 800,
+            fontSize: 'clamp(28px, 5vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.03em',
+          }}>
+            <span style={{ background: 'linear-gradient(135deg, #e2e8f0 0%, #6ee7b7 40%, #67e8f9 60%, #a5b4fc 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Stop Wasting Your{' '}
+            </span>
+            <br className="sm:hidden" />
+            <span style={{ background: 'linear-gradient(135deg, #67e8f9 0%, #c4b5fd 50%, #fbbf24 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Credit Card Points
             </span>
           </h1>
-          <p className="text-sm text-zinc-500 mt-3 max-w-md mx-auto leading-relaxed">
-            Select your card, enter your points — instantly see the best way to redeem them, including airline & hotel transfer partners
+          <p className="text-center mt-4 text-[15px] leading-relaxed max-w-lg mx-auto" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            Find the <strong style={{ color: 'rgba(255,255,255,0.65)' }}>highest-value redemption</strong> for your points.
+            Compare 25+ Indian cards with airline &amp; hotel transfer partners.
           </p>
+          <div className="flex items-center justify-center gap-6 mt-6">
+            {['25+ Cards', 'Live Data', 'Free Forever'].map(t => (
+              <span key={t} className="text-[11px] font-medium" style={{ color: 'rgba(255,255,255,0.25)' }}>{t}</span>
+            ))}
+          </div>
         </div>
       </header>
 
-      {/* AD: Header */}
-      <div className="max-w-2xl mx-auto px-4">
-        <HeaderAd />
-      </div>
+      <div className="max-w-3xl mx-auto px-5"><HeaderAd /></div>
 
-      <main className="max-w-2xl mx-auto px-4 pb-24">
-
-        {/* STEP 1: CARD SELECTION */}
-        <section className="mt-6">
-          <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 grid place-items-center text-[11px] font-bold shrink-0">1</span>
-            <span className="text-sm font-semibold">Select your credit card</span>
-          </div>
-
-          {/* Bank pills */}
+      <main className="max-w-3xl mx-auto px-5 pb-32 relative z-10">
+        {/* Card Selector */}
+        <section className="mt-8">
+          <label className="block text-[13px] font-semibold mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>Select your card</label>
           <div className="flex gap-1.5 flex-wrap mb-3">
-            {banks.map(b => (
-              <button
-                key={b}
-                onClick={() => setBankFilter(b)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-                  bankFilter === b
-                    ? 'bg-white/10 text-white border-white/20'
-                    : 'text-zinc-500 border-white/5 hover:bg-white/5'
-                }`}
-              >
-                {b}
-              </button>
-            ))}
+            {banks.map(b => {
+              const active = bankFilter === b
+              const meta = BANK_META[b]
+              return (
+                <button key={b} onClick={() => setBankFilter(b)}
+                  className="px-3 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200"
+                  style={{ background: active ? 'rgba(255,255,255,0.08)' : 'transparent', color: active ? '#fff' : 'rgba(255,255,255,0.3)', border: '1px solid ' + (active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.04)') }}>
+                  {meta && b !== 'All' && <span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: meta.dot, opacity: active ? 1 : 0.4 }} />}
+                  {b}
+                </button>
+              )
+            })}
           </div>
-
-          <input
-            type="text"
-            placeholder="Search cards…"
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            className="w-full bg-white/5 border border-white/8 rounded-xl px-3.5 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-600 outline-none focus:border-white/20 transition-colors mb-3"
-          />
+          <div className="relative mb-3">
+            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'rgba(255,255,255,0.2)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+            <input type="text" placeholder="Search by card name…" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 rounded-xl text-[14px] outline-none transition-all duration-200"
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#e2e8f0' }}
+              onFocus={e => e.target.style.borderColor = 'rgba(255,255,255,0.15)'}
+              onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.06)'} />
+          </div>
 
           {loading ? (
-            <div className="space-y-2">
-              {[1,2,3,4,5].map(i => (
-                <div key={i} className="h-14 bg-white/5 rounded-xl animate-pulse" />
-              ))}
-            </div>
+            <div className="space-y-2">{[1,2,3,4,5].map(i => <div key={i} className="h-16 rounded-xl animate-pulse" style={{ background: 'rgba(255,255,255,0.03)' }} />)}</div>
           ) : (
-            <div className="max-h-80 overflow-y-auto space-y-1">
+            <div className="max-h-[360px] overflow-y-auto space-y-1.5 pr-1">
               {filteredCards.map(c => {
-                const b = BANK_COLORS[c.bank] || { bg: '#333', accent: '#888' }
+                const meta = BANK_META[c.bank] || BANK_META['Federal']
                 const sel = selectedSlug === c.slug
                 return (
-                  <button
-                    key={c.slug}
-                    onClick={() => setSelectedSlug(c.slug)}
-                    className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all ${
-                      sel
-                        ? 'bg-white/6 border border-white/15'
-                        : 'border border-transparent hover:bg-white/4'
-                    }`}
-                  >
-                    <div
-                      className="w-8 h-8 rounded-lg grid place-items-center text-[10px] font-bold text-white shrink-0"
-                      style={{ background: `linear-gradient(135deg, ${b.bg}, ${b.accent}55)` }}
-                    >
-                      {c.bank.slice(0, 3).toUpperCase()}
+                  <button key={c.slug} onClick={() => setSelectedSlug(c.slug)}
+                    className="w-full flex items-center gap-3.5 p-3.5 rounded-xl text-left transition-all duration-200"
+                    style={{ background: sel ? 'rgba(255,255,255,0.06)' : 'transparent', border: '1px solid ' + (sel ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.02)') }}
+                    onMouseEnter={e => { if (!sel) e.currentTarget.style.background = 'rgba(255,255,255,0.03)' }}
+                    onMouseLeave={e => { if (!sel) e.currentTarget.style.background = sel ? 'rgba(255,255,255,0.06)' : 'transparent' }}>
+                    <div className="w-10 h-10 rounded-xl grid place-items-center shrink-0" style={{ background: 'linear-gradient(135deg, ' + meta.dot + '22, ' + meta.dot + '08)', border: '1px solid ' + meta.dot + '20' }}>
+                      <span className="text-[11px] font-bold" style={{ color: meta.dot }}>{c.bank.slice(0, 3)}</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[13px] font-semibold truncate">{c.name}</div>
-                      <div className="text-[11px] text-zinc-500 truncate">{c.earn_rate}</div>
+                      <p className="text-[14px] font-semibold truncate" style={{ color: sel ? '#fff' : 'rgba(255,255,255,0.75)' }}>{c.name}</p>
+                      <p className="text-[12px] truncate mt-0.5" style={{ color: 'rgba(255,255,255,0.3)' }}>{c.earn_rate}</p>
                     </div>
-                    <span className="text-[10px] font-mono font-semibold text-zinc-500 bg-white/5 px-2 py-0.5 rounded shrink-0">
-                      {c.tier}
-                    </span>
-                    {c.has_transfers && (
-                      <span className="text-[10px] text-indigo-400/60 shrink-0">✈</span>
-                    )}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {c.has_transfers && <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ color: '#67e8f9', background: 'rgba(103,232,249,0.08)' }}>✈ Transfers</span>}
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded" style={{ color: 'rgba(255,255,255,0.25)', background: 'rgba(255,255,255,0.03)' }}>{c.tier}</span>
+                    </div>
                   </button>
                 )
               })}
-              {filteredCards.length === 0 && (
-                <p className="text-center text-zinc-600 text-sm py-8">No cards found</p>
-              )}
+              {filteredCards.length === 0 && <p className="text-center py-12 text-[14px]" style={{ color: 'rgba(255,255,255,0.2)' }}>No cards match your search</p>}
             </div>
           )}
         </section>
 
-        {/* STEP 2: ENTER POINTS */}
+        {/* Points Input */}
         {selectedCard && (
-          <section className="mt-8 animate-fade-up">
-            <div className="flex items-center gap-2.5 mb-4">
-              <span className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 grid place-items-center text-[11px] font-bold shrink-0">2</span>
-              <span className="text-sm font-semibold">Enter your {selectedCard.point_name}</span>
+          <section className="mt-8" style={{ animation: 'fadeUp 0.35s ease both' }}>
+            <label className="block text-[13px] font-semibold mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              How many {selectedCard.point_name} do you have?
+            </label>
+            <div className="relative">
+              <input type="number" placeholder="e.g. 10000" value={points}
+                onChange={e => { setPoints(e.target.value); trackEvent('enter_points', { card: selectedSlug, points: e.target.value }) }}
+                className="w-full py-4 px-5 rounded-2xl text-center text-[28px] font-mono font-bold outline-none transition-all duration-200"
+                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#fff', letterSpacing: '0.02em' }}
+                onFocus={e => e.target.style.borderColor = 'rgba(52,211,153,0.3)'}
+                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.06)'} />
+              {pts > 0 && <p className="absolute -bottom-5 left-0 right-0 text-center text-[12px]" style={{ color: 'rgba(255,255,255,0.25)' }}>{pts.toLocaleString('en-IN')} {selectedCard.point_name}</p>}
             </div>
-            <input
-              type="number"
-              placeholder="e.g. 10000"
-              value={points}
-              onChange={e => setPoints(e.target.value)}
-              className="w-full bg-white/5 border border-white/8 rounded-xl px-4 py-3.5 text-xl font-mono font-semibold text-center text-zinc-200 placeholder:text-zinc-600 outline-none focus:border-white/20 transition-colors"
-            />
-            {pts > 0 && (
-              <p className="text-center text-xs text-zinc-500 mt-2">
-                {pts.toLocaleString('en-IN')} {selectedCard.point_name}
-              </p>
-            )}
           </section>
         )}
 
-        {/* RESULTS */}
+        {/* Results */}
         {selectedCard && pts > 0 && redemptions.length > 0 && (
-          <section className="mt-8 animate-fade-up">
-
-            {/* Summary card */}
-            <div
-              className="rounded-2xl p-5 border mb-5"
-              style={{
-                background: `linear-gradient(135deg, ${bc.bg}33, rgba(255,255,255,0.02))`,
-                borderColor: `${bc.accent}33`,
-              }}
-            >
-              <div className="flex justify-between flex-wrap gap-3">
+          <section ref={resultsRef} className="mt-12" style={{ animation: 'fadeUp 0.4s ease both' }}>
+            {/* Hero result card */}
+            <div className="rounded-2xl p-6 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, ' + bm.dot + '10, rgba(255,255,255,0.02))', border: '1px solid ' + bm.dot + '18' }}>
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-[60px] opacity-20" style={{ background: bm.dot }} />
+              <div className="relative flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-zinc-500">{selectedCard.name}</p>
-                  <p className="text-xs text-zinc-400 mt-0.5">{pts.toLocaleString('en-IN')} {selectedCard.point_name}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.3)' }}>{selectedCard.name}</p>
+                  <p className="text-[13px] mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>{pts.toLocaleString('en-IN')} {selectedCard.point_name}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-[10px] uppercase tracking-widest text-zinc-500">Best value</p>
-                  <p className="text-2xl font-mono font-bold text-green-400">
-                    ₹{(pts * redemptions[0].value_per_point).toLocaleString('en-IN')}
+                  <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: '#4ade80' }}>Maximum value</p>
+                  <p className="text-[36px] font-mono font-extrabold leading-none" style={{ background: 'linear-gradient(135deg, #4ade80, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    ₹{(pts * bestVal).toLocaleString('en-IN')}
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 rounded-lg bg-green-400/5 border border-green-400/10 text-xs text-zinc-400 leading-relaxed">
-                💡 <strong className="text-green-400">Best:</strong> {redemptions[0].method} at ₹{redemptions[0].value_per_point}/pt — {redemptions[0].tip}
+              <div className="mt-5 p-3.5 rounded-xl" style={{ background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.1)' }}>
+                <p className="text-[13px]" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                  <span style={{ color: '#4ade80' }}>↑ Best:</span> {redemptions[0].method} at <strong style={{ color: '#fff' }}>₹{redemptions[0].value_per_point}/pt</strong>
+                </p>
+                <p className="text-[12px] mt-1" style={{ color: 'rgba(255,255,255,0.35)' }}>{redemptions[0].tip}</p>
               </div>
               {redemptions.length > 1 && (
-                <div className="mt-2 p-3 rounded-lg bg-red-400/5 border border-red-400/10 text-xs text-zinc-500 leading-relaxed">
-                  ⚠️ <strong className="text-red-400">Worst:</strong> {redemptions[redemptions.length - 1].method} = ₹{(pts * redemptions[redemptions.length - 1].value_per_point).toLocaleString('en-IN')} — you'd lose ₹{((pts * redemptions[0].value_per_point) - (pts * redemptions[redemptions.length - 1].value_per_point)).toLocaleString('en-IN')}
+                <div className="mt-2 p-3.5 rounded-xl" style={{ background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.08)' }}>
+                  <p className="text-[12px]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                    <span style={{ color: '#f87171' }}>↓ Worst:</span> {redemptions[redemptions.length - 1].method} = ₹{(pts * worstVal).toLocaleString('en-IN')}
+                    <span style={{ color: '#f87171' }}> — you lose ₹{((pts * bestVal) - (pts * worstVal)).toLocaleString('en-IN')}</span>
+                  </p>
                 </div>
               )}
             </div>
 
             {/* Tabs */}
             {transfers.length > 0 && (
-              <div className="flex gap-2 mb-4">
-                <button
-                  onClick={() => setShowTransfers(false)}
-                  className={`flex-1 text-center py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                    !showTransfers ? 'bg-white/8 text-white border-white/15' : 'text-zinc-500 border-white/5 hover:bg-white/4'
-                  }`}
-                >
-                  💳 Redemptions
-                </button>
-                <button
-                  onClick={() => setShowTransfers(true)}
-                  className={`flex-1 text-center py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                    showTransfers ? 'bg-white/8 text-white border-white/15' : 'text-zinc-500 border-white/5 hover:bg-white/4'
-                  }`}
-                >
-                  ✈️ Transfer Partners ({transfers.length})
-                </button>
+              <div className="flex mt-6 p-1 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                {[{ key: 'redeem', label: 'Redemptions', icon: '💳', count: redemptions.length }, { key: 'transfer', label: 'Transfers', icon: '✈️', count: transfers.length }].map(tab => (
+                  <button key={tab.key} onClick={() => { setActiveTab(tab.key); trackEvent('switch_tab', { tab: tab.key }) }}
+                    className="flex-1 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-200 flex items-center justify-center gap-2"
+                    style={{ background: activeTab === tab.key ? 'rgba(255,255,255,0.06)' : 'transparent', color: activeTab === tab.key ? '#fff' : 'rgba(255,255,255,0.3)' }}>
+                    <span>{tab.icon}</span>{tab.label}
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md" style={{ background: activeTab === tab.key ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)', color: activeTab === tab.key ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)' }}>{tab.count}</span>
+                  </button>
+                ))}
               </div>
             )}
 
-            {/* REDEMPTION OPTIONS */}
-            {!showTransfers && (
-              <div className="stagger space-y-2">
-                {/* Free tier: top 2 always visible */}
-                {freeRedemptions.map((r, i) => (
-                  <RedemptionRow key={r.id} r={r} pts={pts} maxVal={redemptions[0].value_per_point} i={i} />
-                ))}
-
-                {/* AD: In-feed between free and locked */}
+            {/* Redemptions Tab */}
+            {activeTab === 'redeem' && (
+              <div className="mt-4 space-y-2">
+                {freeRedemptions.map((r, i) => <RedemptionCard key={r.id} r={r} pts={pts} maxVal={bestVal} delay={i * 60} />)}
                 {lockedRedemptions.length > 0 && <InFeedAd />}
-
-                {/* Locked: rest require sign-in */}
                 {lockedRedemptions.length > 0 && (
-                  <AuthGate lockedMessage="Sign in free to see all redemption options, transfer partners, and personalised tips">
-                    {lockedRedemptions.map((r, i) => (
-                      <RedemptionRow key={r.id} r={r} pts={pts} maxVal={redemptions[0].value_per_point} i={i + 2} />
-                    ))}
+                  <AuthGate lockedMessage="Sign in free to see all redemption options, transfer partners, and tips">
+                    <div className="space-y-2">{lockedRedemptions.map((r, i) => <RedemptionCard key={r.id} r={r} pts={pts} maxVal={bestVal} delay={(i + 2) * 60} />)}</div>
                   </AuthGate>
                 )}
               </div>
             )}
 
-            {/* TRANSFER PARTNERS */}
-            {showTransfers && transfers.length > 0 && (
-              <AuthGate lockedMessage="Sign in free to see all airline & hotel transfer partners with conversion ratios">
-                <div className="animate-fade-in">
-                  <p className="text-[11px] text-zinc-500 mb-3 leading-relaxed">
-                    Transfer your {selectedCard.point_name} to airline frequent flyer or hotel loyalty programs. Value varies — best for premium cabin bookings.
-                  </p>
-
-                  {/* Airlines */}
+            {/* Transfer Tab */}
+            {activeTab === 'transfer' && transfers.length > 0 && (
+              <AuthGate lockedMessage="Sign in free to see all airline & hotel transfer partners with live conversion ratios">
+                <div className="mt-4" style={{ animation: 'fadeUp 0.3s ease both' }}>
+                  <p className="text-[12px] mb-4 leading-relaxed" style={{ color: 'rgba(255,255,255,0.3)' }}>Transfer points to airline/hotel loyalty programs. Best for premium cabin bookings.</p>
                   {airlineTransfers.length > 0 && (
-                    <div className="mb-4">
-                      <p className="text-[11px] font-semibold text-indigo-400/70 uppercase tracking-widest mb-2">✈️ Airlines</p>
-                      <div className="space-y-1">
-                        {airlineTransfers.map(t => (
-                          <TransferRow key={t.id} t={t} pts={pts} />
-                        ))}
-                      </div>
+                    <div className="mb-5">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2.5" style={{ color: 'rgba(103,232,249,0.6)' }}>✈️ Airlines ({airlineTransfers.length})</p>
+                      <div className="space-y-1.5">{airlineTransfers.map((t, i) => <TransferCard key={t.id} t={t} pts={pts} delay={i * 40} />)}</div>
                     </div>
                   )}
-
-                  {/* Hotels */}
                   {hotelTransfers.length > 0 && (
                     <div>
-                      <p className="text-[11px] font-semibold text-amber-400/70 uppercase tracking-widest mb-2">🏨 Hotels</p>
-                      <div className="space-y-1">
-                        {hotelTransfers.map(t => (
-                          <TransferRow key={t.id} t={t} pts={pts} />
-                        ))}
-                      </div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2.5" style={{ color: 'rgba(251,191,36,0.6)' }}>🏨 Hotels ({hotelTransfers.length})</p>
+                      <div className="space-y-1.5">{hotelTransfers.map((t, i) => <TransferCard key={t.id} t={t} pts={pts} delay={i * 40} />)}</div>
                     </div>
                   )}
-
-                  <div className="mt-3 p-3 rounded-lg bg-indigo-400/5 border border-indigo-400/10 text-[11px] text-zinc-500 leading-relaxed">
-                    💡 <strong>Pro tip:</strong> Transfer only with a specific booking in mind. Transfers are irreversible. For economy flights, direct portal redemption often beats transfers.
+                  <div className="mt-4 p-3.5 rounded-xl" style={{ background: 'rgba(103,232,249,0.04)', border: '1px solid rgba(103,232,249,0.08)' }}>
+                    <p className="text-[12px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.4)' }}><strong style={{ color: '#67e8f9' }}>Pro tip:</strong> Transfer only with a specific booking in mind. Transfers are irreversible.</p>
                   </div>
                 </div>
               </AuthGate>
             )}
 
-            {/* No transfers */}
-            {transfers.length === 0 && (
-              <p className="mt-4 p-3 rounded-lg bg-white/2 border border-white/5 text-xs text-zinc-500">
-                ℹ️ This card does not support airline/hotel loyalty program transfers. Use the redemption options above.
-              </p>
+            {transfers.length === 0 && activeTab === 'transfer' && (
+              <p className="mt-4 p-4 rounded-xl text-[13px]" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)' }}>This card does not support transfers. Use the redemption options above.</p>
             )}
 
-            {/* Disclaimer */}
-            <p className="mt-6 text-[10px] text-zinc-600 leading-relaxed">
-              <strong>Disclaimer:</strong> Values are approximate, based on publicly available data as of May 2026 (post April 2026 devaluations). Transfer ratios, partner availability, and caps change frequently. Always verify on your bank's portal. This is not financial advice.
+            <p className="mt-8 text-[10px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.15)' }}>
+              <strong>Disclaimer:</strong> Values are approximate, based on publicly available data as of May 2026 (post April 2026 devaluations). Always verify on your bank portal. Not financial advice.
             </p>
           </section>
         )}
 
-        {/* SEO CONTENT SECTION (below the tool) */}
-        <section className="mt-16 border-t border-white/5 pt-12">
-          <h2 className="font-display text-xl font-bold mb-4">How to Get Maximum Value From Credit Card Reward Points in India</h2>
-
-          <div className="prose prose-sm prose-invert max-w-none text-zinc-400 leading-relaxed space-y-4">
-            <p>
-              Indian credit cards offer reward points, cashback, or miles on every purchase — but the real value depends entirely on how you redeem them. A single HDFC Infinia reward point can be worth ₹1 when redeemed via SmartBuy for flights, or just ₹0.20 through the product catalogue. That's a 5x difference in value from the same points.
-            </p>
-
-            <h3 className="text-zinc-200 font-semibold text-base mt-6">The Golden Rule: Travel Redemptions Beat Everything Else</h3>
-            <p>
-              Across almost every Indian credit card — HDFC, Axis, SBI, ICICI, Amex — redeeming points for flight or hotel bookings through the bank's travel portal gives you the highest per-point value. Statement credit and product catalogues consistently offer 40-80% less value for the same points.
-            </p>
-
-            <h3 className="text-zinc-200 font-semibold text-base mt-6">Airline & Hotel Transfers: The Power Move</h3>
-            <p>
-              Premium cards like HDFC Infinia, Diners Club Black, Axis Magnus, and Amex Platinum let you transfer points to airline frequent flyer programs (Singapore Airlines KrisFlyer, British Airways Avios, Air India) and hotel loyalty programs (Marriott Bonvoy, IHG, Accor). This unlocks business class flights and luxury hotel stays at a fraction of the cash price — but only if you plan strategically.
-            </p>
-
-            <h3 className="text-zinc-200 font-semibold text-base mt-6">The 2026 Devaluation Wave</h3>
-            <p>
-              Between January and April 2026, every major Indian bank devalued rewards. Axis removed Marriott, Accor, and Qatar Airways overnight. HDFC changed ratios on Turkish and Avianca from 1:1 to 2:1. SBI capped cashback at ₹2,000 per month. This tool reflects all these changes so you're working with current data.
-            </p>
-
-            <h3 className="text-zinc-200 font-semibold text-base mt-6">Credit Card Points Value Per Bank (2026)</h3>
-            <p>
-              Here's a quick reference for per-point values across banks: HDFC Infinia/Diners Black get ₹1/pt on SmartBuy travel and ₹0.50 on vouchers. Axis EDGE points are worth ₹0.20-0.50 depending on the card and redemption method. SBI reward points are ₹0.25/pt. ICICI points are ₹0.25/pt (₹0.50 for Emeralde via InterMiles). Amex Membership Rewards range from ₹0.30 to ₹1.00 depending on the channel.
-            </p>
+        {/* SEO Content */}
+        <section className="mt-20 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+          <h2 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 700, fontSize: '22px', color: 'rgba(255,255,255,0.85)', letterSpacing: '-0.02em' }}>
+            How to Get Maximum Value From Credit Card Reward Points in India
+          </h2>
+          <div className="mt-6 space-y-5 text-[14px] leading-[1.75]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <p>Indian credit cards offer reward points, cashback, or miles on every purchase — but the real value depends entirely on <em style={{ color: 'rgba(255,255,255,0.6)' }}>how you redeem them</em>. A single HDFC Infinia reward point can be worth ₹1 via SmartBuy, or just ₹0.20 through the product catalogue. That is a 5x difference.</p>
+            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>The Golden Rule: Travel Redemptions Beat Everything Else</h3>
+            <p>Across almost every Indian credit card — HDFC, Axis, SBI, ICICI, Amex — redeeming points for flights or hotels through the bank travel portal gives the highest per-point value. Statement credit and catalogues offer 40-80% less.</p>
+            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>Airline and Hotel Transfers: The Power Move</h3>
+            <p>Premium cards like HDFC Infinia, Diners Club Black, Axis Magnus, and Amex Platinum let you transfer points to airline programs (Singapore Airlines KrisFlyer, British Airways Avios, Air India) and hotel programs (Marriott Bonvoy, IHG, Accor). This unlocks business class flights at a fraction of the cash price.</p>
+            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>The 2026 Devaluation Wave</h3>
+            <p>Between January and April 2026, every major Indian bank devalued rewards. Axis removed Marriott, Accor, and Qatar Airways overnight. HDFC changed Turkish and Avianca ratios from 1:1 to 2:1. SBI capped cashback at ₹2,000 per month. This tool reflects all current data.</p>
+            <h3 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 600, fontSize: '17px', color: 'rgba(255,255,255,0.7)', marginTop: '28px' }}>Points Value Per Bank (2026)</h3>
+            <p>HDFC Infinia and Diners Black: ₹1/pt on SmartBuy, ₹0.50 on vouchers. Axis EDGE: ₹0.20-0.50. SBI: ₹0.25/pt. ICICI: ₹0.25/pt (₹0.50 Emeralde via InterMiles). Amex MR: ₹0.30-1.00.</p>
           </div>
         </section>
-
-        {/* AD: Bottom */}
-        <div className="mt-12">
-          <AdUnit slot="BOTTOM_AD_SLOT" />
-        </div>
-
       </main>
 
-      {/* FOOTER */}
-      <footer className="border-t border-white/5 py-8 px-4">
-        <div className="max-w-2xl mx-auto text-center text-xs text-zinc-600 space-y-2">
-          <p>PointsMax — Credit Card Reward Points Optimizer for India</p>
-          <p>
-            <a href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy Policy</a>
-            {' · '}
-            <a href="/about" className="hover:text-zinc-400 transition-colors">About</a>
-            {' · '}
-            <a href="/contact" className="hover:text-zinc-400 transition-colors">Contact</a>
+      {/* Footer */}
+      <footer className="py-10 px-5" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
+        <div className="max-w-3xl mx-auto text-center space-y-3">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="w-5 h-5 rounded-md bg-gradient-to-br from-emerald-400 to-cyan-400 grid place-items-center">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5" /></svg>
+            </div>
+            <span className="text-[13px] font-bold" style={{ color: 'rgba(255,255,255,0.4)' }}>PointsMax</span>
+          </div>
+          <p className="text-[12px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
+            <a href="/privacy" className="hover:text-white/40 transition-colors">Privacy</a>
+            <span className="mx-2">·</span>
+            <a href="/about" className="hover:text-white/40 transition-colors">About</a>
+            <span className="mx-2">·</span>
+            <a href="/contact" className="hover:text-white/40 transition-colors">Contact</a>
           </p>
-          <p>© 2026 PointsMax. Not affiliated with any bank. Data for informational purposes only.</p>
+          <p className="text-[11px]" style={{ color: 'rgba(255,255,255,0.12)' }}>© 2026 PointsMax. Not affiliated with any bank.</p>
         </div>
       </footer>
     </div>
   )
 }
 
-// ---- SUB-COMPONENTS ----
-
-function RedemptionRow({ r, pts, maxVal, i }) {
+function RedemptionCard({ r, pts, maxVal, delay = 0 }) {
   const val = pts * r.value_per_point
   const pct = maxVal > 0 ? (r.value_per_point / maxVal) * 100 : 0
-  const rl = RANK_LABELS[r.rank] || RANK_LABELS[2]
-
+  const rc = RANK_CONFIG[r.rank] || RANK_CONFIG[2]
   return (
-    <div className="animate-fade-up p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 transition-all">
-      <div className="flex justify-between gap-2">
-        <div className="flex gap-2.5 flex-1 min-w-0">
-          <span className="text-lg">{r.icon}</span>
+    <div className="p-4 rounded-xl transition-all duration-200" style={{ background: rc.bg, border: '1px solid ' + rc.border, animation: 'fadeUp 0.35s ease both', animationDelay: delay + 'ms' }}>
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex gap-3 flex-1 min-w-0">
+          <span className="text-xl mt-0.5">{r.icon}</span>
           <div className="min-w-0">
-            <p className="text-[13px] font-semibold truncate">{r.method}</p>
-            <p className="text-[11px] text-zinc-500 mt-0.5 leading-relaxed">{r.tip}</p>
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="text-[14px] font-semibold" style={{ color: 'rgba(255,255,255,0.85)' }}>{r.method}</p>
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: rc.color, background: rc.color + '15' }}>{rc.label}</span>
+            </div>
+            <p className="text-[12px] mt-1 leading-relaxed" style={{ color: 'rgba(255,255,255,0.35)' }}>{r.tip}</p>
           </div>
         </div>
-        <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded self-start shrink-0 ${rl.bg} ${rl.color}`}>
-          {rl.label}
-        </span>
-      </div>
-      <div className="mt-3 flex items-center gap-3">
-        <div className="value-bar flex-1">
-          <div
-            className="value-bar-fill"
-            style={{
-              width: `${pct}%`,
-              background: r.rank === 1 ? 'linear-gradient(90deg,#4ade80,#22d3ee)'
-                : r.rank === 2 ? 'linear-gradient(90deg,#fbbf24,#f59e0b)'
-                : r.rank === 3 ? '#fb923c' : '#ef4444',
-            }}
-          />
+        <div className="text-right shrink-0">
+          <p className="text-[18px] font-mono font-bold" style={{ color: rc.color }}>₹{val.toLocaleString('en-IN')}</p>
+          <p className="text-[10px] font-mono mt-0.5" style={{ color: 'rgba(255,255,255,0.2)' }}>₹{r.value_per_point}/pt</p>
         </div>
-        <span className={`font-mono text-sm font-bold min-w-[72px] text-right ${
-          r.rank === 1 ? 'text-green-400' : r.rank === 2 ? 'text-amber-400' : 'text-zinc-500'
-        }`}>
-          ₹{val.toLocaleString('en-IN')}
-        </span>
       </div>
-      <p className="text-[10px] font-mono text-zinc-600 mt-1">
-        ₹{r.value_per_point}/pt × {pts.toLocaleString('en-IN')}
-      </p>
+      <div className="mt-3 h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)' }}>
+        <div className="h-full rounded-full transition-all duration-700 ease-out" style={{ width: pct + '%', background: 'linear-gradient(90deg, ' + rc.color + 'cc, ' + rc.color + '66)' }} />
+      </div>
     </div>
   )
 }
 
-function TransferRow({ t, pts }) {
+function TransferCard({ t, pts, delay = 0 }) {
   const val = pts * t.effective_value
   const isWarn = t.is_devalued
-  const allianceClass = ALLIANCE_COLORS[t.alliance] || ALLIANCE_COLORS['']
-
+  const isBest = t.is_best
+  const as = t.alliance ? ALLIANCE_STYLE[t.alliance] : null
   return (
-    <div className={`flex items-start gap-3 p-3 rounded-xl border transition-all ${
-      t.is_best ? 'border-green-400/20 bg-green-400/3' : 'border-white/4 bg-white/1.5 hover:bg-white/3'
-    }`}>
+    <div className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200" style={{
+      background: isBest ? 'rgba(74,222,128,0.04)' : 'rgba(255,255,255,0.015)',
+      border: '1px solid ' + (isBest ? 'rgba(74,222,128,0.12)' : 'rgba(255,255,255,0.04)'),
+      animation: 'fadeUp 0.3s ease both', animationDelay: delay + 'ms',
+    }}>
+      <span className="text-lg shrink-0">{t.country_icon}</span>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-sm">{t.country_icon}</span>
-          <span className="text-[13px] font-medium">{t.partner_name}</span>
-          {t.alliance && (
-            <span className={`text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded ${allianceClass}`}>
-              {t.alliance}
-            </span>
-          )}
+          <span className="text-[13px] font-semibold" style={{ color: isBest ? '#4ade80' : 'rgba(255,255,255,0.75)' }}>{t.partner_name}</span>
+          {isBest && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: '#4ade80', background: 'rgba(74,222,128,0.1)' }}>⭐ BEST</span>}
+          {as && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: as.color, background: as.bg }}>{t.alliance}</span>}
+          {isWarn && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md" style={{ color: '#fbbf24', background: 'rgba(251,191,36,0.1)' }}>DEVALUED</span>}
         </div>
-        <p className={`text-[11px] mt-1 leading-relaxed ${isWarn ? 'text-amber-400/60' : 'text-zinc-500'}`}>
-          {t.note}
-        </p>
+        <p className="text-[11px] mt-0.5 truncate" style={{ color: isWarn ? 'rgba(251,191,36,0.5)' : 'rgba(255,255,255,0.3)' }}>{t.note}</p>
       </div>
-      <span className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded shrink-0 ${
-        isWarn ? 'bg-amber-400/10 text-amber-400' : 'bg-white/5 text-zinc-400'
-      }`}>
-        {t.transfer_ratio}
-      </span>
-      <span className={`font-mono text-[13px] font-bold min-w-[64px] text-right shrink-0 ${
-        t.is_best ? 'text-green-400' : isWarn ? 'text-amber-400/60' : 'text-zinc-400'
-      }`}>
-        ₹{val.toLocaleString('en-IN')}
-      </span>
+      <div className="flex items-center gap-3 shrink-0">
+        <span className="text-[11px] font-mono font-semibold px-2 py-1 rounded-lg" style={{ background: isWarn ? 'rgba(251,191,36,0.08)' : 'rgba(255,255,255,0.04)', color: isWarn ? '#fbbf24' : 'rgba(255,255,255,0.35)' }}>{t.transfer_ratio}</span>
+        <span className="text-[14px] font-mono font-bold min-w-[60px] text-right" style={{ color: isBest ? '#4ade80' : isWarn ? 'rgba(251,191,36,0.6)' : 'rgba(255,255,255,0.5)' }}>₹{val.toLocaleString('en-IN')}</span>
+      </div>
     </div>
   )
 }

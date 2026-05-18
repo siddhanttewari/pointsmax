@@ -19,16 +19,10 @@ export const metadata = {
     title: 'PointsMax — Credit Card Points Optimizer India',
     description: 'Calculate real ₹ value of your reward points. 25+ cards, transfer partners, post-2026 devaluation data.',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: 'https://pointsmax.in',
-  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://pointsmax.in' },
 }
 
-// JSON-LD structured data
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
@@ -37,15 +31,8 @@ const jsonLd = {
   url: 'https://pointsmax.in',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'Web',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'INR',
-  },
-  author: {
-    '@type': 'Organization',
-    name: 'PointsMax',
-  },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+  author: { '@type': 'Organization', name: 'PointsMax' },
 }
 
 const faqJsonLd = {
@@ -65,7 +52,7 @@ const faqJsonLd = {
       name: 'What is the best way to redeem credit card reward points in India?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The best redemption method varies by card. For premium cards like HDFC Infinia and Diners Club Black, booking flights/hotels via SmartBuy at ₹1/point gives the highest value. For Axis Magnus, using the Travel EDGE portal is best. For mid-tier cards, gift vouchers typically offer better value than statement credit. Airline miles transfers can offer exceptional value for premium cabin bookings but require strategic planning.',
+        text: 'The best redemption method varies by card. For premium cards like HDFC Infinia and Diners Club Black, booking flights/hotels via SmartBuy at ₹1/point gives the highest value. For Axis Magnus, using the Travel EDGE portal is best. For mid-tier cards, gift vouchers typically offer better value than statement credit.',
       },
     },
     {
@@ -73,7 +60,7 @@ const faqJsonLd = {
       name: 'Can I transfer credit card points to airline miles in India?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Premium credit cards from HDFC (Infinia, Diners Club Black, Regalia Gold), Axis (Magnus, Atlas), and Amex support transfers to airline loyalty programs like Singapore Airlines KrisFlyer, British Airways Avios, Air India Flying Returns, and others. Transfer ratios vary by card — HDFC Infinia offers 1:1 to Singapore Airlines, while most other partners are at 2:1.',
+        text: 'Yes. Premium credit cards from HDFC (Infinia, Diners Club Black, Regalia Gold), Axis (Magnus, Atlas), and Amex support transfers to airline loyalty programs like Singapore Airlines KrisFlyer, British Airways Avios, Air India Flying Returns, and others.',
       },
     },
     {
@@ -81,7 +68,7 @@ const faqJsonLd = {
       name: 'Which Indian credit card gives the best reward points value?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'As of 2026, HDFC Infinia offers the highest per-point value at ₹1/point on SmartBuy travel and select vouchers. Axis Magnus offers ₹0.50/point on Travel EDGE. For lifetime-free cards, Amazon Pay ICICI gives 5% auto-cashback on Amazon. The best card depends on your spending pattern and redemption preference.',
+        text: 'As of 2026, HDFC Infinia offers the highest per-point value at ₹1/point on SmartBuy travel and select vouchers. Axis Magnus offers ₹0.50/point on Travel EDGE. For lifetime-free cards, Amazon Pay ICICI gives 5% auto-cashback on Amazon.',
       },
     },
   ],
@@ -91,29 +78,34 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
-        {/* Google AdSense — replace ca-pub-XXXXXXX with your actual ID after approval */}
+        {/* GA4 — Replace G-XXXXXXXXXX with your Measurement ID */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            `,
+          }}
+        />
+
+        {/* AdSense — Replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
           crossOrigin="anonymous"
         />
 
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       </head>
-      <body className="bg-surface-0 text-zinc-200 font-sans antialiased">
+      <body className="bg-[#060608] text-zinc-200 font-sans antialiased">
         {children}
       </body>
     </html>
