@@ -5,9 +5,17 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'best-credit-cards-india-2026',
+    title: 'Best Credit Cards in India 2026: Ranked by What Your Points Are Actually Worth',
+    excerpt: 'Not another "top 10" list. We ranked every card by real rupee value per point — because a 10x earn rate means nothing if each point is worth ₹0.10.',
+    date: 'May 19, 2026',
+    readTime: '10 min read',
+    tag: 'Guide',
+  },
+  {
     slug: 'credit-card-points-value-india-2026',
     title: 'What Are Your Credit Card Points Actually Worth? The 2026 Reality Check',
-    excerpt: 'Every major Indian bank slashed rewards this year. Here\'s what your points are really worth now — card by card, method by method — and the 3 mistakes that are costing you money.',
+    excerpt: 'Every major Indian bank slashed rewards this year. Here\'s what your points are really worth now — card by card, method by method.',
     date: 'May 18, 2026',
     readTime: '8 min read',
     tag: 'Guide',
