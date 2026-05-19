@@ -7,8 +7,8 @@
 # Research trending queries before writing. Prioritize by: search volume × content gap × tool relevance
 
 - [x] Blog 1: What are your credit card points actually worth in 2026? (PUBLISHED)
-- [ ] Blog 2: Best credit cards India 2026 by spend level (beginner/mid/premium) — with points value angle
-- [ ] Blog 3: HDFC SmartBuy complete guide — how to get ₹1/point on Infinia and Diners Black
+- [x] Blog 2: Best credit cards India 2026 by spend level (PUBLISHED)
+- [x] Blog 3: HDFC SmartBuy complete guide (PUBLISHED)
 - [ ] Blog 4: Airline miles transfer guide India — which cards, which airlines, what ratios
 - [ ] Blog 5: Credit card devaluation timeline India 2024-2026 — every change, every bank
 - [ ] Blog 6: Best lifetime free credit cards India 2026 — the no-annual-fee portfolio

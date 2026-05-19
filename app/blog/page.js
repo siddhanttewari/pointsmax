@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'hdfc-smartbuy-guide-2026',
+    title: 'HDFC SmartBuy: The Only Way to Get ₹1 Per Point (And the Tricks They Don\'t Tell You)',
+    excerpt: 'SmartBuy is the single most valuable feature of any HDFC card. Earn rates by card, monthly caps, the voucher hack, and the 4 mistakes that waste your points.',
+    date: 'May 20, 2026',
+    readTime: '9 min read',
+    tag: 'Deep Dive',
+  },
+  {
     slug: 'best-credit-cards-india-2026',
     title: 'Best Credit Cards in India 2026: Ranked by What Your Points Are Actually Worth',
     excerpt: 'Not another "top 10" list. We ranked every card by real rupee value per point — because a 10x earn rate means nothing if each point is worth ₹0.10.',
