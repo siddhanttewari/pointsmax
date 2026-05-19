@@ -80,7 +80,10 @@ export default function Home() {
             </div>
             <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '18px', color: '#FAF8F5', letterSpacing: '-0.01em' }}>PointsMax</span>
           </div>
-          <a href="/blog" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Blog</a>
+          <div className="flex items-center gap-4">
+            <a href="/transfers" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Transfers</a>
+            <a href="/blog" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Blog</a>
+          </div>
         </div>
       </nav>
 
@@ -312,6 +315,8 @@ export default function Home() {
           </div>
           <p className="text-[12px]">
             <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
+            <span className="mx-2">·</span>
+            <a href="/transfers" className="hover:text-white/60 transition-colors">Transfers</a>
             <span className="mx-2">·</span>
             <a href="/privacy" className="hover:text-white/60 transition-colors">Privacy</a>
             <span className="mx-2">·</span>
