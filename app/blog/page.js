@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'credit-card-airline-miles-transfer-india-2026',
+    title: 'How to Turn Credit Card Points Into Business Class Flights (The Indian Transfer Guide)',
+    excerpt: 'Your HDFC or Axis points can buy you a flat-bed seat to Singapore. The 5 best transfers, the Avios hack, and when to transfer vs use the travel portal.',
+    date: 'May 20, 2026',
+    readTime: '11 min read',
+    tag: 'Strategy',
+  },
+  {
     slug: 'hdfc-smartbuy-guide-2026',
     title: 'HDFC SmartBuy: The Only Way to Get ₹1 Per Point (And the Tricks They Don\'t Tell You)',
     excerpt: 'SmartBuy is the single most valuable feature of any HDFC card. Earn rates by card, monthly caps, the voucher hack, and the 4 mistakes that waste your points.',

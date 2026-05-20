@@ -9,7 +9,7 @@
 - [x] Blog 1: What are your credit card points actually worth in 2026? (PUBLISHED)
 - [x] Blog 2: Best credit cards India 2026 by spend level (PUBLISHED)
 - [x] Blog 3: HDFC SmartBuy complete guide (PUBLISHED)
-- [ ] Blog 4: Airline miles transfer guide India — which cards, which airlines, what ratios
+- [x] Blog 4: Airline miles transfer guide India — which cards, which airlines, what ratios (PUBLISHED)
 - [ ] Blog 5: Credit card devaluation timeline India 2024-2026 — every change, every bank
 - [ ] Blog 6: Best lifetime free credit cards India 2026 — the no-annual-fee portfolio
 - [ ] Blog 7: UPI credit card India 2026 — RuPay, rewards, and whether it's worth linking
