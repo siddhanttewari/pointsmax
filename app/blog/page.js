@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'hdfc-infinia-credit-card-review-2026',
+    title: 'HDFC Infinia Credit Card Review 2026: Still India\'s Most Valuable Card?',
+    excerpt: 'Per-point value across SmartBuy, vouchers, transfers. The ₹18L retention requirement, monthly caps, 22 transfer partners, and the breakeven math.',
+    date: 'May 21, 2026',
+    readTime: '12 min read',
+    tag: 'Card Review',
+  },
+  {
     slug: 'credit-card-airline-miles-transfer-india-2026',
     title: 'How to Turn Credit Card Points Into Business Class Flights (The Indian Transfer Guide)',
     excerpt: 'Your HDFC or Axis points can buy you a flat-bed seat to Singapore. The 5 best transfers, the Avios hack, and when to transfer vs use the travel portal.',
