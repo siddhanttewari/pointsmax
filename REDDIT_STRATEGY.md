@@ -1,5 +1,5 @@
-# PointsMax Reddit Launch Strategy
-# ==================================
+# PointsMax Reddit Launch Strategy (Updated May 22, 2026)
+# =======================================================
 
 ## GOLDEN RULES
 1. **Value first, link second.** The post itself should be useful even if nobody clicks the link.
@@ -12,22 +12,22 @@
 
 ## POSTING SCHEDULE
 
-### Day 1 (Today): r/IndiaInvestments
+### Day 1 (Thu May 22, 1 PM IST): r/IndiaInvestments
 Highest-quality sub. Long-form content appreciated. Mods strict on spam.
 
-### Day 2: r/CreditCardsIndia  
+### Day 2 (Fri May 23, 10 AM IST): r/CreditCardsIndia
 More casual, card-specific discussions. Product recommendations welcome.
 
-### Day 3: r/churningindia
+### Day 3 (Sat May 24, 11 AM IST): r/churningindia
 Points/miles enthusiasts. They love data tables and transfer partner analysis.
 
-### Day 4: r/india (if first 3 posts do well)
+### Day 4 (Mon May 26): r/india (only if first 3 posts do well)
 Broader audience. Frame as consumer awareness, not a product pitch.
 
 ---
 
 ## POST 1: r/IndiaInvestments
-**Best day to post:** Tuesday or Wednesday, 9-11 AM IST
+**Post today (Thu May 22) around 1 PM IST**
 **Flair:** [Review] or [Discussion]
 
 ### Title:
@@ -35,9 +35,9 @@ I compiled the actual rupee value of reward points across 25 Indian credit cards
 
 ### Body:
 
-After the wave of devaluations between January and April 2026 (Axis removing Marriott/Qatar, HDFC cutting SmartBuy voucher earn from 5x to 3x, SBI capping cashback at ₹2K/month), I got frustrated trying to figure out what my points are actually worth now.
+After the wave of devaluations between January and April 2026 (Axis removing Marriott/Qatar, HDFC adding ₹18L retention requirement, SBI capping cashback at ₹2K/month), I spent a few weeks putting together a proper reference for what Indian credit card points are actually worth.
 
-So I put together a reference comparing per-point rupee values across every major card and redemption method. Sharing it here because I think a lot of people are sitting on points without realizing how much they're losing by picking the wrong redemption channel.
+Not the marketing number. The real per-point rupee value across every redemption channel — SmartBuy, vouchers, airline transfers, statement credit, catalogue. Card by card.
 
 **The TL;DR table:**
 
@@ -51,117 +51,153 @@ So I put together a reference comparing per-point rupee values across every majo
 | Amex Platinum | ₹1.00 | Airline transfer | ₹0.30 | Statement credit |
 | Amazon Pay ICICI | 5% | Direct cashback | — | — |
 
-**Key findings:**
+**6 things I found that surprised me:**
 
-1. **The product catalogue is a trap.** On HDFC Infinia, catalogue redemption gives you ₹0.20/point while SmartBuy gives ₹1.00. Same points, 5x difference. I suspect most people default to the catalogue because it's the first thing the app shows you.
+**1. The product catalogue is an 80% value trap.** On HDFC Infinia, catalogue redemption gives you ₹0.20/point while SmartBuy gives ₹1.00. Same points, 5x difference. I suspect most people default to the catalogue because it's the first thing the app shows you.
 
-2. **Axis got hit the hardest.** Removing Marriott, Accor, and Qatar overnight in April was brutal. If you were saving EDGE points for a Marriott stay, those points are now worth significantly less.
+**2. Axis got hit the hardest in April 2026.** Removing Marriott, Accor, and Qatar overnight gutted the Magnus/Atlas transfer partner network. If you were saving EDGE points for a Marriott stay, those points lost significant value overnight. I put together a full [breakdown of what's left on Axis cards](https://www.pointsmax.in/blog/best-credit-cards-india-2026).
 
-3. **The voucher hack still works on HDFC.** Buy Amazon/BigBasket/Swiggy vouchers on SmartBuy instead of swiping directly. You earn 3-5x points on what would've been a 1x transaction. Yes, earn rate dropped from 5x to 3x on Infinia in January, but 3x is still triple what you'd get outside SmartBuy.
+**3. The SmartBuy voucher hack still works.** Buy Amazon/BigBasket/Swiggy vouchers on SmartBuy instead of swiping directly. You earn 5x points on what would've been a 1x transaction. HDFC announced dropping this to 3x in January but rolled it back after backlash. Here's the [full SmartBuy guide with the compounding trick](https://www.pointsmax.in/blog/hdfc-smartbuy-guide-2026).
 
-4. **Airline transfers only make sense for business class.** I ran the numbers — economy redemptions give you ₹0.40-1.30 per mile. SmartBuy gives ₹1/point. So transferring for economy flights actually loses you value. But business class (DEL-SIN on KrisFlyer = ₹1.89/mile) is where transfers crush everything else.
+**4. Airline transfers only make sense for business class.** I ran the numbers on specific routes — economy redemptions give you ₹0.40-1.30 per mile. SmartBuy gives ₹1/point. So transferring for economy flights actually *loses* you value. But DEL-SIN business class on KrisFlyer (45K miles) gives you ₹1.89/mile — that's where transfers crush everything. [Full route-by-route math here](https://www.pointsmax.in/blog/credit-card-airline-miles-transfer-india-2026).
 
-5. **For spend under ₹5L/year, skip premium cards entirely.** A ₹0 portfolio of Amazon Pay ICICI + SBI Cashback + Scapia Federal gives you 2-5% back with zero annual fees. Most ₹5,000-10,000 fee cards can't beat that after you account for the fee drag.
+**5. The Avios hack is the most underrated transfer play in India.** HDFC → Finnair Plus at 1:1, then free instant transfer to BA or Qatar. Gets you Qatar Qsuite access that HDFC doesn't offer as a direct transfer partner. Most people only know about KrisFlyer.
 
-I also put together a calculator where you can select your specific card, enter your points balance, and see every redemption option ranked by value: [www.pointsmax.in](https://www.pointsmax.in)
+**6. For spend under ₹5L/year, a ₹0-fee portfolio beats most premium cards.** Amazon Pay ICICI (5% Amazon) + SBI Cashback (5% online) + Scapia Federal (2% + lounges) = 3-5% blended return at zero annual cost. I wrote a [detailed breakdown of the 10 best free cards](https://www.pointsmax.in/blog/best-lifetime-free-credit-cards-india-2026) if anyone's interested.
 
-It pulls live data including transfer partners with ratios and devaluation flags. No sign-up, no affiliate links, no sponsored rankings.
+I also built a calculator where you can select your specific card, enter your points balance, and see every redemption option ranked by ₹ value: [www.pointsmax.in](https://www.pointsmax.in)
 
-Happy to answer questions about specific cards or redemption strategies.
+It pulls live data including [all airline and hotel transfer partners](https://www.pointsmax.in/transfers) with ratios and devaluation flags. No sign-up, no affiliate links, no sponsored rankings.
+
+Happy to answer questions about specific cards or strategies.
 
 ---
 
 ## POST 2: r/CreditCardsIndia
-**Best day to post:** Day after Post 1
-**Flair:** Whatever the sub uses for guides/tools
+**Post Fri May 23, 10 AM IST**
+**Flair:** Whatever the sub uses for tools/resources
 
 ### Title:
-Built a free tool to check the real ₹ value of your reward points — covers HDFC, Axis, SBI, ICICI, Amex with transfer partners
+Free tool to check the real ₹ value of your reward points — 25+ cards, transfer partners, post-2026 devaluation data
 
 ### Body:
 
-Quick context: I was trying to figure out whether to redeem my Infinia points on SmartBuy vs transfer to KrisFlyer vs vouchers, and realized there's no single place that shows all the options with actual rupee values side by side.
-
-So I built one: [www.pointsmax.in](https://www.pointsmax.in)
+Made this because I was trying to figure out whether to redeem my Infinia points via SmartBuy, transfer to KrisFlyer, or buy vouchers — and there's no single place that shows all the options with actual rupee values side by side.
 
 **What it does:**
-- Select your card (25+ cards covered)
+- Select your card (25+ covered — HDFC, Axis, SBI, ICICI, Amex, IndusInd, IDFC FIRST, Kotak, Federal)
 - Enter your points balance
 - See every redemption method ranked by ₹ per point
-- View airline & hotel transfer partners with conversion ratios
+- View airline & hotel transfer partners with conversion ratios and alliance tags
 - Devaluation warnings on partners that got nerfed in 2026
 
 **What it doesn't do:**
 - No sign-up required
 - No affiliate links (I don't earn anything if you apply for a card)
-- No "best card" recommendations where the #1 pick is whoever paid the most commission
+- No "best card" rankings where #1 is whoever paid the most commission
 
-Some things I found while building this:
+→ Calculator: [www.pointsmax.in](https://www.pointsmax.in)
+→ Transfer partners directory: [www.pointsmax.in/transfers](https://www.pointsmax.in/transfers)
 
-- HDFC Infinia SmartBuy vouchers dropped from 5x to 3x earn in January 2026, but the redemption value is still ₹1/point — it's the earn rate that changed, not the per-point value
+I also wrote some detailed guides based on the data:
+
+- [HDFC Infinia full review with 2026 changes](https://www.pointsmax.in/blog/hdfc-infinia-credit-card-review-2026) — per-point value table, ₹18L retention rule, breakeven math
+- [SmartBuy complete guide](https://www.pointsmax.in/blog/hdfc-smartbuy-guide-2026) — voucher hack, 70/30 rule, earn rate by card
+- [Best lifetime free cards ranked](https://www.pointsmax.in/blog/best-lifetime-free-credit-cards-india-2026) — genuinely free vs conditional free, the ₹0 three-card stack
+- [Airline mile transfers from India](https://www.pointsmax.in/blog/credit-card-airline-miles-transfer-india-2026) — which transfers are worth it, the Avios hack
+
+Some things I noticed while building this:
+
+- HDFC SmartBuy 5x on vouchers nearly dropped to 3x in January — rolled back after backlash, but the 3x announcement signals HDFC's intent. Use those 5x vouchers while they last.
 - Axis removing Marriott was even worse than people realized — there's no hotel transfer partner left on Magnus/Atlas with comparable value
-- ICICI Emeralde's InterMiles transfer is actually underrated at ₹0.50/point — most people default to the ₹0.25 catalogue
+- ICICI Emeralde's InterMiles transfer is underrated at ₹0.50/point — most people default to the ₹0.25 catalogue
+- From April 2026, Infinia needs ₹18L annual spend OR ₹50L banking relationship to retain. Below that, risk downgrade to Regalia where points convert at ~1:0.6
 
 Would love feedback on what cards or features to add. The data lives in a database so I can update values within minutes when banks change things.
 
 ---
 
 ## POST 3: r/churningindia
-**Best day to post:** Day after Post 2
+**Post Sat May 24, 11 AM IST**
 **Flair:** [Tool] or [Resource]
 
 ### Title:
-Transfer partner database: every Indian card × every airline/hotel program with ratios and devaluation flags
+Transfer partner database for Indian credit cards — every card × every airline/hotel program with ratios, alliances, and devaluation flags (post-April 2026)
 
 ### Body:
 
-Made a transfer partner directory for Indian credit cards: [www.pointsmax.in/transfers](https://www.pointsmax.in/transfers)
+Built a transfer partner directory for Indian credit cards: [www.pointsmax.in/transfers](https://www.pointsmax.in/transfers)
 
-Filter by card (HDFC Infinia, Axis Magnus, Amex Platinum, etc.) and see every airline/hotel program you can transfer to, with:
+Filter by card and see every airline/hotel program you can transfer to, with:
 - Exact conversion ratios
 - Alliance tags (Star Alliance, Oneworld, SkyTeam)
 - Devaluation warnings (Turkish 1:1→2:1, Axis removed Marriott/Accor/Qatar)
-- "Best value" flags
+- "Best value" flags on top transfers
 
-Also has a points calculator at [www.pointsmax.in](https://www.pointsmax.in) that shows per-point rupee value across all redemption methods.
+**Post-April 2026 status:**
 
-**Post-April 2026 changes reflected:**
-- Axis: Marriott, Accor, Qatar removed ❌
-- HDFC: Turkish Miles&Smiles 1:1→2:1 ❌
-- HDFC: Avianca LifeMiles 1:1→2:1 ❌  
-- HDFC: KrisFlyer still 1:1 ✅
-- HDFC: Finnair still 1:1 ✅ (Avios hack still works — Finnair→BA→Qatar for Qsuite)
-- Amex: BA Avios still 1:1 ✅
+| Partner | HDFC Infinia | Axis Magnus | Status |
+|---------|-------------|-------------|--------|
+| KrisFlyer | 1:1 ✅ | ❌ | Best transfer in India |
+| Finnair Avios | 1:1 ✅ | ❌ | Avios hack gateway |
+| BA Avios | via Amex 1:1 | ❌ | Short-haul sweet spot |
+| Emirates | 1:1 ✅ | ❌ | First class play |
+| Air India FR | 1:1 ✅ | 1:1 ✅ | Domestic + Asia |
+| Turkish M&S | 2:1 ⚠️ | ❌ | Was 1:1, devalued Jan 2026 |
+| Avianca LM | 2:1 ⚠️ | ❌ | Was 1:1, devalued Jan 2026 |
+| Marriott | 1:4 ✅ | ❌ Removed | Axis removed Apr 2026 |
+| Accor | ❌ | ❌ Removed | Axis removed Apr 2026 |
+| Qatar PC | ❌ | ❌ Removed | Axis removed Apr 2026 |
 
-The Avios cross-program hack is still the most underrated play — HDFC→Finnair at 1:1, then free instant transfer to BA or Qatar. Gets you Qatar Qsuite access that HDFC doesn't offer directly.
+**The Avios hack for Qsuite:**
+HDFC → Finnair (1:1) → free transfer to BA (1:1) → free transfer to Qatar (1:1). Gets you Qatar Qsuite access through a Finnair transfer. All Avios programs allow free cross-program transfers.
 
-All data is updated within 24 hours of any bank announcement. Let me know if anything's wrong or missing.
+**Route math I calculated:**
+- DEL-SIN J: 45K KrisFlyer = ₹1.89/mile (cash ₹85K) ✅
+- DEL-LHR J: 60K Avios = ₹4.17/mile (cash ₹2.5L) ✅ 
+- DEL-SIN Y: 22K KrisFlyer = ₹0.82/mile ❌ (SmartBuy at ₹1/pt beats this)
+- BOM-DEL Y: 13K Avios = ₹0.42/mile ❌ (portal wins)
+
+Rule: Transfer for J/F only. Y class → use SmartBuy.
+
+Also has a points calculator: [www.pointsmax.in](https://www.pointsmax.in) — select card, enter balance, see every redemption ranked by ₹ value.
+
+Detailed transfer guide with step-by-step HDFC→KrisFlyer walkthrough: [www.pointsmax.in/blog/credit-card-airline-miles-transfer-india-2026](https://www.pointsmax.in/blog/credit-card-airline-miles-transfer-india-2026)
+
+Let me know if anything's wrong or missing. Data updates within 24 hours of any bank announcement.
 
 ---
 
-## COMMENT STRATEGY
-
-When people comment, respond with:
+## COMMENT RESPONSE TEMPLATES
 
 **"Which card should I get?"**
-→ "Depends on your annual spend. Under ₹5L → Amazon Pay ICICI + SBI Cashback (both free). ₹5-15L → Axis Atlas or HDFC Regalia Gold. ₹15L+ → HDFC Infinia if you can get the invite. I wrote a breakdown here: [link to Blog 2]"
+→ Depends on your annual spend. Under ₹5L → Amazon Pay ICICI + SBI Cashback + Scapia (all free). ₹5-15L → Axis Atlas (₹5K) or HDFC Regalia Gold (₹2,500 — underrated). ₹15L+ → HDFC Infinia if you can get the invite. I wrote a breakdown by spend level here: www.pointsmax.in/blog/best-credit-cards-india-2026
 
 **"Is [card X] worth the annual fee?"**
-→ Give the actual math. "₹12,500 fee on Infinia. At 3.3% SmartBuy return, you break even at ~₹3.8L annual spend. Above that, it's free money."
+→ Give the actual math. Example: "₹12,500 Infinia fee. At 3.3% SmartBuy return on ₹10L spend, you earn ₹33,333 — fee is waived at ₹10L anyway. So it's ₹33K in free rewards. Below ₹5L spend? The free stack wins."
 
 **"How do transfers work?"**
-→ Quick explanation + "I wrote a step-by-step guide for HDFC→KrisFlyer here: [link to Blog 4]"
+→ Quick explanation + "I put together a step-by-step guide for HDFC→KrisFlyer with route-by-route math here: www.pointsmax.in/blog/credit-card-airline-miles-transfer-india-2026"
+
+**"What happened to Axis transfers?"**
+→ "Axis removed Marriott Bonvoy, Accor Live Limitless, and Qatar Airways Privilege Club in April 2026. No replacement announced. The remaining 8 partners are still active but the network is significantly weaker than HDFC's 22. Full transfer directory with current status: www.pointsmax.in/transfers"
 
 **"Data seems wrong for [card]"**
-→ "Thanks for flagging — I'll check and update within 24 hours. What's the correct value?"
+→ "Thanks for flagging — I'll check and update. What's the correct value you're seeing? The data is in a database so I can fix it within hours."
 
-**"This is just an ad"**
-→ "Fair concern. No affiliate links, no sign-up, no monetization beyond AdSense which isn't even approved yet. Happy to open-source the data if that helps."
+**"This is just self-promotion / an ad"**
+→ "Fair concern. No affiliate links anywhere on the site — I don't earn anything if you apply for a card. No sign-up wall. Revenue is only AdSense (which isn't even approved yet). The post has the full data table right here without needing to click anything. But I hear you — happy to just answer questions directly if that's more useful."
+
+**"Why should I trust this over Paisabazaar/BankBazaar?"**
+→ "Those sites earn affiliate commissions per card application — their #1 recommended card is often whoever pays the highest CPA, not whatever's best for you. We don't do card applications at all. Just the data."
 
 ---
 
 ## METRICS TO TRACK
-- GA4: Watch for traffic spike from reddit.com referral
-- Reddit: Upvote ratio, comment count, saves
-- Site: Engagement time, pages per session, card selection events
-- Goal: 500+ upvotes on r/IndiaInvestments post = front page = 2,000-5,000 visits
+
+After each post:
+- Reddit: upvote count at 1hr, 4hr, 24hr. Comment count. Upvote ratio.
+- GA4 Realtime: traffic spike from reddit.com referral
+- GA4: pages/session, avg engagement time from reddit traffic
+- Goal: 200+ upvotes on r/IndiaInvestments = front page = 1,000-3,000 visits
+- Stretch: 500+ upvotes = 3,000-5,000 visits + Google indexing boost from backlinks
