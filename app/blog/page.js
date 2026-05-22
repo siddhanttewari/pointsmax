@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'amex-platinum-charge-card-review-india-2026',
+    title: 'Amex Platinum Charge Card Review India 2026: The ₹66,000 Question',
+    excerpt: 'American Express claims ₹4.5 lakh in annual value. The internet says it\'s aspirational. Here\'s the breakeven math that tells you if it\'s actually worth it for you.',
+    date: 'May 23, 2026',
+    readTime: '11 min read',
+    tag: 'Card Review',
+  },
+  {
     slug: 'best-lifetime-free-credit-cards-india-2026',
     title: 'Best Lifetime Free Credit Cards in India 2026: Ranked by What You Actually Get',
     excerpt: '10 genuinely free cards ranked by effective return — not by affiliate payout. Plus the ₹0-fee three-card portfolio that quietly outperforms most premium cards.',
