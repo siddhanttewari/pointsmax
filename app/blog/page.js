@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'best-lifetime-free-credit-cards-india-2026',
+    title: 'Best Lifetime Free Credit Cards in India 2026: Ranked by What You Actually Get',
+    excerpt: '10 genuinely free cards ranked by effective return — not by affiliate payout. Plus the ₹0-fee three-card portfolio that quietly outperforms most premium cards.',
+    date: 'May 22, 2026',
+    readTime: '9 min read',
+    tag: 'Listicle',
+  },
+  {
     slug: 'hdfc-infinia-credit-card-review-2026',
     title: 'HDFC Infinia Credit Card Review 2026: Still India\'s Most Valuable Card?',
     excerpt: 'Per-point value across SmartBuy, vouchers, transfers. The ₹18L retention requirement, monthly caps, 22 transfer partners, and the breakeven math.',
