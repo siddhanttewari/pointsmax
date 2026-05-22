@@ -68,8 +68,20 @@ export default function Home() {
   const best = redemptions[0]?.value_per_point || 0
   const worst = redemptions[redemptions.length - 1]?.value_per_point || 0
 
+  const homeFaqJsonLd = {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'How much are credit card reward points worth in India?', acceptedAnswer: { '@type': 'Answer', text: 'Credit card reward points in India range from 0.10 to 1.00 per point depending on the card and redemption method. HDFC Infinia offers the highest at 1 per point via SmartBuy travel bookings.' }},
+      { '@type': 'Question', name: 'What is the value of 1 HDFC Infinia reward point in rupees?', acceptedAnswer: { '@type': 'Answer', text: 'One HDFC Infinia reward point is worth 1 rupee via SmartBuy for flights, hotels, Tanishq, or Apple products. Gift vouchers give 0.50 per point. Product catalogue gives only 0.20 per point.' }},
+      { '@type': 'Question', name: 'What is the best way to redeem credit card reward points in India?', acceptedAnswer: { '@type': 'Answer', text: 'The best way is through the bank travel portal for flights and hotels. For premium cards, transferring to airline programs like Singapore Airlines KrisFlyer or British Airways Avios can unlock higher value for business class bookings.' }},
+      { '@type': 'Question', name: 'Which Indian credit cards let you transfer points to airline miles?', acceptedAnswer: { '@type': 'Answer', text: 'Premium cards from HDFC (Infinia, Diners Club Black, Regalia Gold), Axis (Magnus, Atlas), and American Express (Platinum, Gold) support transfers to programs including Singapore Airlines KrisFlyer, British Airways Avios, Air India Flying Returns, and others.' }},
+      { '@type': 'Question', name: 'What changed in the April 2026 credit card devaluations in India?', acceptedAnswer: { '@type': 'Answer', text: 'Axis Bank removed Marriott, Accor, and Qatar Airways as transfer partners. HDFC changed Turkish and Avianca ratios from 1:1 to 2:1. SBI capped monthly cashback at 2000 rupees. PointsMax reflects all post-devaluation data.' }},
+    ],
+  }
+
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }} />
 
       {/* ── NAV ── */}
       <nav className="sticky top-0 z-50" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
