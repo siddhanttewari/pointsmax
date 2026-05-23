@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { getCards, getRedemptions, getTransferPartners } from '@/lib/supabase'
 import { HeaderAd, InFeedAd } from '@/components/AdUnit'
+import PushNotification from '@/components/PushNotification'
 
 const BANK_DOT = {
   HDFC: '#2563eb', Axis: '#be185d', SBI: '#0d9488', ICICI: '#ea580c',
@@ -93,6 +94,7 @@ export default function Home() {
             <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '18px', color: '#FAF8F5', letterSpacing: '-0.01em' }}>PointsMax</span>
           </div>
           <div className="flex items-center gap-4">
+            <a href="/tools/card-quiz" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Card Quiz</a>
             <a href="/transfers" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Transfers</a>
             <a href="/blog" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Blog</a>
           </div>
@@ -284,6 +286,27 @@ export default function Home() {
           </section>
         )}
 
+        {/* ── TOOLS STRIP ── */}
+        <section className="mt-16 pt-10" style={{ borderTop: '1px solid var(--border)' }}>
+          <p className="text-[11px] font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-m)' }}>More free tools</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              { href: '/tools/card-quiz', icon: '🎯', title: 'Which card suits me?', desc: 'Answer 5 questions, get your best card match' },
+              { href: '/tools/breakeven', icon: '📊', title: 'Fee Breakeven Calculator', desc: 'Is your annual fee actually worth paying?' },
+              { href: '/tools/expiry-reminder', icon: '⏰', title: 'Points Expiry Reminder', desc: 'Get notified before your points expire' },
+            ].map(t => (
+              <a key={t.href} href={t.href} className="p-4 rounded-xl transition-all duration-200"
+                style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-m)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
+                <p className="text-[22px] mb-2">{t.icon}</p>
+                <p className="text-[14px] font-semibold" style={{ color: 'var(--text)' }}>{t.title}</p>
+                <p className="text-[12px] mt-1" style={{ color: 'var(--text-m)' }}>{t.desc}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
         {/* ── SEO CONTENT ── */}
         <section className="mt-20 pt-12" style={{ borderTop: '1px solid var(--border)' }}>
           <h2 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '24px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
@@ -315,6 +338,8 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      <PushNotification />
 
       {/* ── FOOTER ── */}
       <footer className="py-10 px-5" style={{ background: 'var(--dark)', color: 'rgba(250,248,245,0.5)' }}>
