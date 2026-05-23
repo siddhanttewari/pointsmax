@@ -61,134 +61,71 @@ const QUESTIONS = [
 
 const getRecommendations = (answers) => {
   const { spend, travel, priority, fee, bank } = answers
-
   const cards = []
 
-  // Premium tier
-  if (['high', 'ultra'].includes(spend) && fee >= 12500) {
-    if (bank === 'hdfc' || bank === 'none') {
-      cards.push({
-        name: 'HDFC Infinia',
-        match: spend === 'ultra' ? 99 : 95,
-        fee: '₹12,500 (waived ₹10L)',
-        returns: '3.33% via SmartBuy',
-        why: 'Best overall card in India. ₹1/point on SmartBuy, 22 transfer partners, unlimited lounges. Fee waiver at ₹10L spend.',
-        link: '/blog/hdfc-infinia-credit-card-review-2026',
-        tag: 'Best Match',
-        tagColor: 'var(--green)',
-      })
-    }
-    if (bank === 'hdfc' || bank === 'none') {
-      cards.push({
-        name: 'HDFC Diners Club Black',
-        match: 90,
-        fee: '₹10,000 (waived ₹5L)',
-        returns: '3.33% via SmartBuy',
-        why: 'Same rewards as Infinia, lower fee, easier to get. Visa acceptance is limited abroad — pick Infinia for international heavy use.',
-        link: '/blog/hdfc-infinia-credit-card-review-2026',
-        tag: 'Great Value',
-        tagColor: 'var(--gold)',
-      })
-    }
-    if ((bank === 'none' || bank === 'axis') && travel !== 'none') {
-      cards.push({
-        name: 'Axis Magnus',
-        match: 82,
-        fee: '₹12,500',
-        returns: '2.5% via Travel EDGE',
-        why: 'Good for Axis customers. ₹0.50/point on Travel EDGE, some transfer partners still active post-April 2026.',
-        link: '/blog/best-credit-cards-india-2026',
-        tag: 'Consider',
-        tagColor: '#0891b2',
-      })
-    }
+  const ALL_CARDS = {
+    infinia: { name: 'HDFC Infinia', fee: '₹12,500 (waived ₹10L)', returns: '3.33% via SmartBuy', why: 'Best overall card in India. ₹1/point on SmartBuy, 22 transfer partners, unlimited lounges. Fee waiver at ₹10L spend.', link: '/blog/hdfc-infinia-credit-card-review-2026', tag: 'Top Rated', tagColor: 'var(--green)' },
+    diners: { name: 'HDFC Diners Club Black', fee: '₹10,000 (waived ₹5L)', returns: '3.33% via SmartBuy', why: 'Same rewards as Infinia at lower fee. Slightly harder to use internationally due to Diners network, but rewards are identical.', link: '/blog/hdfc-infinia-credit-card-review-2026', tag: 'Great Value', tagColor: 'var(--gold)' },
+    regaliaGold: { name: 'HDFC Regalia Gold', fee: '₹2,500 (waived ₹3L)', returns: '2% via SmartBuy', why: 'Best mid-range card. ₹0.50/point on SmartBuy, 5X on vouchers. Most underrated HDFC card right now.', link: '/blog/best-credit-cards-india-2026', tag: 'Best Mid-Range', tagColor: 'var(--green)' },
+    magnus: { name: 'Axis Magnus', fee: '₹12,500', returns: '2.5% via Travel EDGE', why: '₹0.50/point on Travel EDGE, some airline transfer partners still active. Best for Axis banking customers who travel.', link: '/blog/best-credit-cards-india-2026', tag: 'Consider', tagColor: '#0891b2' },
+    atlas: { name: 'Axis Atlas', fee: '₹5,000', returns: '2% via Travel EDGE', why: 'Good mid-tier Axis card. ₹0.50/point on travel portal, airport lounges, lower fee than Magnus.', link: '/blog/best-credit-cards-india-2026', tag: 'Good Pick', tagColor: 'var(--gold)' },
+    amexPlat: { name: 'Amex Platinum', fee: '₹66,000 (no waiver)', returns: '2% + hotel/lounge perks', why: 'Best luxury travel card if you travel 4+ times internationally and stay at Taj properties. Math only works for heavy travellers.', link: '/blog/amex-platinum-charge-card-review-india-2026', tag: 'Luxury', tagColor: '#7c3aed' },
+    amazon: { name: 'Amazon Pay ICICI', fee: '₹0 forever', returns: '5% on Amazon', why: 'Best genuinely free card in India. 5% back on Amazon for Prime members. No conditions whatsoever.', link: '/blog/best-lifetime-free-credit-cards-india-2026', tag: 'Best Free', tagColor: 'var(--green)' },
+    sbiCashback: { name: 'SBI Cashback', fee: '₹0 (most variants)', returns: '5% online (₹2K cap)', why: 'Best all-online cashback card. 5% on all online merchants — Swiggy, Zomato, subscriptions, anything online.', link: '/blog/best-lifetime-free-credit-cards-india-2026', tag: 'Online Champ', tagColor: 'var(--gold)' },
+    scapia: { name: 'Scapia Federal', fee: '₹0 forever', returns: '2% + zero forex + lounges', why: 'Only free card with zero forex markup AND lounge access. Must-have for anyone who travels internationally.', link: '/blog/best-lifetime-free-credit-cards-india-2026', tag: 'Travel Free', tagColor: '#0891b2' },
+    idfcSelect: { name: 'IDFC FIRST Select', fee: '₹999 (waived ₹1.25L)', returns: '3-4% select categories', why: 'Great semi-free card with strong category rewards. Enable your top spend category quarterly for 4X returns.', link: '/blog/best-lifetime-free-credit-cards-india-2026', tag: 'Smart Pick', tagColor: 'var(--gold)' },
   }
 
-  // Travel-focused
-  if (travel === 'heavy' && fee >= 60000) {
-    cards.push({
-      name: 'Amex Platinum',
-      match: 88,
-      fee: '₹66,000 (no waiver)',
-      returns: '2% + hotel/dining perks',
-      why: 'Best luxury travel card. Taj 25% off, FHR credits, 1400+ lounges. Only worth it at 4+ intl trips/year with Taj stays.',
-      link: '/blog/amex-platinum-charge-card-review-india-2026',
-      tag: 'Luxury Pick',
-      tagColor: '#7c3aed',
+  // Scoring: assign score to each card based on answers
+  const scores = {
+    infinia: 0, diners: 0, regaliaGold: 0, magnus: 0, atlas: 0,
+    amexPlat: 0, amazon: 0, sbiCashback: 0, scapia: 0, idfcSelect: 0,
+  }
+
+  // Spend level scoring
+  if (spend === 'ultra' || spend === 'high') { scores.infinia += 40; scores.diners += 35; scores.magnus += 20; scores.amexPlat += 15 }
+  if (spend === 'mid') { scores.regaliaGold += 35; scores.atlas += 30; scores.diners += 20; scores.infinia += 15 }
+  if (spend === 'mid-low') { scores.regaliaGold += 30; scores.idfcSelect += 30; scores.amazon += 25; scores.sbiCashback += 25 }
+  if (spend === 'low') { scores.amazon += 40; scores.sbiCashback += 35; scores.scapia += 25; scores.idfcSelect += 20 }
+
+  // Travel scoring
+  if (travel === 'heavy') { scores.amexPlat += 35; scores.infinia += 20; scores.scapia += 15 }
+  if (travel === 'moderate') { scores.infinia += 15; scores.magnus += 15; scores.scapia += 20 }
+  if (travel === 'light') { scores.scapia += 25; scores.atlas += 10 }
+  if (travel === 'none') { scores.amazon += 15; scores.sbiCashback += 15 }
+
+  // Priority scoring
+  if (priority === 'cashback') { scores.amazon += 30; scores.sbiCashback += 30 }
+  if (priority === 'travel') { scores.infinia += 25; scores.magnus += 20; scores.scapia += 15 }
+  if (priority === 'lifestyle') { scores.amexPlat += 25; scores.infinia += 15 }
+  if (priority === 'points') { scores.infinia += 30; scores.diners += 25 }
+  if (priority === 'free') { scores.amazon += 40; scores.scapia += 30; scores.sbiCashback += 30 }
+
+  // Fee tolerance scoring
+  if (fee === 0) { scores.amazon += 35; scores.scapia += 35; scores.sbiCashback += 30 }
+  if (fee === 2500) { scores.regaliaGold += 30; scores.idfcSelect += 25; scores.amazon += 20 }
+  if (fee === 5000) { scores.atlas += 25; scores.regaliaGold += 20; scores.idfcSelect += 15 }
+  if (fee === 12500) { scores.infinia += 25; scores.diners += 25; scores.magnus += 20 }
+  if (fee === 99999) { scores.infinia += 30; scores.amexPlat += 20; scores.diners += 25 }
+
+  // Bank preference scoring
+  if (bank === 'hdfc') { scores.infinia += 20; scores.diners += 20; scores.regaliaGold += 15 }
+  if (bank === 'axis') { scores.magnus += 25; scores.atlas += 25 }
+  if (bank === 'sbi') { scores.sbiCashback += 20; scores.regaliaGold += 5 }
+  if (bank === 'icici') { scores.amazon += 15 }
+
+  // Sort by score and take top 3, always return 3
+  const sorted = Object.entries(scores)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(([key, score]) => {
+      const card = ALL_CARDS[key]
+      const maxScore = Object.values(scores).reduce((a, b) => Math.max(a, b), 0)
+      const match = Math.min(98, Math.round(50 + (score / Math.max(maxScore, 1)) * 48))
+      return { ...card, match }
     })
-  }
 
-  // Mid tier
-  if (['mid', 'mid-low'].includes(spend) && fee >= 2500 && fee < 12500) {
-    if (bank === 'hdfc' || bank === 'none') {
-      cards.push({
-        name: 'HDFC Regalia Gold',
-        match: 88,
-        fee: '₹2,500 (waived ₹3L)',
-        returns: '2% via SmartBuy',
-        why: 'Best mid-range card in India. ₹0.50/point on SmartBuy, 5X on vouchers. Drastically underrated.',
-        link: '/blog/best-credit-cards-india-2026',
-        tag: 'Top Pick',
-        tagColor: 'var(--green)',
-      })
-    }
-    if (bank === 'axis' || bank === 'none') {
-      cards.push({
-        name: 'Axis Atlas',
-        match: 82,
-        fee: '₹5,000',
-        returns: '2% via Travel EDGE',
-        why: 'Good choice for Axis customers who travel. ₹0.50/point, airport lounges.',
-        link: '/blog/best-credit-cards-india-2026',
-        tag: 'Good Pick',
-        tagColor: 'var(--gold)',
-      })
-    }
-  }
-
-  // Free / cashback seekers
-  if (priority === 'free' || priority === 'cashback' || fee === 0 || ['low', 'mid-low'].includes(spend)) {
-    cards.push({
-      name: 'Amazon Pay ICICI',
-      match: 95,
-      fee: '₹0 forever',
-      returns: '5% on Amazon',
-      why: 'Best genuinely free card. 5% back on Amazon for Prime members. No conditions, no fee, no drama.',
-      link: '/blog/best-lifetime-free-credit-cards-india-2026',
-      tag: 'Best Free',
-      tagColor: 'var(--green)',
-    })
-    cards.push({
-      name: 'SBI Cashback',
-      match: 88,
-      fee: '₹0 (most variants)',
-      returns: '5% online (₹2K cap)',
-      why: 'Best all-online cashback card. 5% on all online merchants — Swiggy, Zomato, subscriptions, anything online.',
-      link: '/blog/best-lifetime-free-credit-cards-india-2026',
-      tag: 'Stack With Above',
-      tagColor: 'var(--gold)',
-    })
-    if (travel !== 'none') {
-      cards.push({
-        name: 'Scapia Federal',
-        match: 82,
-        fee: '₹0 forever',
-        returns: '2% + zero forex + lounges',
-        why: 'Only free card with zero forex markup AND lounge access. Essential for anyone who travels internationally.',
-        link: '/blog/best-lifetime-free-credit-cards-india-2026',
-        tag: 'Travel Add-on',
-        tagColor: '#0891b2',
-      })
-    }
-  }
-
-  // Deduplicate and sort
-  const seen = new Set()
-  return cards.filter(c => {
-    if (seen.has(c.name)) return false
-    seen.add(c.name)
-    return true
-  }).sort((a, b) => b.match - a.match).slice(0, 3)
+  return sorted
 }
 
 export default function CardQuiz() {
