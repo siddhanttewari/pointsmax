@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'hdfc-diners-club-black-credit-card-review-2026',
+    title: 'HDFC Diners Club Black Review 2026: The Accessible Infinia (With One Catch)',
+    excerpt: 'Same rewards as Infinia, lower fee, easier to get. So why doesn\'t everyone have this card? There\'s one thing that trips people up — and it\'s not what you think.',
+    date: 'May 25, 2026',
+    readTime: '10 min read',
+    tag: 'Card Review',
+  },
+  {
     slug: 'best-credit-cards-fuel-india-2026',
     title: 'Best Credit Cards for Fuel in India 2026 (The Best One Isn\'t a Fuel Card)',
     excerpt: 'Most fuel card lists recommend HPCL and BPCL cards. The math says otherwise. Here\'s what actually saves you the most at the pump — with an interactive calculator.',
