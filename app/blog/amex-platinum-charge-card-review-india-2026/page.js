@@ -1,5 +1,7 @@
 'use client'
 
+import FeedbackWidget from '@/components/FeedbackWidget'
+
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
@@ -294,7 +296,8 @@ export default function BlogPost() {
             <strong>Disclaimer:</strong> This review is based on publicly available information from American Express India's website and benefit pages as of May 2026. Benefits, fees, and partner offers change without notice. This is a charge card — full balance is due monthly. Always verify current terms at americanexpress.com/in. PointsMax is not affiliated with American Express. We do not earn commissions from card applications. This is not financial advice.
           </p>
         </div>
-      </article>
+                <FeedbackWidget pageSlug="amex-platinum-charge-card-review-india-2026" pageTitle="amex-platinum-charge-card-review-india-2026" />
+        </article>
 
       <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-2xl mx-auto text-center">

@@ -1,5 +1,7 @@
 'use client'
 
+import FeedbackWidget from '@/components/FeedbackWidget'
+
 import { useState, useEffect } from 'react'
 
 const blogMeta = {
@@ -342,7 +344,8 @@ export default function BlogPost() {
             <strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial advice. Reward point values, redemption rates, and card benefits change frequently. Always verify current terms on your bank's official website before making redemption decisions. PointsMax is not affiliated with any bank or financial institution.
           </p>
         </div>
-      </article>
+                <FeedbackWidget pageSlug="credit-card-points-value-india-2026" pageTitle="credit-card-points-value-india-2026" />
+        </article>
 
       {/* Footer */}
       <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>

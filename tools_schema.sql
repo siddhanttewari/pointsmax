@@ -31,3 +31,19 @@ CREATE POLICY "Anyone can subscribe to push"
   ON push_subscriptions FOR INSERT WITH CHECK (true);
 CREATE POLICY "Only authenticated users can read subscriptions"
   ON push_subscriptions FOR SELECT USING (auth.role() = 'authenticated');
+
+-- Feedback table
+CREATE TABLE feedback (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  page_slug text NOT NULL,
+  page_title text,
+  rating text CHECK (rating IN ('up', 'down')),
+  comment text,
+  created_at timestamptz DEFAULT now()
+);
+
+ALTER TABLE feedback ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone can submit feedback"
+  ON feedback FOR INSERT WITH CHECK (true);
+CREATE POLICY "Only authenticated users can read feedback"
+  ON feedback FOR SELECT USING (auth.role() = 'authenticated');

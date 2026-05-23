@@ -1,5 +1,7 @@
 'use client'
 
+import FeedbackWidget from '@/components/FeedbackWidget'
+
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
@@ -303,7 +305,8 @@ export default function BlogPost() {
             <strong>Disclaimer:</strong> This article is for informational purposes only. Reward values, fees, and benefits change frequently. Always verify on your bank's website. PointsMax is not affiliated with any bank or card issuer. We do not earn commissions from card applications.
           </p>
         </div>
-      </article>
+                <FeedbackWidget pageSlug="best-credit-cards-india-2026" pageTitle="best-credit-cards-india-2026" />
+        </article>
 
       <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-2xl mx-auto text-center">

@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'best-credit-cards-fuel-india-2026',
+    title: 'Best Credit Cards for Fuel in India 2026 (The Best One Isn\'t a Fuel Card)',
+    excerpt: 'Most fuel card lists recommend HPCL and BPCL cards. The math says otherwise. Here\'s what actually saves you the most at the pump — with an interactive calculator.',
+    date: 'May 23, 2026',
+    readTime: '7 min read',
+    tag: 'Listicle',
+  },
+  {
     slug: 'amex-platinum-charge-card-review-india-2026',
     title: 'Amex Platinum Charge Card Review India 2026: The ₹66,000 Question',
     excerpt: 'American Express claims ₹4.5 lakh in annual value. The internet says it\'s aspirational. Here\'s the breakeven math that tells you if it\'s actually worth it for you.',

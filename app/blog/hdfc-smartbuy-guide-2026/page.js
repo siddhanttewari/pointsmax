@@ -1,5 +1,7 @@
 'use client'
 
+import FeedbackWidget from '@/components/FeedbackWidget'
+
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
@@ -252,7 +254,8 @@ export default function BlogPost() {
             <strong>Disclaimer:</strong> This guide is based on publicly available information from HDFC Bank's SmartBuy portal as of May 2026. Earn rates, redemption caps, and eligible categories can change without notice. Always check the SmartBuy T&Cs before transacting. PointsMax is not affiliated with HDFC Bank.
           </p>
         </div>
-      </article>
+                <FeedbackWidget pageSlug="hdfc-smartbuy-guide-2026" pageTitle="hdfc-smartbuy-guide-2026" />
+        </article>
 
       <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-2xl mx-auto text-center">

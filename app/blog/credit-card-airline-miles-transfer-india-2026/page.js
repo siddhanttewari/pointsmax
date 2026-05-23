@@ -1,5 +1,7 @@
 'use client'
 
+import FeedbackWidget from '@/components/FeedbackWidget'
+
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
@@ -254,7 +256,8 @@ export default function BlogPost() {
             <strong>Disclaimer:</strong> Transfer ratios, award pricing, and partner availability change frequently. Cash prices are approximate based on May 2026 searches. Always verify current rates before transferring. Transfers are irreversible. PointsMax is not affiliated with any airline or bank.
           </p>
         </div>
-      </article>
+                <FeedbackWidget pageSlug="credit-card-airline-miles-transfer-india-2026" pageTitle="credit-card-airline-miles-transfer-india-2026" />
+        </article>
 
       <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-2xl mx-auto text-center">

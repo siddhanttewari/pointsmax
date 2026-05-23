@@ -1,5 +1,7 @@
 'use client'
 
+import FeedbackWidget from '@/components/FeedbackWidget'
+
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
@@ -217,7 +219,8 @@ export default function BlogPost() {
             <strong>Disclaimer:</strong> Card features, fees, reward rates, and terms change frequently. Always verify current details on the issuer's website before applying. PointsMax does not earn affiliate commissions from card applications. This is not financial advice. Cashback/reward caps and spending conditions apply — read the MITC (Most Important Terms & Conditions) before applying.
           </p>
         </div>
-      </article>
+                <FeedbackWidget pageSlug="best-lifetime-free-credit-cards-india-2026" pageTitle="best-lifetime-free-credit-cards-india-2026" />
+        </article>
 
       <footer className="py-10 px-5" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-2xl mx-auto text-center">
