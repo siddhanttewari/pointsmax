@@ -5,13 +5,19 @@ import FeedbackWidget from '@/components/FeedbackWidget'
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
-  '@context': 'https://schema.org', '@type': 'Review',
-  itemReviewed: { '@type': 'Product', name: 'HDFC Infinia Credit Card', brand: { '@type': 'Brand', name: 'HDFC Bank' }, category: 'Credit Card' },
-  reviewRating: { '@type': 'Rating', ratingValue: '4.5', bestRating: '5', worstRating: '1' },
-  author: { '@type': 'Organization', name: 'PointsMax' },
-  publisher: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' },
-  datePublished: '2026-05-21', dateModified: '2026-05-21',
-  reviewBody: 'HDFC Infinia remains the most valuable credit card in India in 2026, offering ₹1 per reward point on SmartBuy travel and 22 airline/hotel transfer partners. However, new monthly caps and an ₹18L annual spend requirement to retain the card make it less accessible than before.',
+  '@context': 'https://schema.org', '@type': 'Product',
+  name: 'HDFC Infinia Credit Card',
+  brand: { '@type': 'Brand', name: 'HDFC Bank' },
+  category: 'Credit Card',
+  description: 'HDFC Infinia is a super-premium metal credit card offering ₹1 per reward point on SmartBuy travel, 22 airline/hotel transfer partners, and unlimited lounge access.',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.5', bestRating: '5', worstRating: '1', reviewCount: '1' },
+  review: {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '4.5', bestRating: '5', worstRating: '1' },
+    author: { '@type': 'Organization', name: 'PointsMax' },
+    datePublished: '2026-05-21',
+    reviewBody: 'HDFC Infinia remains the most valuable credit card in India in 2026, offering ₹1 per reward point on SmartBuy travel and 22 airline/hotel transfer partners. However, new monthly caps and an ₹18L annual spend requirement to retain the card make it less accessible than before.',
+  },
 }
 
 const faqJsonLd = {

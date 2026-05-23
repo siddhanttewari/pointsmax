@@ -5,13 +5,19 @@ import FeedbackWidget from '@/components/FeedbackWidget'
 import { useState, useEffect } from 'react'
 
 const blogJsonLd = {
-  '@context': 'https://schema.org', '@type': 'Review',
-  itemReviewed: { '@type': 'Product', name: 'American Express Platinum Charge Card', brand: { '@type': 'Brand', name: 'American Express' }, category: 'Credit Card' },
-  reviewRating: { '@type': 'Rating', ratingValue: '3.5', bestRating: '5', worstRating: '1' },
-  author: { '@type': 'Organization', name: 'PointsMax' },
-  publisher: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' },
-  datePublished: '2026-05-23', dateModified: '2026-05-23',
-  reviewBody: 'The American Express Platinum Charge Card delivers exceptional value for frequent international travellers spending ₹20L+ annually, but at ₹66,000/year (₹70,800 with GST) most Indians would extract more value from an HDFC Infinia at ₹12,500.',
+  '@context': 'https://schema.org', '@type': 'Product',
+  name: 'American Express Platinum Charge Card',
+  brand: { '@type': 'Brand', name: 'American Express' },
+  category: 'Credit Card',
+  description: 'The American Express Platinum Charge Card is India\'s most premium travel card at ₹66,000/year, offering Taj hotel benefits, 1400+ airport lounges, Fine Hotels & Resorts credits, and airline mile transfers.',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '3.5', bestRating: '5', worstRating: '1', reviewCount: '1' },
+  review: {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '3.5', bestRating: '5', worstRating: '1' },
+    author: { '@type': 'Organization', name: 'PointsMax' },
+    datePublished: '2026-05-23',
+    reviewBody: 'The American Express Platinum Charge Card delivers exceptional value for frequent international travellers spending ₹20L+ annually, but at ₹66,000/year (₹70,800 with GST) most Indians would extract more value from an HDFC Infinia at ₹12,500.',
+  },
 }
 
 const faqJsonLd = {
