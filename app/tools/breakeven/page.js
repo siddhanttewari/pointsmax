@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { breakeven as breakevenTrack } from '@/lib/analytics'
 
 const CARDS = [
   { name: 'HDFC Infinia', fee: 12500, feeWaiver: 1000000, rewardRate: 0.0333, pointValue: 1.00, perks: ['Unlimited lounges', 'Golf access', '22 transfer partners', 'Club Marriott'] },
@@ -58,6 +59,24 @@ export default function BreakevenCalculator() {
 
   const isPositive = netAfterWaiver > 0
   const pct = Math.min(100, Math.max(0, (totalValue / (card.fee + 10000)) * 100))
+
+  // Track card selection
+  useEffect(() => {
+    breakevenTrack.selectCard(card.name, card.fee)
+  }, [card.name])
+
+  // Track spend changes (debounced — only when user stops)
+  useEffect(() => {
+    const t = setTimeout(() => breakevenTrack.enterSpend(annualSpend), 800)
+    return () => clearTimeout(t)
+  }, [annualSpend])
+
+  // Track result view whenever card or spend changes
+  useEffect(() => {
+    if (annualSpend > 0) {
+      breakevenTrack.viewResult(card.name, Math.round(netAfterWaiver), isPositive, feeWaived)
+    }
+  }, [card.name, annualSpend, netAfterWaiver])
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import { push as pushTrack } from '@/lib/analytics'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -26,6 +27,7 @@ export default function PushNotificationBanner() {
 
     // Don't show if dismissed before
     if (localStorage.getItem('pm_push_dismissed')) setDismissed(true)
+    else pushTrack.shown()
   }, [])
 
   const requestPermission = async () => {
@@ -33,6 +35,7 @@ export default function PushNotificationBanner() {
     const permission = await Notification.requestPermission()
     if (permission === 'granted') {
       setStatus('granted')
+      pushTrack.accepted()
       // Save subscription to Supabase for future server-side pushes
       try {
         const reg = await navigator.serviceWorker.ready
@@ -50,10 +53,12 @@ export default function PushNotificationBanner() {
       }
     } else {
       setStatus('denied')
+      pushTrack.declined()
     }
   }
 
   const dismiss = () => {
+    pushTrack.dismissed()
     setDismissed(true)
     localStorage.setItem('pm_push_dismissed', '1')
   }

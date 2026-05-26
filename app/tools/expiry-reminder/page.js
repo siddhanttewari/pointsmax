@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import { expiry as expiryTrack } from '@/lib/analytics'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -47,6 +48,9 @@ export default function ExpiryReminder() {
   const submit = async () => {
     if (!form.email || !form.card || !form.accrualDate) return
     setStatus('sending')
+    const days = daysUntilExpiry()
+    expiryTrack.formSubmit(form.card, !!form.customNote)
+    if (days !== null) expiryTrack.enterDate(form.card, days)
     const { error } = await supabase.from('expiry_reminders').insert([{
       email: form.email,
       card_name: form.card,
@@ -55,6 +59,7 @@ export default function ExpiryReminder() {
       expiry_months: selectedCard?.expiry || 36,
       note: form.customNote,
     }])
+    if (error) { expiryTrack.submitError('supabase_error') }
     setStatus(error ? 'error' : 'sent')
   }
 
@@ -100,7 +105,7 @@ export default function ExpiryReminder() {
           <div className="space-y-5">
             <div>
               <label className="block text-[13px] font-semibold mb-2" style={{ color: 'var(--text-s)' }}>Card or loyalty program</label>
-              <select value={form.card} onChange={e => update('card', e.target.value)}
+              <select value={form.card} onChange={e => { update('card', e.target.value); expiryTrack.selectCard(e.target.value, CARDS_WITH_EXPIRY.find(c => c.name === e.target.value)?.expiry || 36) }}
                 className="w-full px-4 py-3 rounded-xl text-[14px] outline-none"
                 style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--text)' }}>
                 {CARDS_WITH_EXPIRY.map(c => (

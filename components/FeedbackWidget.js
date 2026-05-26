@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import { blog as blogTrack } from '@/lib/analytics'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -17,10 +18,12 @@ export default function FeedbackWidget({ pageSlug, pageTitle }) {
   const handleRating = async (val) => {
     setRating(val)
     setStep('comment')
+    blogTrack.feedbackRate(pageSlug, val)
   }
 
   const submit = async () => {
     setSending(true)
+    blogTrack.feedbackComment(pageSlug, rating, !!comment.trim())
     await supabase.from('feedback').insert([{
       page_slug: pageSlug,
       page_title: pageTitle,
@@ -32,6 +35,7 @@ export default function FeedbackWidget({ pageSlug, pageTitle }) {
   }
 
   const skip = async () => {
+    blogTrack.feedbackComment(pageSlug, rating, false)
     await supabase.from('feedback').insert([{
       page_slug: pageSlug,
       page_title: pageTitle,

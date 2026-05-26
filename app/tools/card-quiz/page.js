@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { quiz as quizTrack } from '@/lib/analytics'
 
 const QUESTIONS = [
   {
@@ -136,18 +137,28 @@ export default function CardQuiz() {
 
   const q = QUESTIONS[step]
 
+  // Track quiz start on mount
+  useEffect(() => { quizTrack.start() }, [])
+
   const handleAnswer = (val) => {
     const newAnswers = { ...answers, [q.id]: val }
     setAnswers(newAnswers)
+    quizTrack.answerQuestion(q.id, step, val)
     if (step < QUESTIONS.length - 1) {
       setStep(step + 1)
     } else {
-      setRecs(getRecommendations(newAnswers))
+      const results = getRecommendations(newAnswers)
+      setRecs(results)
       setDone(true)
+      quizTrack.complete(newAnswers)
+      results.forEach((rec, i) => quizTrack.viewRecommendation(rec.name, rec.match, i + 1))
     }
   }
 
-  const reset = () => { setStep(0); setAnswers({}); setDone(false); setRecs([]) }
+  const reset = () => {
+    quizTrack.retake()
+    setStep(0); setAnswers({}); setDone(false); setRecs([])
+  }
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
@@ -230,11 +241,13 @@ export default function CardQuiz() {
                   </div>
                   <p className="text-[13px] mt-3 leading-relaxed" style={{ color: 'var(--text-s)' }}>{rec.why}</p>
                   <div className="flex gap-2 mt-4">
-                    <a href={rec.link} className="flex-1 py-2 rounded-lg text-[13px] font-semibold text-center transition-all"
+                    <a href={rec.link} onClick={() => quizTrack.clickRecommendation(rec.name, rec.link)}
+                      className="flex-1 py-2 rounded-lg text-[13px] font-semibold text-center transition-all"
                       style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
                       Read full review →
                     </a>
-                    <a href="/" className="px-4 py-2 rounded-lg text-[13px] font-semibold text-center transition-all"
+                    <a href="/" onClick={() => quizTrack.clickRecommendation(rec.name, 'calculator')}
+                      className="px-4 py-2 rounded-lg text-[13px] font-semibold text-center transition-all"
                       style={{ background: 'var(--bg-s)', color: 'var(--text-s)', border: '1px solid var(--border)' }}>
                       Check points
                     </a>
