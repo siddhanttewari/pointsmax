@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'axis-magnus-credit-card-review-2026',
+    title: 'Axis Magnus Review 2026: Still Worth ₹12,500 After the April Massacre?',
+    excerpt: 'Marriott gone. Accor gone. Qatar gone. Transfer ratio halved overnight with zero notice. Here\'s what\'s left — and the honest verdict on whether you should keep the card.',
+    date: 'May 26, 2026',
+    readTime: '11 min read',
+    tag: 'Card Review',
+  },
+  {
     slug: 'hdfc-diners-club-black-credit-card-review-2026',
     title: 'HDFC Diners Club Black Review 2026: The Accessible Infinia (With One Catch)',
     excerpt: 'Same rewards as Infinia, lower fee, easier to get. So why doesn\'t everyone have this card? There\'s one thing that trips people up — and it\'s not what you think.',
