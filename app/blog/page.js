@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'credit-card-devaluation-tracker-india-2026',
+    title: 'Indian Credit Card Devaluation Tracker 2024–2026: Every Change, Every Bank',
+    excerpt: 'Every reward cut, transfer partner removal, and earn rate reduction across HDFC, Axis, SBI, ICICI — documented with dates and impact. Updated monthly.',
+    date: 'May 27, 2026',
+    readTime: '12 min read',
+    tag: 'Tracker',
+  },
+  {
     slug: 'axis-magnus-credit-card-review-2026',
     title: 'Axis Magnus Review 2026: Still Worth ₹12,500 After the April Massacre?',
     excerpt: 'Marriott gone. Accor gone. Qatar gone. Transfer ratio halved overnight with zero notice. Here\'s what\'s left — and the honest verdict on whether you should keep the card.',
