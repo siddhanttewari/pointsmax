@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'singapore-airlines-krisflyer-india-guide-2026',
+    title: 'Singapore Airlines KrisFlyer: The Complete India Guide 2026',
+    excerpt: 'Which Indian cards transfer at 1:1, the post-November 2025 award chart decoded, India route sweet spots with real mile counts, and a step-by-step booking guide for Indian cardholders.',
+    date: 'Jun 1, 2026',
+    readTime: '14 min read',
+    tag: 'Loyalty Guide',
+  },
+  {
     slug: 'credit-card-devaluation-tracker-india-2026',
     title: 'Indian Credit Card Devaluation Tracker 2024–2026: Every Change, Every Bank',
     excerpt: 'Every reward cut, transfer partner removal, and earn rate reduction across HDFC, Axis, SBI, ICICI — documented with dates and impact. Updated monthly.',
