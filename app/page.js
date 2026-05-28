@@ -87,16 +87,105 @@ export default function Home() {
       {/* ── NAV ── */}
       <nav className="sticky top-0 z-50" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-3xl mx-auto flex items-center justify-between px-5 py-3.5">
-          <div className="flex items-center gap-2.5">
+          {/* Logo */}
+          <a href="/" className="flex items-center gap-2.5 shrink-0">
             <div className="w-7 h-7 rounded-lg grid place-items-center" style={{ background: 'var(--gold)' }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1A1614" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5" /></svg>
             </div>
             <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '18px', color: '#FAF8F5', letterSpacing: '-0.01em' }}>PointsMax</span>
+          </a>
+
+          {/* Desktop nav */}
+          <div className="hidden sm:flex items-center gap-1">
+            {/* Tools dropdown */}
+            <div className="relative group">
+              <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-[13px] font-medium transition-colors"
+                style={{ color: 'rgba(250,248,245,0.6)' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#FAF8F5'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,248,245,0.6)'}>
+                Tools
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div className="absolute left-0 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-150 z-50" style={{ minWidth: '220px' }}>
+                <div className="rounded-xl py-1.5 shadow-lg" style={{ background: 'var(--dark)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  {[
+                    { href: '/', icon: '⚡', label: 'Points Calculator', desc: 'What are your points worth?' },
+                    { href: '/tools/card-quiz', icon: '🎯', label: 'Card Quiz', desc: 'Find your best card match' },
+                    { href: '/tools/breakeven', icon: '📊', label: 'Fee Breakeven', desc: 'Is your annual fee worth it?' },
+                    { href: '/tools/expiry-reminder', icon: '⏰', label: 'Expiry Reminder', desc: 'Never lose your points' },
+                  ].map(item => (
+                    <a key={item.href} href={item.href} className="flex items-start gap-3 px-4 py-2.5 transition-colors"
+                      style={{ color: 'rgba(250,248,245,0.7)' }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#FAF8F5' }}
+                      onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgba(250,248,245,0.7)' }}>
+                      <span className="text-[16px] mt-0.5 shrink-0">{item.icon}</span>
+                      <div>
+                        <p className="text-[13px] font-medium" style={{ color: 'inherit' }}>{item.label}</p>
+                        <p className="text-[11px]" style={{ color: 'rgba(250,248,245,0.4)' }}>{item.desc}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Transfers */}
+            <a href="/transfers" className="px-3 py-2 rounded-lg text-[13px] font-medium transition-colors"
+              style={{ color: 'rgba(250,248,245,0.6)' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#FAF8F5'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,248,245,0.6)'}>
+              Transfers
+            </a>
+
+            {/* Learn dropdown */}
+            <div className="relative group">
+              <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-[13px] font-medium transition-colors"
+                style={{ color: 'rgba(250,248,245,0.6)' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#FAF8F5'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,248,245,0.6)'}>
+                Learn
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div className="absolute right-0 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-150 z-50" style={{ minWidth: '240px' }}>
+                <div className="rounded-xl py-1.5 shadow-lg" style={{ background: 'var(--dark)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-widest" style={{ color: 'rgba(250,248,245,0.3)' }}>Card Reviews</p>
+                  {[
+                    { href: '/blog/hdfc-infinia-credit-card-review-2026', label: 'HDFC Infinia Review' },
+                    { href: '/blog/hdfc-diners-club-black-credit-card-review-2026', label: 'Diners Club Black Review' },
+                    { href: '/blog/axis-magnus-credit-card-review-2026', label: 'Axis Magnus Review' },
+                    { href: '/blog/amex-platinum-charge-card-review-india-2026', label: 'Amex Platinum Review' },
+                  ].map(item => (
+                    <a key={item.href} href={item.href} className="block px-4 py-2 text-[13px] transition-colors"
+                      style={{ color: 'rgba(250,248,245,0.6)' }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#FAF8F5' }}
+                      onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgba(250,248,245,0.6)' }}>
+                      {item.label}
+                    </a>
+                  ))}
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '6px 0' }} />
+                  <p className="px-4 pb-1.5 text-[10px] font-bold uppercase tracking-widest" style={{ color: 'rgba(250,248,245,0.3)' }}>Guides & Trackers</p>
+                  {[
+                    { href: '/blog/credit-card-devaluation-tracker-india-2026', label: 'Devaluation Tracker' },
+                    { href: '/blog/credit-card-airline-miles-transfer-india-2026', label: 'Airline Miles Guide' },
+                    { href: '/blog/hdfc-smartbuy-guide-2026', label: 'SmartBuy Guide' },
+                    { href: '/blog', label: 'All Articles →' },
+                  ].map(item => (
+                    <a key={item.href} href={item.href} className="block px-4 py-2 text-[13px] transition-colors"
+                      style={{ color: 'rgba(250,248,245,0.6)' }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#FAF8F5' }}
+                      onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgba(250,248,245,0.6)' }}>
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <a href="/tools/card-quiz" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Card Quiz</a>
-            <a href="/transfers" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Transfers</a>
-            <a href="/blog" className="text-[13px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Blog</a>
+
+          {/* Mobile: just show key links */}
+          <div className="flex sm:hidden items-center gap-3">
+            <a href="/tools/card-quiz" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Quiz</a>
+            <a href="/blog" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Learn</a>
           </div>
         </div>
       </nav>
@@ -286,25 +375,78 @@ export default function Home() {
           </section>
         )}
 
-        {/* ── TOOLS STRIP ── */}
+        {/* ── TOOLS SECTION ── */}
         <section className="mt-16 pt-10" style={{ borderTop: '1px solid var(--border)' }}>
-          <p className="text-[11px] font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-m)' }}>More free tools</p>
+          <div className="flex items-end justify-between mb-5">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--text-m)' }}>Free Tools</p>
+              <h2 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '20px', color: 'var(--text)', letterSpacing: '-0.01em' }}>More ways to maximise your points</h2>
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { href: '/tools/card-quiz', icon: '🎯', title: 'Which card suits me?', desc: 'Answer 5 questions, get your best card match' },
-              { href: '/tools/breakeven', icon: '📊', title: 'Fee Breakeven Calculator', desc: 'Is your annual fee actually worth paying?' },
-              { href: '/tools/expiry-reminder', icon: '⏰', title: 'Points Expiry Reminder', desc: 'Get notified before your points expire' },
+              {
+                href: '/tools/card-quiz',
+                icon: '🎯',
+                label: 'New',
+                labelColor: 'var(--green)',
+                labelBg: 'rgba(45,106,79,0.08)',
+                title: 'Which card suits me?',
+                desc: 'Answer 5 questions. Get your personalised card recommendation with match score.',
+                cta: 'Take the quiz →',
+              },
+              {
+                href: '/tools/breakeven',
+                icon: '📊',
+                label: 'Tool',
+                labelColor: '#0891b2',
+                labelBg: 'rgba(8,145,178,0.08)',
+                title: 'Fee Breakeven Calculator',
+                desc: 'Enter your annual spend. See if your card\'s annual fee is actually worth paying.',
+                cta: 'Calculate now →',
+              },
+              {
+                href: '/tools/expiry-reminder',
+                icon: '⏰',
+                label: 'Tool',
+                labelColor: 'var(--gold)',
+                labelBg: 'rgba(184,149,62,0.08)',
+                title: 'Points Expiry Reminder',
+                desc: 'Enter your accrual date. Get an email before your points disappear.',
+                cta: 'Set reminder →',
+              },
             ].map(t => (
-              <a key={t.href} href={t.href} className="p-4 rounded-xl transition-all duration-200"
+              <a key={t.href} href={t.href} className="p-5 rounded-xl flex flex-col gap-3 transition-all duration-200 group"
                 style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-m)'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
-                <p className="text-[22px] mb-2">{t.icon}</p>
-                <p className="text-[14px] font-semibold" style={{ color: 'var(--text)' }}>{t.title}</p>
-                <p className="text-[12px] mt-1" style={{ color: 'var(--text-m)' }}>{t.desc}</p>
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--border-m)'; e.currentTarget.style.background = 'var(--bg-s)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--card)' }}>
+                <div className="flex items-start justify-between">
+                  <span className="text-[24px]">{t.icon}</span>
+                  <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded" style={{ color: t.labelColor, background: t.labelBg }}>{t.label}</span>
+                </div>
+                <div>
+                  <p className="text-[14px] font-semibold mb-1" style={{ color: 'var(--text)' }}>{t.title}</p>
+                  <p className="text-[12px] leading-relaxed" style={{ color: 'var(--text-m)' }}>{t.desc}</p>
+                </div>
+                <p className="text-[12px] font-semibold mt-auto" style={{ color: 'var(--gold)' }}>{t.cta}</p>
               </a>
             ))}
           </div>
+
+          {/* Transfers CTA */}
+          <a href="/transfers" className="mt-3 flex items-center justify-between p-4 rounded-xl transition-all duration-200"
+            style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--border-m)'; e.currentTarget.style.background = 'var(--bg-s)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--card)' }}>
+            <div className="flex items-center gap-3">
+              <span className="text-[22px]">✈️</span>
+              <div>
+                <p className="text-[14px] font-semibold" style={{ color: 'var(--text)' }}>Airline & Hotel Transfer Partners</p>
+                <p className="text-[12px]" style={{ color: 'var(--text-m)' }}>Every transfer partner across 7 Indian cards — with ratios, alliances, and devaluation flags.</p>
+              </div>
+            </div>
+            <span className="text-[12px] font-semibold shrink-0 ml-4" style={{ color: 'var(--gold)' }}>View directory →</span>
+          </a>
         </section>
 
         {/* ── SEO CONTENT ── */}
@@ -342,26 +484,74 @@ export default function Home() {
       <PushNotification />
 
       {/* ── FOOTER ── */}
-      <footer className="py-10 px-5" style={{ background: 'var(--dark)', color: 'rgba(250,248,245,0.5)' }}>
-        <div className="max-w-3xl mx-auto text-center space-y-3">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-5 h-5 rounded-md grid place-items-center" style={{ background: 'var(--gold)' }}>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1A1614" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5" /></svg>
+      <footer className="py-12 px-5 mt-8" style={{ background: 'var(--dark)', color: 'rgba(250,248,245,0.5)' }}>
+        <div className="max-w-3xl mx-auto">
+          {/* Top: Logo + columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
+            {/* Brand */}
+            <div className="col-span-2 sm:col-span-1">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-6 h-6 rounded-md grid place-items-center" style={{ background: 'var(--gold)' }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1614" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5" /></svg>
+                </div>
+                <span className="text-[14px] font-bold" style={{ color: 'rgba(250,248,245,0.8)', fontFamily: 'Playfair Display, serif' }}>PointsMax</span>
+              </div>
+              <p className="text-[12px] leading-relaxed" style={{ color: 'rgba(250,248,245,0.35)' }}>India's only tool that shows the real ₹ value of your credit card reward points.</p>
             </div>
-            <span className="text-[13px] font-bold" style={{ color: 'rgba(250,248,245,0.6)', fontFamily: 'Playfair Display, serif' }}>PointsMax</span>
+
+            {/* Tools */}
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: 'rgba(250,248,245,0.3)' }}>Tools</p>
+              <div className="space-y-2">
+                {[
+                  { href: '/', label: 'Points Calculator' },
+                  { href: '/tools/card-quiz', label: 'Card Quiz' },
+                  { href: '/tools/breakeven', label: 'Fee Breakeven' },
+                  { href: '/tools/expiry-reminder', label: 'Expiry Reminder' },
+                  { href: '/transfers', label: 'Transfer Partners' },
+                ].map(l => (
+                  <a key={l.href} href={l.href} className="block text-[12px] transition-colors hover:text-white/70" style={{ color: 'rgba(250,248,245,0.45)' }}>{l.label}</a>
+                ))}
+              </div>
+            </div>
+
+            {/* Learn */}
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: 'rgba(250,248,245,0.3)' }}>Learn</p>
+              <div className="space-y-2">
+                {[
+                  { href: '/blog/hdfc-infinia-credit-card-review-2026', label: 'HDFC Infinia Review' },
+                  { href: '/blog/axis-magnus-credit-card-review-2026', label: 'Axis Magnus Review' },
+                  { href: '/blog/best-lifetime-free-credit-cards-india-2026', label: 'Best Free Cards' },
+                  { href: '/blog/credit-card-devaluation-tracker-india-2026', label: 'Devaluation Tracker' },
+                  { href: '/blog/hdfc-smartbuy-guide-2026', label: 'SmartBuy Guide' },
+                  { href: '/blog', label: 'All Articles →' },
+                ].map(l => (
+                  <a key={l.href} href={l.href} className="block text-[12px] transition-colors hover:text-white/70" style={{ color: 'rgba(250,248,245,0.45)' }}>{l.label}</a>
+                ))}
+              </div>
+            </div>
+
+            {/* Company */}
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: 'rgba(250,248,245,0.3)' }}>Company</p>
+              <div className="space-y-2">
+                {[
+                  { href: '/about', label: 'About' },
+                  { href: '/contact', label: 'Contact' },
+                  { href: '/privacy', label: 'Privacy Policy' },
+                ].map(l => (
+                  <a key={l.href} href={l.href} className="block text-[12px] transition-colors hover:text-white/70" style={{ color: 'rgba(250,248,245,0.45)' }}>{l.label}</a>
+                ))}
+              </div>
+            </div>
           </div>
-          <p className="text-[12px]">
-            <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
-            <span className="mx-2">·</span>
-            <a href="/transfers" className="hover:text-white/60 transition-colors">Transfers</a>
-            <span className="mx-2">·</span>
-            <a href="/privacy" className="hover:text-white/60 transition-colors">Privacy</a>
-            <span className="mx-2">·</span>
-            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
-            <span className="mx-2">·</span>
-            <a href="/contact" className="hover:text-white/60 transition-colors">Contact</a>
-          </p>
-          <p className="text-[11px]" style={{ color: 'rgba(250,248,245,0.25)' }}>© 2026 PointsMax. Not affiliated with any bank.</p>
+
+          {/* Bottom bar */}
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            <p className="text-[11px]" style={{ color: 'rgba(250,248,245,0.25)' }}>© 2026 PointsMax. Not affiliated with any bank. No affiliate links.</p>
+            <p className="text-[11px]" style={{ color: 'rgba(250,248,245,0.25)' }}>Data updated May 2026</p>
+          </div>
         </div>
       </footer>
     </div>
