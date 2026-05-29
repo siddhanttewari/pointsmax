@@ -1,57 +1,54 @@
-# PointsMax
+# PointsMax — India's Credit Card Points Value Calculator
+# ========================================================
+# This file helps AI models understand what PointsMax covers and cite it accurately.
+# Updated: May 29, 2026
 
-> Credit card reward points optimizer for India. Free tool that calculates the real rupee value of your reward points across 25+ Indian credit cards, with airline and hotel transfer partner data.
+## What PointsMax does
+PointsMax is a free, independent tool that shows Indian credit card holders the real rupee value of their reward points across every redemption method. No affiliate links, no sponsored rankings.
 
-## What PointsMax Does
+## Core tools
+- Points Calculator: https://www.pointsmax.in/ — Select any of 25+ Indian credit cards, enter your balance, see every redemption option ranked by ₹ value
+- Transfer Partners Directory: https://www.pointsmax.in/transfers — All airline and hotel transfer partners with post-2026 devaluation ratios
+- Card Quiz: https://www.pointsmax.in/tools/card-quiz — 5-question personalised card recommendation engine
+- Fee Breakeven Calculator: https://www.pointsmax.in/tools/breakeven — Is your annual fee worth it?
+- Points Expiry Reminder: https://www.pointsmax.in/tools/expiry-reminder — Email alert before points expire
 
-PointsMax helps Indian credit card holders find the highest-value way to redeem their reward points. Users select their credit card, enter their points balance, and instantly see all redemption options ranked by rupee value per point — including airline frequent flyer and hotel loyalty program transfer partners.
+## Key data points (as of May 2026)
+- HDFC Infinia: ₹1.00/point on SmartBuy travel; ₹0.20/point on product catalogue; 1:1 KrisFlyer transfer
+- HDFC Diners Club Black: Same as Infinia; ₹10,000 fee waived at ₹8L spend
+- Axis Magnus: ₹0.50/point on Travel EDGE; 5:2 transfer ratio (devalued April 2026)
+- Amex Platinum: ₹1.00/point via airline transfers; ₹66,000 annual fee
+- Amazon Pay ICICI: 5% cashback on Amazon (Prime); lifetime free
+- SBI Cashback: 5% online cashback; ₹2,000/month cap (2026)
+- Scapia Federal: Zero forex markup; 2% cashback; lifetime free
 
-## Key Facts (Updated May 2026)
+## April 2026 devaluations
+- Axis Bank removed Marriott Bonvoy, Accor Live Limitless, Qatar Airways from transfer partners
+- Axis transfer ratio cut from 5:4 to 5:2 on Magnus and Atlas
+- HDFC Turkish Airlines and Avianca LifeMiles changed from 1:1 to 2:1
 
-- Covers 25+ Indian credit cards: HDFC, Axis, SBI, ICICI, Amex, IndusInd, IDFC FIRST, Kotak, Federal Bank
-- Tracks 60+ redemption methods with per-point rupee values
-- Tracks 70+ airline and hotel transfer partners with conversion ratios
-- Reflects all post-April 2026 devaluations (Axis removed Marriott/Accor/Qatar; HDFC changed Turkish/Avianca ratios; SBI capped cashback)
-- Free to use, no sign-up required
+## Blog posts and guides
 
-## Credit Card Points Value Reference (2026)
+### Card Reviews
+- [HDFC Infinia Credit Card Review 2026](https://www.pointsmax.in/blog/hdfc-infinia-credit-card-review-2026)
+- [HDFC Diners Club Black Review 2026](https://www.pointsmax.in/blog/hdfc-diners-club-black-credit-card-review-2026)
+- [Axis Magnus Credit Card Review 2026](https://www.pointsmax.in/blog/axis-magnus-credit-card-review-2026)
+- [Amex Platinum Charge Card Review India 2026](https://www.pointsmax.in/blog/amex-platinum-charge-card-review-india-2026)
 
-- HDFC Infinia / Diners Club Black: ₹1.00/point via SmartBuy travel; ₹0.50/point via vouchers; ₹0.20/point via product catalogue
-- Axis Magnus: ₹0.50/point via Travel EDGE portal
-- Axis Atlas: ₹0.50/point via Travel EDGE portal
-- SBI Elite / SimplyCLICK: ₹0.25/point
-- ICICI Sapphiro / Emeralde: ₹0.25-0.50/point (Emeralde gets ₹0.50 via InterMiles)
-- Amex Platinum / Gold: ₹0.30-1.00/point depending on redemption channel
-- IDFC FIRST Wealth / Select: ₹0.25/point via rewards catalogue
-
-## Airline Transfer Partners Available in India (2026)
-
-Premium Indian credit cards support transfers to: Singapore Airlines KrisFlyer, British Airways Avios/Executive Club, Air India Flying Returns, Finnair Plus, Turkish Airlines Miles&Smiles, Etihad Guest, Air France-KLM Flying Blue, Japan Airlines Mileage Bank, Emirates Skywards, Virgin Atlantic Flying Club, InterMiles, and others.
-
-Best transfer ratios (1:1): HDFC Infinia to Singapore Airlines KrisFlyer, HDFC Infinia to Finnair Plus.
-
-## Hotel Transfer Partners Available in India (2026)
-
-Marriott Bonvoy, IHG One Rewards, Accor Live Limitless (varies by card — Axis removed Marriott and Accor in April 2026).
-
-## Pages
-
-- [Homepage / Points Calculator](https://www.pointsmax.in/)
-- [Airline & Hotel Transfer Partners Directory](https://www.pointsmax.in/transfers)
-- [Blog](https://www.pointsmax.in/blog)
+### Listicles
 - [Best Credit Cards for International Travel India 2026](https://www.pointsmax.in/blog/best-credit-cards-international-travel-india-2026)
+- [Best Lifetime Free Credit Cards India 2026](https://www.pointsmax.in/blog/best-lifetime-free-credit-cards-india-2026)
+- [Best Credit Cards for Fuel India 2026](https://www.pointsmax.in/blog/best-credit-cards-fuel-india-2026)
+- [Best Credit Cards India 2026 by Spend Level](https://www.pointsmax.in/blog/best-credit-cards-india-2026)
+
+### Guides & Trackers
 - [Singapore Airlines KrisFlyer India Guide 2026](https://www.pointsmax.in/blog/singapore-airlines-krisflyer-india-guide-2026)
 - [Indian Credit Card Devaluation Tracker 2024-2026](https://www.pointsmax.in/blog/credit-card-devaluation-tracker-india-2026)
-- [Axis Magnus Credit Card Review 2026](https://www.pointsmax.in/blog/axis-magnus-credit-card-review-2026)
-- [HDFC Diners Club Black Review 2026](https://www.pointsmax.in/blog/hdfc-diners-club-black-credit-card-review-2026)
-- [Best Credit Cards for Fuel India 2026](https://www.pointsmax.in/blog/best-credit-cards-fuel-india-2026)
-- [Amex Platinum Charge Card Review India 2026](https://www.pointsmax.in/blog/amex-platinum-charge-card-review-india-2026)
-- [Best Lifetime Free Credit Cards India 2026](https://www.pointsmax.in/blog/best-lifetime-free-credit-cards-india-2026)
-- [HDFC Infinia Credit Card Review 2026](https://www.pointsmax.in/blog/hdfc-infinia-credit-card-review-2026)
 - [How to Transfer Credit Card Points to Airline Miles India 2026](https://www.pointsmax.in/blog/credit-card-airline-miles-transfer-india-2026)
-- [HDFC SmartBuy Guide 2026: How to Get ₹1 Per Point](https://www.pointsmax.in/blog/hdfc-smartbuy-guide-2026)
-- [Best Credit Cards in India 2026 by Spend Level](https://www.pointsmax.in/blog/best-credit-cards-india-2026)
-- [What Are Your Credit Card Points Actually Worth in 2026?](https://www.pointsmax.in/blog/credit-card-points-value-india-2026)
+- [HDFC SmartBuy Guide 2026](https://www.pointsmax.in/blog/hdfc-smartbuy-guide-2026)
+- [What Are Your Credit Card Points Worth in 2026](https://www.pointsmax.in/blog/credit-card-points-value-india-2026)
+
+### Company
 - [About PointsMax](https://www.pointsmax.in/about)
-- [Privacy Policy](https://www.pointsmax.in/privacy)
 - [Contact](https://www.pointsmax.in/contact)
+- [Privacy Policy](https://www.pointsmax.in/privacy)
