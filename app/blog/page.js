@@ -5,6 +5,14 @@ export const metadata = {
 
 const posts = [
   {
+    slug: 'best-credit-cards-international-travel-india-2026',
+    title: 'Best Credit Cards for International Travel India 2026: Ranked by What Actually Matters',
+    excerpt: 'Forex markup, lounge access, reward rate on international spend — ranked by real travel value, not affiliate commission. Plus the two-card stack that beats every single-card strategy.',
+    date: 'May 28, 2026',
+    readTime: '10 min read',
+    tag: 'Listicle',
+  },
+  {
     slug: 'singapore-airlines-krisflyer-india-guide-2026',
     title: 'Singapore Airlines KrisFlyer: The Complete India Guide 2026',
     excerpt: 'Which Indian cards transfer at 1:1, the post-November 2025 award chart decoded, India route sweet spots with real mile counts, and a step-by-step booking guide for Indian cardholders.',
