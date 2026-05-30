@@ -1,136 +1,66 @@
-''  const posts = [
+'use client'
+import PageNav from '@/components/PageNav'
+
+const posts = [
   { slug: 'best-credit-cards-rent-payment-india-2026', title: 'Best Credit Cards for Rent Payment India 2026: The Honest Guide', excerpt: 'Most banks excluded rent from rewards in 2026. Here\'s which cards still earn, platform fees compared, and the fee waiver play that often beats everything else.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-flights-on-points-india-2026', title: 'Best Credit Cards for Flights on Points India 2026: Ranked by Real Returns', excerpt: 'Magnus at ~24% is outdated after April 2026. Here\'s the accurate ranking with real ₹/mile math and post-devaluation transfer ratios.', date: 'May 30, 2026', readTime: '9 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-hotels-on-points-india-2026', title: 'Best Credit Cards for Hotels on Points India 2026', excerpt: 'After Axis removed Marriott and Accor in April 2026, the hotel transfer landscape changed. Here\'s what\'s left and which card now leads.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-utility-bills-india-2026', title: 'Best Credit Cards for Utility Bills and Tax Payments India 2026', excerpt: 'Most premium cards earn ₹0 on utilities. But two HDFC business cards earn up to 16.6% — and one free card covers it via UPI.', date: 'May 30, 2026', readTime: '7 min read', tag: 'Guide' },
-  {
-    slug: 'best-credit-cards-international-travel-india-2026',
-    title: 'Best Credit Cards for International Travel India 2026: Ranked by What Actually Matters',
-    excerpt: 'Forex markup, lounge access, reward rate on international spend — ranked by real travel value, not affiliate commission. Plus the two-card stack that beats every single-card strategy.',
-    date: 'May 28, 2026',
-    readTime: '10 min read',
-    tag: 'Listicle',
-  },
-  {
-    slug: 'singapore-airlines-krisflyer-india-guide-2026',
-    title: 'Singapore Airlines KrisFlyer: The Complete India Guide 2026',
-    excerpt: 'Which Indian cards transfer at 1:1, the post-November 2025 award chart decoded, India route sweet spots with real mile counts, and a step-by-step booking guide for Indian cardholders.',
-    date: 'Jun 1, 2026',
-    readTime: '14 min read',
-    tag: 'Loyalty Guide',
-  },
-  {
-    slug: 'credit-card-devaluation-tracker-india-2026',
-    title: 'Indian Credit Card Devaluation Tracker 2024–2026: Every Change, Every Bank',
-    excerpt: 'Every reward cut, transfer partner removal, and earn rate reduction across HDFC, Axis, SBI, ICICI — documented with dates and impact. Updated monthly.',
-    date: 'May 27, 2026',
-    readTime: '12 min read',
-    tag: 'Tracker',
-  },
-  {
-    slug: 'axis-magnus-credit-card-review-2026',
-    title: 'Axis Magnus Review 2026: Still Worth ₹12,500 After the April Massacre?',
-    excerpt: 'Marriott gone. Accor gone. Qatar gone. Transfer ratio halved overnight with zero notice. Here\'s what\'s left — and the honest verdict on whether you should keep the card.',
-    date: 'May 26, 2026',
-    readTime: '11 min read',
-    tag: 'Card Review',
-  },
-  {
-    slug: 'hdfc-diners-club-black-credit-card-review-2026',
-    title: 'HDFC Diners Club Black Review 2026: The Accessible Infinia (With One Catch)',
-    excerpt: 'Same rewards as Infinia, lower fee, easier to get. So why doesn\'t everyone have this card? There\'s one thing that trips people up — and it\'s not what you think.',
-    date: 'May 25, 2026',
-    readTime: '10 min read',
-    tag: 'Card Review',
-  },
-  {
-    slug: 'best-credit-cards-fuel-india-2026',
-    title: 'Best Credit Cards for Fuel in India 2026 (The Best One Isn\'t a Fuel Card)',
-    excerpt: 'Most fuel card lists recommend HPCL and BPCL cards. The math says otherwise. Here\'s what actually saves you the most at the pump — with an interactive calculator.',
-    date: 'May 23, 2026',
-    readTime: '7 min read',
-    tag: 'Listicle',
-  },
-  {
-    slug: 'amex-platinum-charge-card-review-india-2026',
-    title: 'Amex Platinum Charge Card Review India 2026: The ₹66,000 Question',
-    excerpt: 'American Express claims ₹4.5 lakh in annual value. The internet says it\'s aspirational. Here\'s the breakeven math that tells you if it\'s actually worth it for you.',
-    date: 'May 23, 2026',
-    readTime: '11 min read',
-    tag: 'Card Review',
-  },
-  {
-    slug: 'best-lifetime-free-credit-cards-india-2026',
-    title: 'Best Lifetime Free Credit Cards in India 2026: Ranked by What You Actually Get',
-    excerpt: '10 genuinely free cards ranked by effective return — not by affiliate payout. Plus the ₹0-fee three-card portfolio that quietly outperforms most premium cards.',
-    date: 'May 22, 2026',
-    readTime: '9 min read',
-    tag: 'Listicle',
-  },
-  {
-    slug: 'hdfc-infinia-credit-card-review-2026',
-    title: 'HDFC Infinia Credit Card Review 2026: Still India\'s Most Valuable Card?',
-    excerpt: 'Per-point value across SmartBuy, vouchers, transfers. The ₹18L retention requirement, monthly caps, 22 transfer partners, and the breakeven math.',
-    date: 'May 21, 2026',
-    readTime: '12 min read',
-    tag: 'Card Review',
-  },
-  {
-    slug: 'credit-card-airline-miles-transfer-india-2026',
-    title: 'How to Turn Credit Card Points Into Business Class Flights (The Indian Transfer Guide)',
-    excerpt: 'Your HDFC or Axis points can buy you a flat-bed seat to Singapore. The 5 best transfers, the Avios hack, and when to transfer vs use the travel portal.',
-    date: 'May 20, 2026',
-    readTime: '11 min read',
-    tag: 'Strategy',
-  },
-  {
-    slug: 'hdfc-smartbuy-guide-2026',
-    title: 'HDFC SmartBuy: The Only Way to Get ₹1 Per Point (And the Tricks They Don\'t Tell You)',
-    excerpt: 'SmartBuy is the single most valuable feature of any HDFC card. Earn rates by card, monthly caps, the voucher hack, and the 4 mistakes that waste your points.',
-    date: 'May 20, 2026',
-    readTime: '9 min read',
-    tag: 'Deep Dive',
-  },
-  {
-    slug: 'best-credit-cards-india-2026',
-    title: 'Best Credit Cards in India 2026: Ranked by What Your Points Are Actually Worth',
-    excerpt: 'Not another "top 10" list. We ranked every card by real rupee value per point — because a 10x earn rate means nothing if each point is worth ₹0.10.',
-    date: 'May 19, 2026',
-    readTime: '10 min read',
-    tag: 'Guide',
-  },
-  {
-    slug: 'credit-card-points-value-india-2026',
-    title: 'What Are Your Credit Card Points Actually Worth? The 2026 Reality Check',
-    excerpt: 'Every major Indian bank slashed rewards this year. Here\'s what your points are really worth now — card by card, method by method.',
-    date: 'May 18, 2026',
-    readTime: '8 min read',
-    tag: 'Guide',
-  },
+  { slug: 'best-credit-cards-international-travel-india-2026', title: 'Best Credit Cards for International Travel India 2026: Ranked by What Actually Matters', excerpt: 'Forex markup, lounge access, reward rate on international spend — ranked by real travel value, not affiliate commission. Plus the two-card stack that beats every single-card strategy.', date: 'May 28, 2026', readTime: '10 min read', tag: 'Guide' },
+  { slug: 'singapore-airlines-krisflyer-india-guide-2026', title: 'Singapore Airlines KrisFlyer: The Complete India Guide 2026', excerpt: 'Which Indian cards transfer at 1:1, the post-November 2025 award chart decoded, India route sweet spots with real mile counts, and a step-by-step booking guide for Indian cardholders.', date: 'Jun 1, 2026', readTime: '14 min read', tag: 'Loyalty Guide' },
+  { slug: 'credit-card-devaluation-tracker-india-2026', title: 'Indian Credit Card Devaluation Tracker 2024–2026: Every Change, Every Bank', excerpt: 'Every reward cut, transfer partner removal, and earn rate reduction across HDFC, Axis, SBI, ICICI — documented with dates and impact. Updated monthly.', date: 'May 27, 2026', readTime: '12 min read', tag: 'Tracker' },
+  { slug: 'axis-magnus-credit-card-review-2026', title: 'Axis Magnus Review 2026: Still Worth ₹12,500 After the April Massacre?', excerpt: 'Marriott gone. Accor gone. Qatar gone. Transfer ratio halved overnight with zero notice. Here\'s what\'s left — and whether you should keep the card.', date: 'May 26, 2026', readTime: '11 min read', tag: 'Card Review' },
+  { slug: 'hdfc-diners-club-black-credit-card-review-2026', title: 'HDFC Diners Club Black Review 2026', excerpt: 'The same rewards as Infinia at ₹10,000 fee — with complimentary Amazon Prime, Swiggy One, and Times Prime. Is it better than Infinia?', date: 'May 25, 2026', readTime: '10 min read', tag: 'Card Review' },
+  { slug: 'amex-platinum-charge-card-review-india-2026', title: 'Amex Platinum Charge Card Review India 2026', excerpt: 'Is ₹66,000/year worth it? The honest breakeven math — Taj benefits, Fine Hotels & Resorts credits, 1,400+ lounges, and airline transfers.', date: 'May 23, 2026', readTime: '12 min read', tag: 'Card Review' },
+  { slug: 'best-credit-cards-fuel-india-2026', title: 'Best Credit Cards for Fuel India 2026', excerpt: 'The best fuel card isn\'t a fuel card. Amazon Pay ICICI via HP Pay gives 5% at ₹0 fee — beating every dedicated fuel card in India.', date: 'May 23, 2026', readTime: '7 min read', tag: 'Guide' },
+  { slug: 'best-lifetime-free-credit-cards-india-2026', title: 'Best Lifetime Free Credit Cards India 2026', excerpt: '10 genuinely free cards ranked by effective return. The ₹0-fee three-card portfolio that beats most ₹10,000/year premium cards.', date: 'May 22, 2026', readTime: '8 min read', tag: 'Guide' },
+  { slug: 'hdfc-infinia-credit-card-review-2026', title: 'HDFC Infinia Credit Card Review 2026', excerpt: 'The best premium credit card in India — if you can get it. ₹1/point on SmartBuy, 22 transfer partners, and the only card with an invitation-only waitlist worth joining.', date: 'May 21, 2026', readTime: '11 min read', tag: 'Card Review' },
+  { slug: 'credit-card-airline-miles-transfer-india-2026', title: 'How to Transfer Credit Card Points to Airline Miles India 2026', excerpt: 'When to transfer vs use SmartBuy. The Avios ecosystem hack, route math, post-devaluation ratios, and the transfers to avoid entirely.', date: 'May 20, 2026', readTime: '9 min read', tag: 'Guide' },
+  { slug: 'hdfc-smartbuy-guide-2026', title: 'HDFC SmartBuy Complete Guide 2026', excerpt: 'The voucher hack that gives you 5X on groceries, the 10X flight earn rate, monthly caps, and 4 mistakes that destroy your SmartBuy points value.', date: 'May 20, 2026', readTime: '8 min read', tag: 'Guide' },
+  { slug: 'best-credit-cards-india-2026', title: 'Best Credit Cards India 2026 by Spend Level', excerpt: 'Cards ranked by real ₹/point value for every spend level — under ₹5L, ₹5-15L, and ₹15L+. No affiliate rankings.', date: 'May 19, 2026', readTime: '9 min read', tag: 'Guide' },
+  { slug: 'credit-card-points-value-india-2026', title: 'What Are Your Credit Card Points Worth in 2026?', excerpt: 'Post-devaluation reality check — every major Indian card, every redemption method, in rupees. Updated May 2026.', date: 'May 18, 2026', readTime: '7 min read', tag: 'Guide' },
 ]
 
-'use client'
-import PageNav from '@/components/PageNav'
+const TAG_COLORS = {
+  'Card Review': '#2563eb',
+  'Guide': '#2D6A4F',
+  'Loyalty Guide': '#0891b2',
+  'Tracker': '#dc2626',
+}
 
 export default function Blog() {
   return (
     <div className="min-h-screen">
       <PageNav />
       <div className="max-w-2xl mx-auto px-5 py-10">
-        <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '28px', color: 'var(--text)', letterSpacing: '-0.02em' }}>Blog</h1>
-        <p className="mt-2 text-[15px]" style={{ color: 'var(--text-s)' }}>Guides, analysis, and no-BS takes on credit card rewards in India.</p>
+        <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '28px', color: 'var(--text)', letterSpacing: '-0.02em' }}>
+          Learn
+        </h1>
+        <p className="mt-2 text-[15px]" style={{ color: 'var(--text-s)' }}>
+          Guides, analysis, and no-BS takes on credit card rewards in India.
+        </p>
 
-        <div className="mt-10 space-y-6">
+        <div className="mt-8 space-y-4">
           {posts.map(p => (
-            <a key={p.slug} href={'/blog/' + p.slug} className="block p-6 rounded-2xl transition-all duration-200 hover:border-white/[0.12]"
-              style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded" style={{ color: 'var(--green)', background: 'rgba(110,231,183,0.08)' }}>{p.tag}</span>
+            <a key={p.slug} href={'/blog/' + p.slug}
+              className="block p-5 rounded-2xl transition-all duration-200"
+              style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-m)'}
+              onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded"
+                  style={{ color: TAG_COLORS[p.tag] || 'var(--text-m)', background: (TAG_COLORS[p.tag] || '#888') + '14' }}>
+                  {p.tag}
+                </span>
                 <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>{p.date}</span>
-                <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>{p.readTime}</span>
+                <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>· {p.readTime}</span>
               </div>
-              <h2 className="text-[18px] font-semibold leading-snug" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--text)' }}>{p.title}</h2>
-              <p className="mt-2 text-[14px] leading-relaxed" style={{ color: 'var(--text-s)' }}>{p.excerpt}</p>
+              <p className="text-[16px] font-semibold leading-snug mb-1.5" style={{ color: 'var(--text)', fontFamily: 'Playfair Display, serif' }}>
+                {p.title}
+              </p>
+              <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
+                {p.excerpt}
+              </p>
             </a>
           ))}
         </div>
