@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import FeedbackWidget from '@/components/FeedbackWidget'
+import PageNav from '@/components/PageNav'
 
 const blogJsonLd = {
   '@context': 'https://schema.org', '@type': 'Article',
@@ -55,6 +56,8 @@ export default function BlogPost() {
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <>
+      <PageNav />
       <article className="max-w-2xl mx-auto px-5 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-8 text-[13px]" style={{ color: 'var(--text-m)' }}>

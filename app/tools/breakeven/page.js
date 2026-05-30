@@ -1,4 +1,5 @@
 'use client'
+import PageNav from '@/components/PageNav'
 
 import { useState, useMemo, useEffect } from 'react'
 import { breakeven as breakevenTrack } from '@/lib/analytics'
@@ -79,7 +80,8 @@ export default function BreakevenCalculator() {
   }, [card.name, annualSpend, netAfterWaiver])
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
+    <div className="min-h-screen">
+      <PageNav /> style={{ background: 'var(--bg)' }}>
       {/* Nav */}
       <nav className="sticky top-0 z-50" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-2xl mx-auto flex items-center justify-between px-5 py-3.5">

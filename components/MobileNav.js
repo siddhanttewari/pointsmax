@@ -68,13 +68,19 @@ const TABS = [
   },
 ]
 
-// Pages that are "deep" — show a back button instead of logo
+// Pages that are "deep" — show a back button
 function getPageMeta(pathname) {
   if (pathname.startsWith('/blog/')) {
-    return { isDeep: true, backLabel: 'All Guides', backHref: '/blog' }
+    return { isDeep: true, backLabel: 'Learn', backHref: '/blog' }
+  }
+  if (pathname === '/blog') {
+    return { isDeep: true, backLabel: 'Home', backHref: '/' }
+  }
+  if (pathname === '/transfers') {
+    return { isDeep: true, backLabel: 'Home', backHref: '/' }
   }
   if (pathname === '/tools/card-quiz') {
-    return { isDeep: true, backLabel: 'Tools', backHref: '/tools/card-quiz' }
+    return { isDeep: true, backLabel: 'Home', backHref: '/' }
   }
   if (pathname === '/tools/breakeven') {
     return { isDeep: true, backLabel: 'Tools', backHref: '/tools/card-quiz' }
@@ -83,7 +89,10 @@ function getPageMeta(pathname) {
     return { isDeep: true, backLabel: 'Tools', backHref: '/tools/card-quiz' }
   }
   if (pathname === '/search') {
-    return { isDeep: false, backLabel: null, backHref: null }
+    return { isDeep: true, backLabel: 'Home', backHref: '/' }
+  }
+  if (pathname === '/about' || pathname === '/contact' || pathname === '/privacy') {
+    return { isDeep: true, backLabel: 'Home', backHref: '/' }
   }
   return { isDeep: false, backLabel: null, backHref: null }
 }

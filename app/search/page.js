@@ -46,6 +46,8 @@ const TYPE_COLORS = {
   'Tool': 'var(--gold)',
 }
 
+import PageNav from '@/components/PageNav'
+
 function search(query) {
   if (!query || query.trim().length < 2) return []
   const q = query.toLowerCase().trim()
@@ -112,17 +114,7 @@ export default function SearchPage() {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
-      <nav className="sticky top-0 z-50" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="max-w-2xl mx-auto flex items-center justify-between px-5 py-3.5">
-          <a href="/" className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg grid place-items-center" style={{ background: 'var(--gold)' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1A1614" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5" /></svg>
-            </div>
-            <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '17px', color: '#FAF8F5' }}>PointsMax</span>
-          </a>
-        </div>
-      </nav>
-
+      <PageNav />
       <main className="max-w-2xl mx-auto px-5 py-10">
         <h1 className="mb-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '26px', color: 'var(--text)', letterSpacing: '-0.02em' }}>
           Search PointsMax

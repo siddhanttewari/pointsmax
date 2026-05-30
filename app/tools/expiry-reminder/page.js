@@ -1,4 +1,5 @@
 'use client'
+import PageNav from '@/components/PageNav'
 
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
@@ -67,7 +68,8 @@ export default function ExpiryReminder() {
   const expiryDate = getExpiryDate()
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
+    <div className="min-h-screen">
+      <PageNav /> style={{ background: 'var(--bg)' }}>
       <nav className="sticky top-0 z-50" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-2xl mx-auto flex items-center justify-between px-5 py-3.5">
           <a href="/" className="flex items-center gap-2.5">
