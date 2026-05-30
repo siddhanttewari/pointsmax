@@ -35,8 +35,7 @@ export default function PageNav({ showSearch = true }) {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
-
-          {/* Inline search — expands on click (mobile + desktop) */}
+          {/* Search — visible on both mobile and desktop */}
           {showSearch && (
             <>
               {searchOpen ? (
@@ -46,12 +45,12 @@ export default function PageNav({ showSearch = true }) {
                     value={q}
                     onChange={e => setQ(e.target.value)}
                     autoFocus
-                    placeholder="Search PointsMax..."
-                    className="rounded-lg px-3 py-1.5 text-[13px] outline-none w-[180px] sm:w-[240px]"
+                    placeholder="Search..."
+                    className="rounded-lg px-3 py-1.5 text-[13px] outline-none w-[150px] sm:w-[220px]"
                     style={{ background: 'rgba(255,255,255,0.1)', color: '#FAF8F5', border: '1px solid rgba(255,255,255,0.15)' }}
                     onBlur={() => { if (!q.trim()) setSearchOpen(false) }}
                   />
-                  <button type="submit" className="p-1.5 rounded-lg" style={{ background: 'var(--gold)' }}>
+                  <button type="submit" className="p-1.5 rounded-lg shrink-0" style={{ background: 'var(--gold)' }}>
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1614" strokeWidth="2.5" strokeLinecap="round">
                       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
                     </svg>
@@ -60,7 +59,7 @@ export default function PageNav({ showSearch = true }) {
               ) : (
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className="w-8 h-8 grid place-items-center rounded-lg transition-colors"
+                  className="w-8 h-8 grid place-items-center rounded-lg"
                   style={{ background: 'rgba(255,255,255,0.08)' }}
                   aria-label="Search">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(250,248,245,0.7)" strokeWidth="2" strokeLinecap="round">
@@ -71,21 +70,21 @@ export default function PageNav({ showSearch = true }) {
             </>
           )}
 
-          {/* Desktop nav links — hidden on mobile (FAB handles it) */}
-          <div className="hidden sm:flex items-center gap-1 ml-2">
-            <a href="/tools/card-quiz" className="px-3 py-1.5 rounded-lg text-[12px] font-medium transition-colors"
+          {/* Desktop nav links only — FAB handles mobile */}
+          <div className="hidden sm:flex items-center gap-1 ml-1">
+            <a href="/tools/card-quiz" className="px-3 py-1.5 rounded-lg text-[12px] font-medium"
               style={{ color: 'rgba(250,248,245,0.55)' }}
               onMouseEnter={e => e.currentTarget.style.color = '#FAF8F5'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,248,245,0.55)'}>
               Tools
             </a>
-            <a href="/transfers" className="px-3 py-1.5 rounded-lg text-[12px] font-medium transition-colors"
+            <a href="/transfers" className="px-3 py-1.5 rounded-lg text-[12px] font-medium"
               style={{ color: 'rgba(250,248,245,0.55)' }}
               onMouseEnter={e => e.currentTarget.style.color = '#FAF8F5'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,248,245,0.55)'}>
               Transfers
             </a>
-            <a href="/blog" className="px-3 py-1.5 rounded-lg text-[12px] font-medium transition-colors"
+            <a href="/blog" className="px-3 py-1.5 rounded-lg text-[12px] font-medium"
               style={{ color: 'rgba(250,248,245,0.55)' }}
               onMouseEnter={e => e.currentTarget.style.color = '#FAF8F5'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,248,245,0.55)'}>
