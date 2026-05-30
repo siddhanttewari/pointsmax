@@ -4,6 +4,10 @@ export const metadata = {
 }
 
 const posts = [
+  { slug: 'best-credit-cards-rent-payment-india-2026', title: 'Best Credit Cards for Rent Payment India 2026: The Honest Guide', excerpt: 'Most banks excluded rent from rewards in 2026. Here\'s which cards still earn, platform fees compared, and the fee waiver play that often beats everything else.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
+  { slug: 'best-credit-cards-flights-on-points-india-2026', title: 'Best Credit Cards for Flights on Points India 2026: Ranked by Real Returns', excerpt: 'Magnus at ~24% is outdated after April 2026. Here\'s the accurate ranking with real ₹/mile math and post-devaluation transfer ratios.', date: 'May 30, 2026', readTime: '9 min read', tag: 'Guide' },
+  { slug: 'best-credit-cards-hotels-on-points-india-2026', title: 'Best Credit Cards for Hotels on Points India 2026', excerpt: 'After Axis removed Marriott and Accor in April 2026, the hotel transfer landscape changed. Here\'s what\'s left and which card now leads.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
+  { slug: 'best-credit-cards-utility-bills-india-2026', title: 'Best Credit Cards for Utility Bills and Tax Payments India 2026', excerpt: 'Most premium cards earn ₹0 on utilities. But two HDFC business cards earn up to 16.6% — and one free card covers it via UPI.', date: 'May 30, 2026', readTime: '7 min read', tag: 'Guide' },
   {
     slug: 'best-credit-cards-international-travel-india-2026',
     title: 'Best Credit Cards for International Travel India 2026: Ranked by What Actually Matters',
