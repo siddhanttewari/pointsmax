@@ -182,7 +182,6 @@ export default function BlogPost() {
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <>
       <PageNav />
       <article className="max-w-2xl mx-auto px-5 py-12">
         {/* Breadcrumb */}

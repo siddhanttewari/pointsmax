@@ -81,7 +81,8 @@ export default function BreakevenCalculator() {
 
   return (
     <div className="min-h-screen">
-      <PageNav /> style={{ background: 'var(--bg)' }}>
+      <PageNav />
+      
       {/* Nav */}
       <nav className="sticky top-0 z-50" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-2xl mx-auto flex items-center justify-between px-5 py-3.5">
