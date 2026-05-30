@@ -63,6 +63,10 @@ function MobileNav() {
   ]
 
   const handleTab = (tab) => {
+    // Track FAB navigation in GA4
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'fab_nav_click', { tab: tab.id, destination: tab.href || 'chat' })
+    }
     if (tab.id === 'ask') {
       window.dispatchEvent(new CustomEvent('pm-toggle-chat'))
       setActive(prev => prev === 'ask' ? 'home' : 'ask')
