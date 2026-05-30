@@ -1,4 +1,5 @@
 import './globals.css'
+import ChatbotWrapper from '@/components/ChatbotWrapper'
 
 export const viewport = {
   width: 'device-width',
@@ -70,6 +71,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        <ChatbotWrapper />
       </body>
     </html>
   )

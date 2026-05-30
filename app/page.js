@@ -184,6 +184,7 @@ export default function Home() {
 
           {/* Mobile: just show key links */}
           <div className="flex sm:hidden items-center gap-3">
+            <a href="/search" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>🔍</a>
             <a href="/tools/card-quiz" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Quiz</a>
             <a href="/blog" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Learn</a>
           </div>

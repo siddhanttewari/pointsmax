@@ -47,3 +47,28 @@ CREATE POLICY "Anyone can submit feedback"
   ON feedback FOR INSERT WITH CHECK (true);
 CREATE POLICY "Only authenticated users can read feedback"
   ON feedback FOR SELECT USING (auth.role() = 'authenticated');
+
+-- Site search queries
+CREATE TABLE search_queries (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  query text NOT NULL,
+  results_count integer DEFAULT 0,
+  created_at timestamptz DEFAULT now()
+);
+ALTER TABLE search_queries ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone can log search" ON search_queries FOR INSERT WITH CHECK (true);
+CREATE POLICY "Auth users can read searches" ON search_queries FOR SELECT USING (auth.role() = 'authenticated');
+
+-- Chatbot conversations
+CREATE TABLE chat_conversations (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  session_id text NOT NULL,
+  user_message text NOT NULL,
+  bot_response text NOT NULL,
+  matched_intent text,
+  page_url text,
+  created_at timestamptz DEFAULT now()
+);
+ALTER TABLE chat_conversations ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone can log chat" ON chat_conversations FOR INSERT WITH CHECK (true);
+CREATE POLICY "Auth users can read chats" ON chat_conversations FOR SELECT USING (auth.role() = 'authenticated');
