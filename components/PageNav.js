@@ -11,6 +11,10 @@ export default function PageNav({ showSearch = true }) {
   const handleSearch = (e) => {
     e.preventDefault()
     if (q.trim()) {
+      // Track in GA4
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'site_search', { search_term: q.trim(), source: 'pagenav' })
+      }
       router.push(`/search?q=${encodeURIComponent(q.trim())}`)
       setSearchOpen(false)
       setQ('')
