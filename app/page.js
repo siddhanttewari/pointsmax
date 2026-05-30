@@ -3,6 +3,105 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { getCards, getRedemptions, getTransferPartners } from '@/lib/supabase'
 import { HeaderAd, InFeedAd } from '@/components/AdUnit'
+
+function MobileNav() {
+  const [active, setActive] = useState('home')
+
+  useEffect(() => {
+    const p = window.location.pathname
+    if (p === '/') setActive('home')
+    else if (p.startsWith('/tools')) setActive('tools')
+    else if (p === '/transfers') setActive('transfers')
+    else if (p.startsWith('/blog')) setActive('learn')
+    else if (p === '/search') setActive('search')
+  }, [])
+
+  const tabs = [
+    {
+      id: 'home', label: 'Calculator', href: '/',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 12h5l3-9 4 18 3-9h5"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'tools', label: 'Tools', href: '/tools/card-quiz',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="8" height="8" rx="1"/><rect x="14" y="3" width="8" height="8" rx="1"/>
+          <rect x="14" y="13" width="8" height="8" rx="1"/><rect x="2" y="13" width="8" height="8" rx="1"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'transfers', label: 'Transfers', href: '/transfers',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+          <path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'learn', label: 'Learn', href: '/blog',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'ask', label: 'Ask', href: null,
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      ),
+    },
+  ]
+
+  const handleTab = (tab) => {
+    if (tab.id === 'ask') {
+      window.dispatchEvent(new CustomEvent('pm-toggle-chat'))
+      setActive(prev => prev === 'ask' ? 'home' : 'ask')
+    } else {
+      window.location.href = tab.href
+    }
+  }
+
+  return (
+    <>
+      <div className="sm:hidden fixed bottom-5 left-4 right-4 z-50"
+        style={{ filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.35))' }}>
+        <div className="flex items-center rounded-[18px]"
+          style={{ background: '#1A1614', border: '1px solid rgba(255,255,255,0.1)', padding: '5px', gap: '2px' }}>
+          {tabs.map(tab => {
+            const isActive = tab.id === active
+            return (
+              <button key={tab.id} onClick={() => handleTab(tab)}
+                className="flex-1 flex flex-col items-center justify-center gap-1 rounded-[13px] transition-all duration-200"
+                style={{
+                  padding: '9px 4px 8px',
+                  background: isActive ? 'rgba(184,149,62,0.18)' : 'transparent',
+                  color: isActive ? '#B8953E' : 'rgba(250,248,245,0.38)',
+                  border: isActive ? '1px solid rgba(184,149,62,0.25)' : '1px solid transparent',
+                }}>
+                {tab.icon}
+                <span style={{ fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', lineHeight: 1 }}>
+                  {tab.label}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+      {/* Spacer so content clears the FAB */}
+      <div className="sm:hidden h-24" />
+    </>
+  )
+}
 import PushNotification from '@/components/PushNotification'
 
 const BANK_DOT = {
@@ -182,14 +281,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile: just show key links */}
-          <div className="flex sm:hidden items-center gap-3">
-            <a href="/search" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>🔍</a>
-            <a href="/tools/card-quiz" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Quiz</a>
-            <a href="/blog" className="text-[12px] font-medium" style={{ color: 'rgba(250,248,245,0.5)' }}>Learn</a>
+          {/* Mobile: search icon only in topbar — FAB handles main nav */}
+          <div className="flex sm:hidden items-center gap-2">
+            <a href="/search" className="w-8 h-8 grid place-items-center rounded-lg transition-colors"
+              style={{ background: 'rgba(255,255,255,0.08)' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(250,248,245,0.7)" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </a>
           </div>
         </div>
       </nav>
+
+      {/* ── FLOATING ACTION BAR (mobile only) ── */}
+      <MobileNav />
 
       {/* ── HERO ── */}
       <header className="pt-10 pb-6 px-5">

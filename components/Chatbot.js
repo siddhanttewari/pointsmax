@@ -135,6 +135,13 @@ export default function Chatbot() {
     if (open && inputRef.current) inputRef.current.focus()
   }, [messages, open])
 
+  // Listen for FAB "Ask" tab toggle
+  useEffect(() => {
+    const handler = () => setOpen(prev => !prev)
+    window.addEventListener('pm-toggle-chat', handler)
+    return () => window.removeEventListener('pm-toggle-chat', handler)
+  }, [])
+
   const sendMessage = async () => {
     if (!input.trim()) return
     const userMsg = input.trim()
@@ -168,10 +175,10 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating button — desktop only (mobile uses FAB Ask tab) */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-5 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-200"
+        className="hidden sm:flex fixed bottom-6 right-5 z-50 w-12 h-12 rounded-full items-center justify-center shadow-lg transition-all duration-200"
         style={{ background: open ? 'var(--text)' : 'var(--dark)', border: '1px solid rgba(255,255,255,0.15)' }}
         aria-label="Open chat">
         {open
@@ -182,8 +189,18 @@ export default function Chatbot() {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed bottom-20 right-5 z-50 w-[340px] sm:w-[380px] rounded-2xl shadow-2xl overflow-hidden"
-          style={{ background: 'var(--bg)', border: '1px solid var(--border)', maxHeight: '520px', display: 'flex', flexDirection: 'column' }}>
+        <div className="fixed z-50 rounded-2xl shadow-2xl overflow-hidden"
+          style={{
+            background: 'var(--bg)', border: '1px solid var(--border)',
+            maxHeight: '520px', display: 'flex', flexDirection: 'column',
+            // Desktop: bottom-right corner. Mobile: full width above FAB
+            bottom: 'calc(env(safe-area-inset-bottom) + 84px)',
+            right: '16px', left: '16px',
+            // On desktop, constrain width
+            ...(typeof window !== 'undefined' && window.innerWidth >= 640 ? {
+              bottom: '88px', right: '20px', left: 'auto', width: '380px',
+            } : {}),
+          }}>
 
           {/* Header */}
           <div className="px-4 py-3.5 flex items-center gap-3" style={{ background: 'var(--dark)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
