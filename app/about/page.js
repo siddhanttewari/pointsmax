@@ -1,13 +1,11 @@
-export const metadata = {
-  title: 'About PointsMax — India\'s Credit Card Points Value Calculator',
-  description: 'PointsMax is a free, independent tool that shows Indian credit card holders the real rupee value of their reward points. No affiliate links, no sponsored rankings, just accurate data.',
-}
+'use client'
+import PageNav from '@/components/PageNav'
 
 export default function About() {
   return (
     <div className="min-h-screen">
-      <div className="max-w-2xl mx-auto px-5 py-16">
-        <a href="/" className="text-[13px] font-medium mb-8 inline-block" style={{ color: 'var(--text-m)' }}>← Back to PointsMax</a>
+      <PageNav />
+      <div className="max-w-2xl mx-auto px-5 py-10">
 
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '32px', color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
           About PointsMax

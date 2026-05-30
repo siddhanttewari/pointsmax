@@ -1,7 +1,5 @@
-export const metadata = {
-  title: 'Privacy Policy — PointsMax',
-  description: 'Privacy Policy for PointsMax.in — how we collect, use, and protect your data.',
-}
+'use client'
+import PageNav from '@/components/PageNav'
 
 export default function Privacy() {
   const sections = [
@@ -76,8 +74,8 @@ export default function Privacy() {
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-2xl mx-auto px-5 py-16">
-        <a href="/" className="text-[13px] font-medium mb-8 inline-block" style={{ color: 'var(--text-m)' }}>← Back to PointsMax</a>
+      <PageNav />
+      <div className="max-w-2xl mx-auto px-5 py-10">
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '28px', color: 'var(--text)', letterSpacing: '-0.02em' }}>Privacy Policy</h1>
         <p className="mt-3 text-[13px]" style={{ color: 'var(--text-m)' }}>Last updated: May 27, 2026</p>
         <p className="mt-4 text-[15px] leading-relaxed" style={{ color: 'var(--text-s)' }}>

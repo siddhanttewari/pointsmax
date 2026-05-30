@@ -1,9 +1,4 @@
-export const metadata = {
-  title: 'Blog — Credit Card Points Guides & Updates',
-  description: 'Guides, analysis, and updates on credit card reward points in India. Post-2026 devaluation data, redemption strategies, and transfer partner changes.',
-}
-
-const posts = [
+''  const posts = [
   { slug: 'best-credit-cards-rent-payment-india-2026', title: 'Best Credit Cards for Rent Payment India 2026: The Honest Guide', excerpt: 'Most banks excluded rent from rewards in 2026. Here\'s which cards still earn, platform fees compared, and the fee waiver play that often beats everything else.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-flights-on-points-india-2026', title: 'Best Credit Cards for Flights on Points India 2026: Ranked by Real Returns', excerpt: 'Magnus at ~24% is outdated after April 2026. Here\'s the accurate ranking with real ₹/mile math and post-devaluation transfer ratios.', date: 'May 30, 2026', readTime: '9 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-hotels-on-points-india-2026', title: 'Best Credit Cards for Hotels on Points India 2026', excerpt: 'After Axis removed Marriott and Accor in April 2026, the hotel transfer landscape changed. Here\'s what\'s left and which card now leads.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
@@ -114,11 +109,14 @@ const posts = [
   },
 ]
 
+'use client'
+import PageNav from '@/components/PageNav'
+
 export default function Blog() {
   return (
     <div className="min-h-screen">
-      <div className="max-w-2xl mx-auto px-5 py-16">
-        <a href="/" className="text-[13px] font-medium mb-8 inline-block" style={{ color: 'var(--text-m)' }}>← Back to PointsMax</a>
+      <PageNav />
+      <div className="max-w-2xl mx-auto px-5 py-10">
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '28px', color: 'var(--text)', letterSpacing: '-0.02em' }}>Blog</h1>
         <p className="mt-2 text-[15px]" style={{ color: 'var(--text-s)' }}>Guides, analysis, and no-BS takes on credit card rewards in India.</p>
 

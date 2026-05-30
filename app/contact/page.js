@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import PageNav from '@/components/PageNav'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -24,8 +25,8 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-2xl mx-auto px-5 py-16">
-        <a href="/" className="text-[13px] font-medium mb-8 inline-block" style={{ color: 'var(--text-m)' }}>← Back to PointsMax</a>
+      <PageNav />
+      <div className="max-w-2xl mx-auto px-5 py-10">
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '28px', color: 'var(--text)', letterSpacing: '-0.02em' }}>Contact Us</h1>
         <p className="mt-2 text-[15px]" style={{ color: 'var(--text-s)' }}>Found incorrect data? Want a card added? Have feedback? We'd love to hear from you.</p>
 
