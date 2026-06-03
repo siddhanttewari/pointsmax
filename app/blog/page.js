@@ -2,6 +2,7 @@
 import PageNav from '@/components/PageNav'
 
 const posts = [
+  { slug: 'best-krisflyer-routes-india-2026', title: 'Best KrisFlyer Routes from India 2026: Sweet Spots, Miles Required & Real ₹ Value', excerpt: 'The best — and worst — KrisFlyer redemptions from Indian cities. Singapore at 46K, Tokyo at 60K, Sydney at 72K, and the Istanbul Europe hack explained with real rupee math.', date: 'Jun 4, 2026', readTime: '11 min read', tag: 'Loyalty Strategy' },
   { slug: 'hdfc-infinia-vs-axis-magnus-2026', title: 'HDFC Infinia vs Axis Magnus 2026: The Honest Comparison After April\'s Devaluation', excerpt: 'Same ₹12,500 annual fee. Completely different value after April 2026. Full head-to-head: reward rate, transfer partners, fee waiver, lounge access, and real rupee math.', date: 'Jun 3, 2026', readTime: '10 min read', tag: 'Comparison' },
   { slug: 'best-credit-cards-rent-payment-india-2026', title: 'Best Credit Cards for Rent Payment India 2026: The Honest Guide', excerpt: 'Most banks excluded rent from rewards in 2026. Here\'s which cards still earn, platform fees compared, and the fee waiver play that often beats everything else.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-flights-on-points-india-2026', title: 'Best Credit Cards for Flights on Points India 2026: Ranked by Real Returns', excerpt: 'Magnus at ~24% is outdated after April 2026. Here\'s the accurate ranking with real ₹/mile math and post-devaluation transfer ratios.', date: 'May 30, 2026', readTime: '9 min read', tag: 'Guide' },
