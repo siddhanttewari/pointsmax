@@ -2,6 +2,7 @@
 import PageNav from '@/components/PageNav'
 
 const posts = [
+  { slug: 'hdfc-infinia-vs-axis-magnus-2026', title: 'HDFC Infinia vs Axis Magnus 2026: The Honest Comparison After April\'s Devaluation', excerpt: 'Same ₹12,500 annual fee. Completely different value after April 2026. Full head-to-head: reward rate, transfer partners, fee waiver, lounge access, and real rupee math.', date: 'Jun 3, 2026', readTime: '10 min read', tag: 'Comparison' },
   { slug: 'best-credit-cards-rent-payment-india-2026', title: 'Best Credit Cards for Rent Payment India 2026: The Honest Guide', excerpt: 'Most banks excluded rent from rewards in 2026. Here\'s which cards still earn, platform fees compared, and the fee waiver play that often beats everything else.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-flights-on-points-india-2026', title: 'Best Credit Cards for Flights on Points India 2026: Ranked by Real Returns', excerpt: 'Magnus at ~24% is outdated after April 2026. Here\'s the accurate ranking with real ₹/mile math and post-devaluation transfer ratios.', date: 'May 30, 2026', readTime: '9 min read', tag: 'Guide' },
   { slug: 'best-credit-cards-hotels-on-points-india-2026', title: 'Best Credit Cards for Hotels on Points India 2026', excerpt: 'After Axis removed Marriott and Accor in April 2026, the hotel transfer landscape changed. Here\'s what\'s left and which card now leads.', date: 'May 30, 2026', readTime: '8 min read', tag: 'Guide' },
