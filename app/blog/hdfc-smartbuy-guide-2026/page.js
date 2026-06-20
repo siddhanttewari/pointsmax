@@ -243,7 +243,7 @@ export default function BlogPost() {
 
           <p>SmartBuy is free money if you use it. ₹1/point on travel, 3-5x earn rate on everyday spending through the voucher hack, and a compounding loop that generates new points while you spend old ones. The only real effort is remembering to start on the SmartBuy portal instead of going directly to the booking site.</p>
 
-          <p>If you've been using the HDFC product catalogue or redeeming for statement credit, you've been getting 20-50 paise per point instead of ₹1. Switch to SmartBuy. Seriously. It's the single highest-ROI change you can make to your credit card strategy.</p>
+          <p>If you've been using the HDFC product catalogue or redeeming for statement credit, you've been getting 20-50 paise per point instead of ₹1. Switch to SmartBuy. Seriously. It's the single highest-ROI change you can make to your credit card strategy. For the full picture on every redemption method ranked by value, see our guide on <a href="/blog/how-to-redeem-credit-card-points-india-2026" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>how to redeem credit card points for maximum value</a>.</p>
 
           {/* Bottom CTA */}
           <div className="p-6 rounded-2xl text-center mt-8" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>

@@ -229,7 +229,7 @@ export default function BlogPost() {
 
           <div className="p-4 rounded-xl" style={{ background: '#EDF5F0', border: '1px solid #C8DDD0' }}>
             <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
-              <strong style={{ color: 'var(--green)' }}>How to use this tracker:</strong> Find your card below to see what changed and when. Then use the <a href="/" style={{ color: 'var(--green)', textDecoration: 'underline' }}>PointsMax calculator</a> to see what your existing points are worth at current (post-devaluation) rates. If your card has been significantly devalued, our <a href="/blog/best-credit-cards-india-2026" style={{ color: 'var(--green)', textDecoration: 'underline' }}>best cards guide</a> shows the alternatives.
+              <strong style={{ color: 'var(--green)' }}>How to use this tracker:</strong> Find your card below to see what changed and when. Then use the <a href="/" style={{ color: 'var(--green)', textDecoration: 'underline' }}>PointsMax calculator</a> to see what your existing points are worth at current (post-devaluation) rates. If your card has been significantly devalued, our <a href="/blog/best-credit-cards-india-2026" style={{ color: 'var(--green)', textDecoration: 'underline' }}>best cards guide</a> shows the alternatives, and our <a href="/blog/how-to-redeem-credit-card-points-india-2026" style={{ color: 'var(--green)', textDecoration: 'underline' }}>guide to redeeming points for maximum value</a> helps you use what you have before it devalues further.
             </p>
           </div>
 

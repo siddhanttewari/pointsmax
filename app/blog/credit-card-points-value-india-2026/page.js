@@ -300,7 +300,7 @@ export default function BlogPost() {
           <div className="space-y-4 mt-2">
             <div className="flex gap-3">
               <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: 'var(--green)', background: '#EDF5F0' }}>1</span>
-              <p><strong style={{ color: 'var(--text)' }}>Check your actual per-point value.</strong> Use <a href="/" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>PointsMax</a> to see exactly what your points are worth across every redemption method. You might be surprised at how much value you're leaving on the table.</p>
+              <p><strong style={{ color: 'var(--text)' }}>Check your actual per-point value.</strong> Use <a href="/" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>PointsMax</a> to see exactly what your points are worth across every redemption method. You might be surprised at how much value you're leaving on the table. For the complete step-by-step method, read our guide on <a href="/blog/how-to-redeem-credit-card-points-india-2026" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>how to redeem credit card points for maximum value</a>.</p>
             </div>
             <div className="flex gap-3">
               <span className="text-[20px] font-mono font-bold shrink-0 w-8 h-8 grid place-items-center rounded-lg" style={{ color: 'var(--green)', background: '#EDF5F0' }}>2</span>
