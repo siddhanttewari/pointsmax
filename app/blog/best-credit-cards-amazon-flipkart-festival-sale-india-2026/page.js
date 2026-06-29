@@ -161,6 +161,7 @@ export default function BlogPost() {
 
         <p className="mt-6 text-[15px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
           The mechanics are the same across all three: a bank instant discount stacked with co-branded cashback, coupons, and no-cost EMI. Below, the full strategy and the best card for each platform.
+        </p>
 
         <div className="mt-10 space-y-6 text-[15px] leading-[1.85]" style={{ color: 'var(--text-s)' }}>
 
