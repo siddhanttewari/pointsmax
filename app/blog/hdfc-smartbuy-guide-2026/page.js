@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 const blogJsonLd = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'HDFC SmartBuy Guide 2026: How to Get ₹1 Per Point on Infinia, Diners Black and Regalia',
-  datePublished: '2026-05-20', dateModified: '2026-05-20',
+  datePublished: '2026-05-20', dateModified: '2026-07-03',
   author: { '@type': 'Organization', name: 'PointsMax' },
   publisher: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' },
   mainEntityOfPage: 'https://www.pointsmax.in/blog/hdfc-smartbuy-guide-2026',
@@ -132,7 +132,12 @@ export default function BlogPost() {
             The voucher hack: turning grocery runs into 5x points
           </h2>
 
-          <p>This is the trick that experienced HDFC cardholders swear by. Instead of swiping your card at a store and earning the base 1-2x points, you buy an instant voucher for that store on SmartBuy first.</p>
+          <div className="p-4 rounded-xl" style={{ background: '#FDF1EF', border: '1px solid #E8C5BF' }}>
+            <p className="text-[13px] font-bold mb-1" style={{ color: 'var(--red)' }}>⚠ Update — July 1, 2026: voucher earning now capped</p>
+            <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>HDFC has introduced a <strong style={{ color: 'var(--text)' }}>separate monthly cap of 3,000 Reward Points on SmartBuy Brand Voucher purchases</strong> (GyFTR/Woohoo), effective July 1, 2026. This heavily limits the voucher hack below: Infinia voucher earning drops from up to 15,000 points/month to 3,000 (an 80% cut), and Diners Black from 10,000 to 3,000. The overall accelerated caps (Infinia 15,000 / Diners Black 10,000 / Regalia Gold 4,000) are unchanged, but the balance beyond 3,000 must now be earned via <strong style={{ color: 'var(--text)' }}>flights and hotels booked directly on SmartBuy</strong>, not vouchers. The voucher hack still works up to the 3,000-point cap. Note: this is published for July 2026 only so far and may be a temporary experiment — HDFC rolled back a similar cut in January 2026. See the <a href="/blog/credit-card-devaluation-tracker-india-2026" style={{ color: 'var(--gold, #B8953E)', textDecoration: 'underline' }}>devaluation tracker</a> for the latest.</p>
+          </div>
+
+          <p>This is the trick that experienced HDFC cardholders swear by. Instead of swiping your card at a store and earning the base 1-2x points, you buy an instant voucher for that store on SmartBuy first. <strong style={{ color: 'var(--text)' }}>As of July 2026, this is most valuable up to the 3,000-point monthly voucher cap</strong> — beyond that, route spending through SmartBuy flights/hotels instead.</p>
 
           <div className="p-5 rounded-xl" style={{ background: '#EDF5F0', border: '1px solid #C8DDD0' }}>
             <p className="text-[13px] font-bold uppercase tracking-wide mb-3" style={{ color: 'var(--green)' }}>How it works</p>
@@ -161,7 +166,7 @@ export default function BlogPost() {
 
           <div className="p-4 rounded-xl mt-3" style={{ background: '#FDF1EF', border: '1px solid #E8C5BF' }}>
             <p className="text-[14px] font-semibold mb-2" style={{ color: 'var(--red)' }}>Monthly redemption cap: 50,000 points</p>
-            <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>As of 2026, you can redeem a maximum of 50,000 reward points per calendar month for travel bookings on SmartBuy. That's ₹50,000 worth of travel. If you have more points, split redemptions across months, or use the overflow for instant vouchers — which have a separate, higher cap.</p>
+            <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>As of 2026, you can redeem a maximum of 50,000 reward points per calendar month for travel bookings on SmartBuy. That's ₹50,000 worth of travel. If you have more points, split redemptions across months. Note: since July 1, 2026, buying instant vouchers now carries its own <strong style={{ color: 'var(--text)' }}>lower</strong> earning cap of 3,000 points/month — so overflow earning should go through SmartBuy flights/hotels, not vouchers.</p>
           </div>
 
           {/* Mid-article CTA */}
@@ -253,7 +258,7 @@ export default function BlogPost() {
           </div>
 
           <p className="text-[11px] mt-8 leading-relaxed" style={{ color: 'var(--text-m)' }}>
-            <strong>Disclaimer:</strong> This guide is based on publicly available information from HDFC Bank's SmartBuy portal as of May 2026. Earn rates, redemption caps, and eligible categories can change without notice. Always check the SmartBuy T&Cs before transacting. PointsMax is not affiliated with HDFC Bank.
+            <strong>Disclaimer:</strong> This guide is based on publicly available information from HDFC Bank's SmartBuy portal as of July 2026. Earn rates, redemption caps, and eligible categories can change without notice. Always check the SmartBuy T&Cs before transacting. PointsMax is not affiliated with HDFC Bank.
           </p>
         </div>
                 <FeedbackWidget pageSlug="hdfc-smartbuy-guide-2026" pageTitle="hdfc-smartbuy-guide-2026" />

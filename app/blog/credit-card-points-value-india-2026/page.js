@@ -166,7 +166,7 @@ export default function BlogPost() {
           <ul className="space-y-2 pl-1" style={{ listStyleType: 'none' }}>
             <li className="flex gap-2">
               <span style={{ color: 'var(--red)' }}>→</span>
-              <span>SmartBuy bonus earn rate dropped from <strong style={{ color: 'var(--text)' }}>5x to 3x</strong> in January 2026. That's a 40% cut to your accelerated earning.</span>
+              <span>SmartBuy brand-voucher earning was <strong style={{ color: 'var(--text)' }}>capped at 3,000 points/month</strong> from July 1, 2026 — an 80% cut for Infinia (was up to 15,000). A January 2026 attempt to cut the rate 5x→3x was rolled back, but this cap has stuck for now (may be temporary). Earn beyond 3,000 via SmartBuy flights/hotels instead.</span>
             </li>
             <li className="flex gap-2">
               <span style={{ color: 'var(--red)' }}>→</span>

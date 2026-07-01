@@ -9,7 +9,7 @@ const blogJsonLd = {
   '@type': 'Article',
   headline: 'Indian Credit Card Devaluation Tracker 2024-2026: Every Change, Every Bank',
   datePublished: '2026-05-27',
-  dateModified: '2026-05-27',
+  dateModified: '2026-07-03',
   author: { '@type': 'Organization', name: 'PointsMax' },
   publisher: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' },
   mainEntityOfPage: 'https://www.pointsmax.in/blog/credit-card-devaluation-tracker-india-2026',
@@ -23,7 +23,7 @@ const faqJsonLd = {
     {
       '@type': 'Question',
       name: 'Which Indian credit cards were devalued in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Major 2026 devaluations: Axis Bank (April 2026) removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners and cut transfer ratios from 5:4 to 5:2 on Magnus and Atlas. HDFC Bank (January 2026) reduced Turkish Airlines and Avianca LifeMiles transfer ratios from 1:1 to 2:1. SBI (2026) capped monthly cashback on SBI Cashback Card at ₹2,000. ICICI Bank reduced base reward rate on several cards.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Major 2026 devaluations: HDFC Bank (July 2026) capped SmartBuy brand-voucher earning at 3,000 Reward Points/month, cutting Infinia voucher earning by 80% (from up to 15,000). Axis Bank (April 2026) removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners and cut transfer ratios from 5:4 to 5:2 on Magnus and Atlas. HDFC Bank (January 2026) reduced Turkish Airlines and Avianca LifeMiles transfer ratios from 1:1 to 2:1. SBI (2026) capped monthly cashback on SBI Cashback Card at ₹2,000. ICICI Bank reduced base reward rate on several cards.' },
     },
     {
       '@type': 'Question',
@@ -33,17 +33,32 @@ const faqJsonLd = {
     {
       '@type': 'Question',
       name: 'Which Indian credit card has NOT been devalued and still offers the best rewards?',
-      acceptedAnswer: { '@type': 'Answer', text: 'HDFC Infinia remains the least devalued premium card. SmartBuy still gives ₹1/point on travel, KrisFlyer and Finnair transfers remain at 1:1, and the monthly cap was set at 2 lakh points per statement cycle (not a practical limitation for most). HDFC Diners Club Black has the same status. Amazon Pay ICICI remains undevalued at 5% on Amazon with no changes announced.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'HDFC Infinia and Diners Club Black remain among the least devalued premium cards for travel: SmartBuy still gives ₹1/point on flights and hotels, and KrisFlyer and Finnair transfers remain at 1:1. However, effective July 1, 2026, HDFC capped SmartBuy brand-voucher earning at 3,000 points/month (down from up to 15,000 on Infinia), so the popular voucher-loop earning strategy is now heavily limited — though this may be temporary. Amazon Pay ICICI remains the most stable, undevalued at 5% on Amazon for Prime members with no changes announced.' },
     },
     {
       '@type': 'Question',
       name: 'Did HDFC SmartBuy reward rates change in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'HDFC announced a reduction in SmartBuy voucher earn rate from 5X to 3X in January 2026, but rolled it back on January 16 after significant backlash. As of May 2026, SmartBuy still gives 5X on vouchers (Gyftr/Tanishq/Amazon) and 10X on flights and hotels for Infinia and Diners Club Black.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, twice. HDFC announced a SmartBuy voucher earn rate cut from 5X to 3X in January 2026 but rolled it back on January 16 after backlash. Then, effective July 1, 2026, HDFC introduced a separate monthly cap of 3,000 Reward Points on brand voucher purchases via GyFTR/Woohoo. This cut voucher earning for Infinia from up to 15,000 points/month to 3,000 (an 80% reduction) and for Diners Club Black from 10,000 to 3,000. The overall SmartBuy accelerated caps are unchanged, but can now only be reached via flight/hotel bookings rather than vouchers. This July change is published for July 2026 only so far and may be a temporary experiment.' },
     },
   ],
 }
 
 const DEVALUATIONS = [
+  {
+    month: 'July 2026',
+    severity: 'major',
+    bank: 'HDFC Bank',
+    cards: ['Infinia', 'Diners Club Black', 'BizBlack', 'Regalia Gold'],
+    changes: [
+      { type: 'bad', text: 'New separate monthly cap of 3,000 Reward Points on SmartBuy Brand Voucher purchases (GyFTR/Woohoo), effective July 1, 2026' },
+      { type: 'bad', text: 'Infinia: voucher earning effectively cut from 15,000 → 3,000 points/month — an 80% reduction on the most popular earning route' },
+      { type: 'bad', text: 'Diners Club Black Metal: voucher earning cut from 10,000 → 3,000 points/month' },
+      { type: 'bad', text: 'Regalia Gold: loses roughly a quarter of its voucher earning capacity' },
+      { type: 'neutral', text: 'Overall SmartBuy accelerated caps UNCHANGED (Infinia 15,000 / Diners Black 10,000 / Regalia Gold 4,000) — but now only reachable via flights/hotels, not vouchers' },
+      { type: 'note', text: 'Published for July 2026 only so far — may be a temporary experiment. HDFC has rolled back a similar SmartBuy cut before (Jan 2026). Verify current terms before relying on it.' },
+    ],
+    impact: 'The single most consequential SmartBuy change in years. The dominant Infinia/Diners strategy was buying brand vouchers (Amazon, Flipkart, Swiggy, etc.) to hit the full monthly accelerated cap, then redeeming at ₹1/point. That route is now capped at 3,000 points; to still hit 15,000, cardholders must book flights/hotels directly through SmartBuy. Everyday-spend value on these cards drops sharply for voucher-reliant users. Framed as live but potentially temporary.',
+  },
   {
     month: 'April 2026',
     severity: 'critical',
@@ -194,7 +209,7 @@ export default function BlogPost() {
         {/* Meta */}
         <div className="flex items-center gap-3 mb-4">
           <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded" style={{ color: 'var(--red)', background: 'rgba(220,38,38,0.06)' }}>Evergreen Tracker</span>
-          <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>Last updated: May 27, 2026</span>
+          <span className="text-[12px]" style={{ color: 'var(--text-m)' }}>Last updated: July 3, 2026</span>
           <span className="text-[12px] px-2 py-0.5 rounded" style={{ color: 'var(--green)', background: 'rgba(45,106,79,0.06)', fontSize: '11px', fontWeight: 700 }}>↻ Updated monthly</span>
         </div>
 
@@ -209,7 +224,7 @@ export default function BlogPost() {
         <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
             { bank: 'Axis Bank', status: 'Most Devalued', color: 'var(--red)', events: 4 },
-            { bank: 'HDFC Bank', status: 'Mostly Intact', color: 'var(--green)', events: 2 },
+            { bank: 'HDFC Bank', status: 'Voucher Cut (Jul)', color: 'var(--gold, #B8953E)', events: 4 },
             { bank: 'SBI', status: 'Cap Added', color: '#92782A', events: 1 },
             { bank: 'ICICI', status: 'Gradual Cuts', color: '#0891b2', events: 1 },
           ].map((s, i) => (
@@ -306,8 +321,8 @@ export default function BlogPost() {
 
           <div className="space-y-3">
             {[
-              { name: 'HDFC Infinia', status: 'Mostly intact', color: 'var(--green)', desc: 'SmartBuy still gives ₹1/point. KrisFlyer and Finnair still 1:1. The monthly cap (2L points/statement) affects less than 5% of cardholders. The ₹18L retention requirement is the biggest change, but existing holders are grandfathered for now.', link: '/blog/hdfc-infinia-credit-card-review-2026' },
-              { name: 'HDFC Diners Club Black', status: 'Mostly intact', color: 'var(--green)', desc: 'Same rewards as Infinia. Same transfer partners. Same SmartBuy value. The Diners Club network remains the only real drawback.', link: '/blog/hdfc-diners-club-black-credit-card-review-2026' },
+              { name: 'HDFC Infinia', status: 'Voucher route cut', color: 'var(--gold, #B8953E)', desc: 'Still strong for travel: SmartBuy gives ₹1/point on flights/hotels, KrisFlyer and Finnair still 1:1. But the July 2026 change caps brand-voucher earning at 3,000 points/month (was up to 15,000) — an 80% cut to the most popular everyday-earning route. To hit the full cap you now must book travel via SmartBuy. May be temporary. The ₹18L retention requirement also applies from FY2026-27.', link: '/blog/hdfc-infinia-credit-card-review-2026' },
+              { name: 'HDFC Diners Club Black', status: 'Voucher route cut', color: 'var(--gold, #B8953E)', desc: 'Same July 2026 voucher cap as Infinia — brand-voucher earning cut from 10,000 to 3,000 points/month. Travel redemption at ₹1/point and transfer partners unchanged. Still among the best in HDFC\'s stable, but the everyday voucher-loop advantage is gone for now.', link: '/blog/hdfc-diners-club-black-credit-card-review-2026' },
               { name: 'Amazon Pay ICICI', status: 'Unchanged', color: 'var(--green)', desc: 'No devaluations announced or implemented. 5% on Amazon for Prime members remains intact. Genuinely one of the most stable rewards propositions in India.', link: '/blog/best-lifetime-free-credit-cards-india-2026' },
               { name: 'Amex Membership Rewards', status: 'Largely intact', color: '#92782A', desc: 'Transfer ratios to most programmes unchanged. The ₹66,000 annual fee has always been the limiting factor, not devaluation.', link: '/blog/amex-platinum-charge-card-review-india-2026' },
               { name: 'Axis Magnus', status: 'Heavily devalued', color: 'var(--red)', desc: 'Multiple rounds of devaluation since 2023. Transfer ratio halved. Best partners removed. Monthly milestone gone. No longer competitive at ₹12,500/year.', link: '/blog/axis-magnus-credit-card-review-2026' },
@@ -376,7 +391,7 @@ export default function BlogPost() {
           </div>
 
           <p className="text-[11px] mt-8 leading-relaxed" style={{ color: 'var(--text-m)' }}>
-            <strong>Disclaimer:</strong> This tracker is based on publicly available information, bank communications, and community reports. We strive for accuracy but cannot guarantee completeness. Reward rates and card benefits change frequently — always verify current terms on your bank's website. Last updated: May 27, 2026. PointsMax is not affiliated with any bank listed.
+            <strong>Disclaimer:</strong> This tracker is based on publicly available information, bank communications, and community reports. We strive for accuracy but cannot guarantee completeness. Reward rates and card benefits change frequently — always verify current terms on your bank's website. Last updated: July 3, 2026. PointsMax is not affiliated with any bank listed.
           </p>
 
           <FeedbackWidget pageSlug="credit-card-devaluation-tracker-india-2026" pageTitle="Indian Credit Card Devaluation Tracker 2024-2026" />

@@ -17,7 +17,8 @@ const blogJsonLd = {
     reviewRating: { '@type': 'Rating', ratingValue: '4.5', bestRating: '5', worstRating: '1' },
     author: { '@type': 'Organization', name: 'PointsMax' },
     datePublished: '2026-05-21',
-    reviewBody: 'HDFC Infinia remains the most valuable credit card in India in 2026, offering ₹1 per reward point on SmartBuy travel and 22 airline/hotel transfer partners. However, new monthly caps and an ₹18L annual spend requirement to retain the card make it less accessible than before.',
+    dateModified: '2026-07-03',
+    reviewBody: 'HDFC Infinia remains the most valuable credit card in India in 2026 for travel, offering ₹1 per reward point on SmartBuy flights and hotels and 22 airline/hotel transfer partners. However, a July 1, 2026 change capped SmartBuy brand-voucher earning at 3,000 points/month (an 80% cut to the popular voucher-loop strategy), and new monthly caps plus an ₹18L annual spend retention requirement make it less of a set-and-forget card than before. The voucher cap may be a temporary experiment.',
   },
 }
 
@@ -152,14 +153,14 @@ export default function BlogPost() {
           <p>Want to see the exact calculation for your points balance? <a href="/" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>Run them through the PointsMax calculator</a> — select HDFC Infinia and enter your balance.</p>
 
           <H2>SmartBuy: how the rewards engine actually works</H2>
-          <p>SmartBuy is HDFC's rewards portal and the reason Infinia exists. You earn <S>5 reward points per ₹150 spent</S> on all retail purchases (3.33% base rate). On SmartBuy, this accelerates to <S>10x for flights and hotels</S> and <S>5x for brand vouchers</S>.</p>
+          <p>SmartBuy is HDFC's rewards portal and the reason Infinia exists. You earn <S>5 reward points per ₹150 spent</S> on all retail purchases (3.33% base rate). On SmartBuy, this accelerates to <S>10x for flights and hotels</S> and <S>5x for brand vouchers</S> — though, as of July 1, 2026, brand-voucher earning is capped at 3,000 points/month (see the warning below), so flights and hotels are now the primary way to maximise accelerated earning.</p>
           <p>We wrote a detailed guide on maximizing SmartBuy — including the voucher hack, the 70/30 rule, and the 4 mistakes that waste your points. <a href="/blog/hdfc-smartbuy-guide-2026" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>Read the full HDFC SmartBuy Guide here</a>.</p>
 
           <H2>The 2026 changes: what got nerfed?</H2>
           <p>Infinia had a rough start to 2026. Here's every change that affects cardholders:</p>
 
           <div className="space-y-2">
-            <Warn title="January 2026: SmartBuy voucher earn rate scare">HDFC announced a reduction from 5x to 3x on Gyftr vouchers. After backlash, this was effectively rolled back — 5x continues on vouchers as of January 16, 2026. But the scare signaled HDFC's intent to eventually reduce this.</Warn>
+            <Warn title="July 2026: SmartBuy voucher earning capped at 3,000 points/month">HDFC first tried cutting Gyftr voucher rewards from 5x to 3x in January 2026 and rolled it back after backlash. Then, effective July 1, 2026, it introduced a separate monthly cap of just 3,000 Reward Points on SmartBuy brand-voucher purchases. For Infinia this cuts voucher earning from up to 15,000 points/month to 3,000 — an 80% reduction on the most popular everyday-earning route. The overall 15,000 accelerated cap is unchanged, but the balance beyond 3,000 must now be earned via SmartBuy flights and hotels, not vouchers. This is published for July 2026 only so far and may be a temporary experiment — but it materially changes the everyday-earning math for now.</Warn>
             <Warn title="February 2026: Monthly redemption caps">Redemptions capped at 5 times per month. Travel and airline mile redemptions capped at 1,50,000 points per month. Cashback capped at 50,000 points per month. Total cap: 2,00,000 points per statement cycle. If you're a heavy accumulator, plan your redemptions across months.</Warn>
             <Warn title="April 2026: Retention requirement">Cardholders now need ₹18 lakh annual spend (primary + add-on) OR ₹50 lakh banking relationship with HDFC to retain the card. Fall below both thresholds and you risk a downgrade to Regalia — where your points convert at roughly 1:0.6 and the per-point value drops to ₹0.30-0.50.</Warn>
             <Warn title="January 2026: Transfer partner devaluation">Turkish Airlines Miles&amp;Smiles and Avianca LifeMiles changed from 1:1 to 2:1. Effectively halved the value for these specific partners. Singapore Airlines KrisFlyer and Finnair Plus remain at 1:1.</Warn>
@@ -304,7 +305,7 @@ export default function BlogPost() {
           <H2>Common Infinia mistakes that waste points</H2>
           <div className="space-y-3">
             <Warn title="✕ Redeeming via product catalogue">Gives you ₹0.20/point. SmartBuy gives ₹1/point. The catalogue is 80% value destruction. There is no scenario where this is the right choice.</Warn>
-            <Warn title="✕ Not using the voucher hack for everyday spending">Every direct swipe at a store earns 1x. Buying a SmartBuy voucher first earns 5x. Two extra minutes, 5x the points. We explain exactly how in the SmartBuy guide.</Warn>
+            <Warn title="✕ Not using the voucher hack (up to the cap) for everyday spending">Every direct swipe at a store earns 1x. Buying a SmartBuy voucher first earns 5x — but only up to the new 3,000-point monthly voucher cap (from July 2026). Use the voucher hack up to that cap, then route further spending through SmartBuy flights/hotels. We explain exactly how in the SmartBuy guide.</Warn>
             <Warn title="✕ Hoarding points beyond 3 years">Infinia points expire 3 years from accrual date. People forget. Banks devalue. Use your points — the best time to redeem was yesterday.</Warn>
             <Warn title="✕ Transferring to Turkish or Avianca post-2026">Both went from 1:1 to 2:1. Unless you have a very specific routing, KrisFlyer at 1:1 is strictly better for Star Alliance redemptions.</Warn>
           </div>

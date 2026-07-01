@@ -16,6 +16,7 @@ const blogJsonLd = {
     reviewRating: { '@type': 'Rating', ratingValue: '3.8', bestRating: '5', worstRating: '1' },
     author: { '@type': 'Organization', name: 'PointsMax' },
     datePublished: '2026-06-22',
+    dateModified: '2026-07-03',
     reviewBody: 'HDFC Regalia Gold remains a solid mid-premium card in 2026 for those who route travel through SmartBuy and hit the milestone spends, where vouchers and portal multipliers comfortably clear the ₹2,500 fee. The May 2026 base-rate cut (to 5 RP per ₹200, ~1.6% value) and the July 2026 ₹60,000 quarterly spend gate for domestic lounge access weaken its appeal for those who held it primarily for unconditional lounge entry. New Boarding Edge benefits partially offset the changes.',
   },
 }
@@ -109,6 +110,7 @@ export default function BlogPost() {
               { date: 'May 15, 2026', change: 'DCC markup added', detail: 'A 1.75% Dynamic Currency Conversion markup now applies on INR-billed international transactions (paying in rupees abroad, or to overseas-registered merchants from India).', neg: true },
               { date: 'May 15, 2026', change: 'Reissuance fee', detail: '₹199 fee introduced for lost, stolen, or damaged card replacement.', neg: true },
               { date: 'Jul 1, 2026', change: 'Lounge spend gate', detail: 'Domestic lounge access now requires ₹60,000 spend in the previous calendar quarter. No voucher needed — just swipe — but only if you cleared the spend threshold.', neg: true },
+              { date: 'Jul 1, 2026', change: 'SmartBuy voucher cap', detail: 'New 3,000 Reward Points/month cap on SmartBuy brand-voucher purchases. Regalia Gold\'s overall 4,000-point accelerated cap is unchanged, but it loses roughly a quarter of its voucher earning capacity. May be a temporary experiment.', neg: true },
               { date: '2026', change: 'Boarding Edge added', detail: 'New benefit: 2 complimentary travel perks per quarter (spa, Uber transfer, hotel buffet, room upgrade) by uploading your boarding pass on SmartBuy. Partial offset to the cuts.', neg: false },
             ].map((item, i) => (
               <div key={i} className="p-4 rounded-xl" style={{ background: item.neg ? '#FDF1EF' : '#EDF5F0', border: `1px solid ${item.neg ? '#E8C5BF' : '#C8DDD0'}` }}>

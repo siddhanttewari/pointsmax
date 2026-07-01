@@ -7,7 +7,7 @@ import { breakeven as breakevenTrack } from '@/lib/analytics'
 const CARDS = [
   { name: 'HDFC Infinia', fee: 12500, feeWaiver: 1000000, rewardRate: 0.0333, pointValue: 1.00, perks: ['Unlimited lounges', 'Golf access', '22 transfer partners', 'Club Marriott'] },
   { name: 'HDFC Diners Club Black', fee: 10000, feeWaiver: 500000, rewardRate: 0.0333, pointValue: 1.00, perks: ['Unlimited lounges', 'Golf access', '22 transfer partners'] },
-  { name: 'HDFC Regalia Gold', fee: 2500, feeWaiver: 300000, rewardRate: 0.02, pointValue: 0.50, perks: ['8 lounge visits/yr', 'SmartBuy 5X vouchers'] },
+  { name: 'HDFC Regalia Gold', fee: 2500, feeWaiver: 300000, rewardRate: 0.02, pointValue: 0.50, perks: ['8 lounge visits/yr', 'SmartBuy vouchers (capped Jul 2026)'] },
   { name: 'Axis Magnus', fee: 12500, feeWaiver: 1500000, rewardRate: 0.025, pointValue: 0.50, perks: ['Unlimited lounges', '8 transfer partners', 'Travel EDGE portal'] },
   { name: 'Axis Atlas', fee: 5000, feeWaiver: 1500000, rewardRate: 0.02, pointValue: 0.50, perks: ['Domestic lounges', '8 transfer partners'] },
   { name: 'Amex Platinum', fee: 66000, feeWaiver: null, rewardRate: 0.02, pointValue: 0.80, perks: ['Taj 25% off', '1400+ lounges', 'FHR credits', 'EazyDiner Prime'] },

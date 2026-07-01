@@ -16,6 +16,7 @@ const blogJsonLd = {
     reviewRating: { '@type': 'Rating', ratingValue: '4.3', bestRating: '5', worstRating: '1' },
     author: { '@type': 'Organization', name: 'PointsMax' },
     datePublished: '2026-05-25',
+    dateModified: '2026-07-03',
     reviewBody: 'HDFC Diners Club Black delivers the same reward rate as Infinia at ₹10,000/year with a lower fee waiver threshold of ₹8 lakh. The main limitation is the Diners Club payment network which is not universally accepted internationally.',
   },
 }
@@ -144,6 +145,11 @@ export default function BlogPost() {
           </div>
 
           <p>The only difference from Infinia: <S>Diners Black earns 3X on SmartBuy vouchers vs Infinia's 5X.</S> If the voucher hack is a big part of your strategy (buying Amazon/BigBasket/Swiggy vouchers on SmartBuy for accelerated points), Infinia pulls ahead here. For everything else — travel bookings, airline transfers, base spend — they're identical.</p>
+
+          <div className="p-4 rounded-xl my-4" style={{ background: '#FDF1EF', border: '1px solid #E8C5BF' }}>
+            <p className="text-[13px] font-bold mb-1" style={{ color: 'var(--red)' }}>⚠ Update — July 1, 2026: voucher earning capped</p>
+            <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-s)' }}>HDFC introduced a separate monthly cap of 3,000 Reward Points on SmartBuy brand-voucher purchases (GyFTR/Woohoo). For Diners Black this cuts voucher earning from up to 10,000 points/month to 3,000. The overall accelerated cap (10,000) is unchanged, but the balance must now be earned via SmartBuy flights and hotels rather than vouchers. This applies to both Infinia and Diners Black, so it doesn't change the head-to-head — but it reduces the everyday voucher-loop value on both. Published for July 2026 only so far; may be temporary. See the <a href="/blog/credit-card-devaluation-tracker-india-2026" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>devaluation tracker</a>.</p>
+          </div>
           <p>Check what your Diners Black points are worth right now using the <a href="/" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>PointsMax calculator</a>.</p>
 
           <H2>The complimentary subscriptions: genuinely valuable</H2>
