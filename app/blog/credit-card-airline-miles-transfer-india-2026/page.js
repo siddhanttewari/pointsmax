@@ -265,9 +265,12 @@ export default function BlogPost() {
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[12px]" style={{ color: 'var(--text-m)' }}>
             <a href="/" className="hover:text-black/40 transition-colors">PointsMax</a><span className="mx-2">·</span>
-            <a href="/transfers" className="hover:text-black/40 transition-colors">Transfers</a><span className="mx-2">·</span>
+            <a href="/about" className="hover:text-black/40 transition-colors">About</a><span className="mx-2">·</span>
             <a href="/blog" className="hover:text-black/40 transition-colors">Blog</a><span className="mx-2">·</span>
-            <a href="/privacy" className="hover:text-black/40 transition-colors">Privacy</a>
+            <a href="/transfers" className="hover:text-black/40 transition-colors">Transfers</a><span className="mx-2">·</span>
+            <a href="/contact" className="hover:text-black/40 transition-colors">Contact</a><span className="mx-2">·</span>
+            <a href="/privacy" className="hover:text-black/40 transition-colors">Privacy</a><span className="mx-2">·</span>
+            <a href="/terms" className="hover:text-black/40 transition-colors">Terms</a>
           </p>
         </div>
       </footer>

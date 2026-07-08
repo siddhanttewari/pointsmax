@@ -296,9 +296,12 @@ export default function BlogPost() {
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[12px]" style={{ color: 'var(--text-m)' }}>
             <a href="/">PointsMax</a><span className="mx-2">·</span>
+            <a href="/about">About</a><span className="mx-2">·</span>
+            <a href="/blog">Blog</a><span className="mx-2">·</span>
             <a href="/transfers">Transfers</a><span className="mx-2">·</span>
-            <a href="/blog">Learn</a><span className="mx-2">·</span>
-            <a href="/privacy">Privacy</a>
+            <a href="/contact">Contact</a><span className="mx-2">·</span>
+            <a href="/privacy">Privacy</a><span className="mx-2">·</span>
+            <a href="/terms">Terms</a>
           </p>
         </div>
       </footer>

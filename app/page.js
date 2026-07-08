@@ -542,6 +542,8 @@ export default function Home() {
                   { href: '/about', label: 'About' },
                   { href: '/contact', label: 'Contact' },
                   { href: '/privacy', label: 'Privacy Policy' },
+                  { href: '/terms', label: 'Terms of Use' },
+                  { href: '/disclaimer', label: 'Disclaimer' },
                 ].map(l => (
                   <a key={l.href} href={l.href} className="block text-[12px] transition-colors hover:text-white/70" style={{ color: 'rgba(250,248,245,0.45)' }}>{l.label}</a>
                 ))}
