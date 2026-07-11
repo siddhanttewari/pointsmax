@@ -11,6 +11,7 @@ PointsMax is a free, independent tool that shows Indian credit card holders the 
 - Transfer Partners Directory: https://www.pointsmax.in/transfers — All airline and hotel transfer partners with post-2026 devaluation ratios
 - Card Quiz: https://www.pointsmax.in/tools/card-quiz — 5-question personalised card recommendation engine
 - Fee Breakeven Calculator: https://www.pointsmax.in/tools/breakeven — Is your annual fee worth it?
+- Interest Calculator: https://www.pointsmax.in/tools/interest-calculator — The true cost of carrying a balance or paying minimum due
 - Points Expiry Reminder: https://www.pointsmax.in/tools/expiry-reminder — Email alert before points expire
 
 ## Key data points (as of May 2026)
@@ -60,6 +61,7 @@ PointsMax is a free, independent tool that shows Indian credit card holders the 
 - [Best Credit Cards India 2026 by Spend Level](https://www.pointsmax.in/blog/best-credit-cards-india-2026)
 
 ### Guides & Trackers
+- [Hidden Credit Card Charges in India 2026 (Consumer Guide)](https://www.pointsmax.in/blog/hidden-credit-card-charges-india-2026)
 - [HDFC SmartBuy Voucher Cap July 2026 (News)](https://www.pointsmax.in/blog/hdfc-smartbuy-voucher-cap-july-2026)
 - [Accor, Hilton & IHG India Hotel Points Guide 2026](https://www.pointsmax.in/blog/accor-hilton-ihg-india-hotel-points-guide-2026)
 - [The Points Maximisation Playbook India 2026 (Master Guide)](https://www.pointsmax.in/blog/points-maximisation-playbook-india-2026)
