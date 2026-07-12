@@ -1,63 +1,59 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { supabase, signInWithGoogle, signOut } from '@/lib/supabase'
-import { useAuth } from '@/components/AuthGate'
-
-// Only these emails can view the dashboard. Add your Google account email(s).
-const ADMIN_EMAILS = [
-  'siddhant.tewari1@gmail.com',
-  'hello@pointsmax.in',
-]
+import { useState } from 'react'
 
 export default function FeedbackDashboard() {
-  const { user, loading: authLoading } = useAuth()
+  const [password, setPassword] = useState('')
   const [rows, setRows] = useState(null)
-  const [loadErr, setLoadErr] = useState(null)
-  const [filter, setFilter] = useState('all') // all | up | down | comments
+  const [err, setErr] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [authed, setAuthed] = useState(false)
+  const [filter, setFilter] = useState('all')
 
-  const isAdmin = user && ADMIN_EMAILS.includes((user.email || '').toLowerCase())
-
-  useEffect(() => {
-    if (!isAdmin) return
-    supabase
-      .from('feedback')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .limit(1000)
-      .then(({ data, error }) => {
-        if (error) setLoadErr(error.message)
-        else setRows(data || [])
+  const signIn = async () => {
+    setLoading(true); setErr(null)
+    try {
+      const res = await fetch('/api/admin/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
       })
-  }, [isAdmin])
+      const data = await res.json()
+      if (!res.ok) { setErr(data.error || 'Sign-in failed'); setLoading(false); return }
+      setRows(data.rows || [])
+      setAuthed(true)
+    } catch (e) {
+      setErr('Network error. Try again.')
+    }
+    setLoading(false)
+  }
 
-  // ── Auth states ──
-  if (authLoading) return <Shell><p style={{ color: 'var(--text-m)' }}>Loading…</p></Shell>
-
-  if (!user) return (
+  // ── Password gate ──
+  if (!authed) return (
     <Shell>
       <div className="text-center py-16">
         <div className="text-3xl mb-3">🔒</div>
         <h2 className="text-[18px] font-bold mb-2" style={{ color: 'var(--text)' }}>Admin sign-in required</h2>
         <p className="text-[13px] mb-5" style={{ color: 'var(--text-m)' }}>This dashboard is private.</p>
-        <button onClick={signInWithGoogle} className="px-5 py-2.5 rounded-xl text-[13px] font-semibold" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>Continue with Google</button>
+        <div className="max-w-xs mx-auto">
+          <input
+            type="password" value={password}
+            onChange={e => setPassword(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && signIn()}
+            placeholder="Enter admin password"
+            className="w-full px-4 py-2.5 rounded-xl text-[14px] outline-none mb-3 text-center"
+            style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--text)' }}
+          />
+          <button onClick={signIn} disabled={loading}
+            className="w-full px-5 py-2.5 rounded-xl text-[13px] font-semibold disabled:opacity-40"
+            style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
+            {loading ? 'Checking…' : 'View feedback'}
+          </button>
+          {err && <p className="text-[12px] mt-3" style={{ color: 'var(--red)' }}>{err}</p>}
+        </div>
       </div>
     </Shell>
   )
-
-  if (!isAdmin) return (
-    <Shell>
-      <div className="text-center py-16">
-        <div className="text-3xl mb-3">⛔</div>
-        <h2 className="text-[18px] font-bold mb-2" style={{ color: 'var(--text)' }}>Not authorised</h2>
-        <p className="text-[13px] mb-5" style={{ color: 'var(--text-m)' }}>{user.email} doesn't have access to this dashboard.</p>
-        <button onClick={signOut} className="px-5 py-2.5 rounded-xl text-[13px] font-semibold" style={{ background: 'var(--bg-s)', color: 'var(--text-s)', border: '1px solid var(--border)' }}>Sign out</button>
-      </div>
-    </Shell>
-  )
-
-  if (loadErr) return <Shell><p style={{ color: 'var(--red)' }}>Error loading feedback: {loadErr}</p></Shell>
-  if (!rows) return <Shell><p style={{ color: 'var(--text-m)' }}>Loading feedback…</p></Shell>
 
   // ── Aggregations ──
   const total = rows.length
@@ -69,12 +65,10 @@ export default function FeedbackDashboard() {
   const recYes = recRows.filter(r => r.recommend === 'yes').length
   const recMaybe = recRows.filter(r => r.recommend === 'maybe').length
   const recNo = recRows.filter(r => r.recommend === 'no').length
-  // Simple NPS-style score: (%yes − %no) on those who answered
   const nps = recRows.length ? Math.round((recYes - recNo) / recRows.length * 100) : null
 
   const withComments = rows.filter(r => r.comment && r.comment.trim())
 
-  // Per-article rollup
   const byPage = {}
   for (const r of rows) {
     const k = r.page_slug || 'unknown'
@@ -99,12 +93,11 @@ export default function FeedbackDashboard() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: '26px', color: 'var(--text)' }}>Feedback Dashboard</h1>
-          <p className="text-[13px] mt-1" style={{ color: 'var(--text-m)' }}>{total} responses · signed in as {user.email}</p>
+          <p className="text-[13px] mt-1" style={{ color: 'var(--text-m)' }}>{total} responses</p>
         </div>
-        <button onClick={signOut} className="text-[12px]" style={{ color: 'var(--text-m)' }}>Sign out</button>
+        <button onClick={() => { setAuthed(false); setRows(null); setPassword('') }} className="text-[12px]" style={{ color: 'var(--text-m)' }}>Lock</button>
       </div>
 
-      {/* Top metric cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
         <Metric label="Total responses" value={total} />
         <Metric label="Found helpful" value={helpfulPct + '%'} sub={`${ups} up · ${downs} down`} color="var(--green)" />
@@ -112,7 +105,6 @@ export default function FeedbackDashboard() {
         <Metric label="Recommend score" value={nps === null ? '—' : (nps > 0 ? '+' : '') + nps} sub="%yes − %no" color={nps >= 0 ? 'var(--green)' : 'var(--red)'} />
       </div>
 
-      {/* Recommend breakdown bar */}
       {recRows.length > 0 && (
         <div className="mb-8 p-4 rounded-2xl" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
           <p className="text-[13px] font-semibold mb-3" style={{ color: 'var(--text)' }}>Would you recommend PointsMax to a friend?</p>
@@ -129,7 +121,6 @@ export default function FeedbackDashboard() {
         </div>
       )}
 
-      {/* Per-article table */}
       <h2 className="text-[15px] font-bold mb-3" style={{ color: 'var(--text)' }}>By article</h2>
       <div className="overflow-x-auto -mx-1 px-1 mb-8">
         <table className="w-full text-[12px]" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
@@ -159,7 +150,6 @@ export default function FeedbackDashboard() {
         </table>
       </div>
 
-      {/* Comments feed */}
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-[15px] font-bold" style={{ color: 'var(--text)' }}>Responses</h2>
         <div className="flex gap-1.5">
@@ -170,7 +160,7 @@ export default function FeedbackDashboard() {
         </div>
       </div>
       <div className="space-y-2">
-        {filtered.slice(0, 200).map((r, i) => (
+        {filtered.slice(0, 300).map((r, i) => (
           <div key={i} className="p-3 rounded-xl" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
             <div className="flex items-center gap-2 flex-wrap mb-1">
               <span className="text-[13px]">{r.rating === 'up' ? '👍' : r.rating === 'down' ? '👎' : '·'}</span>
