@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /auth/
+Disallow: /admin/
 
 Sitemap: https://pointsmax.in/sitemap.xml
 
