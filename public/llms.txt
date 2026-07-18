@@ -12,6 +12,7 @@ PointsMax is a free, independent tool that shows Indian credit card holders the 
 - Card Quiz: https://www.pointsmax.in/tools/card-quiz — 5-question personalised card recommendation engine
 - Fee Breakeven Calculator: https://www.pointsmax.in/tools/breakeven — Is your annual fee worth it?
 - Interest Calculator: https://www.pointsmax.in/tools/interest-calculator — The true cost of carrying a balance or paying minimum due
+- Utilisation Calculator: https://www.pointsmax.in/tools/cibil-utilisation-calculator — Check your credit utilisation ratio and CIBIL impact
 - Points Expiry Reminder: https://www.pointsmax.in/tools/expiry-reminder — Email alert before points expire
 
 ## Key data points (as of May 2026)
@@ -61,6 +62,7 @@ PointsMax is a free, independent tool that shows Indian credit card holders the 
 - [Best Credit Cards India 2026 by Spend Level](https://www.pointsmax.in/blog/best-credit-cards-india-2026)
 
 ### Guides & Trackers
+- [Credit Card & CIBIL Score Myths in India 2026](https://www.pointsmax.in/blog/credit-card-cibil-score-myths-india-2026)
 - [How a Credit Card Actually Works in India 2026 (with diagrams)](https://www.pointsmax.in/blog/how-credit-cards-work-india-2026)
 - [Credit Card vs UPI in India 2026: Which to Use for What](https://www.pointsmax.in/blog/credit-card-vs-upi-india-2026)
 - [Hidden Credit Card Charges in India 2026 (Consumer Guide)](https://www.pointsmax.in/blog/hidden-credit-card-charges-india-2026)

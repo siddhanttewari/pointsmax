@@ -113,6 +113,7 @@ export default function Home() {
                     { href: '/tools/card-quiz', icon: '🎯', label: 'Card Quiz', desc: 'Find your best card match' },
                     { href: '/tools/breakeven', icon: '📊', label: 'Fee Breakeven', desc: 'Is your annual fee worth it?' },
                     { href: '/tools/interest-calculator', icon: '🔥', label: 'Interest Calculator', desc: 'The true cost of a balance' },
+                    { href: '/tools/cibil-utilisation-calculator', icon: '📈', label: 'Utilisation Checker', desc: 'Is your CIBIL score at risk?' },
                     { href: '/tools/expiry-reminder', icon: '⏰', label: 'Expiry Reminder', desc: 'Never lose your points' },
                   ].map(item => (
                     <a key={item.href} href={item.href} className="flex items-start gap-3 px-4 py-2.5 transition-colors"
@@ -511,6 +512,7 @@ export default function Home() {
                   { href: '/tools/card-quiz', label: 'Card Quiz' },
                   { href: '/tools/breakeven', label: 'Fee Breakeven' },
                   { href: '/tools/interest-calculator', label: 'Interest Calculator' },
+                  { href: '/tools/cibil-utilisation-calculator', label: 'Utilisation Checker' },
                   { href: '/tools/expiry-reminder', label: 'Expiry Reminder' },
                   { href: '/transfers', label: 'Transfer Partners' },
                 ].map(l => (
