@@ -8,7 +8,7 @@ const faqJsonLd = {
   '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: [
     { '@type': 'Question', name: 'What is the HDFC SmartBuy voucher cap introduced in July 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Effective July 1, 2026, HDFC Bank introduced a separate monthly cap of 3,000 Reward Points on brand voucher purchases made through SmartBuy via GyFTR and Woohoo. Previously, voucher purchases counted toward the overall monthly SmartBuy accelerated rewards cap (15,000 points for Infinia, 10,000 for Diners Club Black, 4,000 for Regalia Gold). Now brand vouchers have their own much lower ceiling of 3,000 points, while the overall caps remain unchanged but must be reached through flight and hotel bookings instead.' }},
-    { '@type': 'Question', name: 'How much does the July 2026 SmartBuy change reduce Infinia rewards?', acceptedAnswer: { '@type': 'Answer', text: 'For HDFC Infinia, the voucher earning cap drops from up to 15,000 Reward Points per month to 3,000 — an 80% reduction on the most popular everyday-earning route. HDFC Diners Club Black drops from 10,000 to 3,000 points, and Regalia Gold loses roughly a quarter of its voucher earning capacity. The overall accelerated caps are unchanged, so cardholders who book flights and hotels directly through SmartBuy can still reach the full cap.' }},
+    { '@type': 'Question', name: 'How much does the July 2026 SmartBuy change reduce Infinia rewards?', acceptedAnswer: { '@type': 'Answer', text: 'The 5X voucher rate itself is unchanged. What changed is a new cap of 3,000 accelerated Reward Points per month on brand vouchers. For HDFC Infinia, that ceiling is reached at only about ₹22,500 of voucher spend per month — down from an effective high-reward sweet spot of roughly ₹1.12 lakh before. Beyond ₹22,500, voucher purchases still earn the base rate (5 points per ₹150), just not the accelerated bonus. Diners Club Black and Regalia Gold are also capped at 3,000 accelerated voucher points; most other HDFC cards are capped at 1,000. The overall SmartBuy accelerated caps (Infinia 15,000, Diners Black 10,000, Regalia Gold 4,000) are unchanged and can still be reached via flights and hotels.' }},
     { '@type': 'Question', name: 'Is the HDFC SmartBuy voucher cap permanent?', acceptedAnswer: { '@type': 'Answer', text: 'As of now, the cap is published for July 2026 only, which suggests it may be a temporary experiment rather than a permanent change. HDFC has rolled back a similar SmartBuy devaluation before — in January 2026 it announced a cut of the voucher earn rate from 5x to 3x and reversed it within days after customer backlash. Cardholders should treat the cap as live but monitor for reversal or extension, and verify current terms in the SmartBuy T&Cs before transacting.' }},
     { '@type': 'Question', name: 'What should HDFC cardholders do about the SmartBuy voucher cap?', acceptedAnswer: { '@type': 'Answer', text: 'HDFC premium cardholders should shift their SmartBuy strategy: use brand vouchers only up to the 3,000-point monthly cap, then route additional high-value spending through SmartBuy flight and hotel bookings, which still earn accelerated points at the full rate and redeem at ₹1 per point. Those who held Infinia primarily for the voucher-loop strategy on everyday spend should reassess whether the annual fee still delivers enough value, and compare against alternatives.' }},
   ],
@@ -30,7 +30,7 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: 'HDFC SmartBuy Voucher Cap July 2026: Infinia & Diners Earning Cut 80%', datePublished: '2026-07-03', dateModified: '2026-07-03', author: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' }, publisher: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' } }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: 'HDFC SmartBuy Voucher Cap July 2026: What Changed for Infinia & Diners', datePublished: '2026-07-03', dateModified: '2026-07-03', author: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' }, publisher: { '@type': 'Organization', name: 'PointsMax', url: 'https://www.pointsmax.in' } }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <PageNav />
 
@@ -48,48 +48,49 @@ export default function BlogPost() {
         </div>
 
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 36px)', lineHeight: 1.15, letterSpacing: '-0.025em', color: 'var(--text)' }}>
-          HDFC SmartBuy Voucher Cap July 2026: Infinia & Diners Earning Cut 80%
+          HDFC SmartBuy Voucher Cap July 2026: What Changed for Infinia & Diners
         </h1>
 
         {/* DIRECT ANSWER BLOCK */}
         <div className="mt-8 p-5 rounded-2xl" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
           <p className="text-[11px] font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--text-m)' }}>Quick answer</p>
           <p className="text-[15px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
-            <S>Effective July 1, 2026, HDFC Bank capped SmartBuy brand-voucher earning at 3,000 Reward Points per month</S> (on purchases via GyFTR/Woohoo). Voucher earning previously counted toward the overall accelerated cap — 15,000 points for Infinia, 10,000 for Diners Club Black, 4,000 for Regalia Gold. Now vouchers have their own 3,000-point ceiling, cutting Infinia's voucher earning by 80%. The overall caps are unchanged, but the balance must now be earned via SmartBuy flights and hotels. The change is published for July 2026 only, so it may be a temporary experiment — HDFC rolled back a similar cut in January 2026.
+            <S>Effective July 1, 2026, HDFC introduced a new cap of 3,000 accelerated Reward Points per month on SmartBuy brand vouchers</S> (GyFTR/Woohoo). The 5X rate itself is unchanged — what's new is the ceiling. For Infinia, that cap is hit at only about <S>₹22,500 of voucher spend per month</S>, down from an effective sweet spot of roughly ₹1.12 lakh before. Beyond ₹22,500, vouchers still earn the base rate, just not the accelerated bonus. Diners Black and Regalia Gold are capped at 3,000 accelerated voucher points too; most other cards at 1,000. The overall SmartBuy caps (Infinia 15,000, Diners Black 10,000, Regalia Gold 4,000) are unchanged and still reachable via flights and hotels. The change is published for July 2026 only, so it may be a temporary experiment — HDFC rolled back a similar cut in January 2026.
           </p>
         </div>
 
         <div className="mt-10 space-y-6 text-[15px] leading-[1.85]" style={{ color: 'var(--text-s)' }}>
 
           <H2 id="what-changed">What exactly changed</H2>
-          <p>Until July 2026, HDFC's premium cardholders had a simple, powerful play: buy brand vouchers (Amazon, Flipkart, Swiggy, Zomato, BigBasket, Blinkit and hundreds of others) through SmartBuy to earn accelerated Reward Points on everyday spending, then redeem those points at ₹1 each. <S>An Infinia holder could earn the full 15,000 accelerated points every month this way.</S></p>
+          <p>Until July 2026, HDFC's premium cardholders had a simple, powerful play: buy brand vouchers (Amazon, Flipkart, Swiggy, Zomato, BigBasket, Blinkit and hundreds of others) through SmartBuy to earn accelerated Reward Points on everyday spending, then redeem those points at ₹1 each. <S>An Infinia holder could route roughly ₹1.12 lakh of voucher spend a month this way and earn accelerated points across the board.</S></p>
           <p>From July 1, 2026, HDFC carved out a <S>separate, much smaller cap of 3,000 Reward Points specifically for brand-voucher purchases</S> via GyFTR and Woohoo. The overall SmartBuy accelerated caps stay the same — but vouchers now hit their own ceiling far sooner.</p>
 
           <div className="overflow-x-auto -mx-5 px-5">
             <table className="w-full text-[13px]" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
               <thead><tr>
                 <th className="text-left py-3 px-3 font-semibold" style={{ color: 'var(--text-s)', borderBottom: '1px solid var(--border)' }}>Card</th>
-                <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--text-m)', borderBottom: '1px solid var(--border)' }}>Voucher earning before</th>
-                <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--red)', borderBottom: '1px solid var(--border)' }}>After (Jul 2026)</th>
-                <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--red)', borderBottom: '1px solid var(--border)' }}>Cut</th>
+                <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--text-m)', borderBottom: '1px solid var(--border)' }}>Voucher accel. cap</th>
+                <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--text-m)', borderBottom: '1px solid var(--border)' }}>Sweet spot before</th>
+                <th className="text-center py-3 px-2 font-semibold" style={{ color: 'var(--red)', borderBottom: '1px solid var(--border)' }}>Sweet spot now</th>
               </tr></thead>
               <tbody>
                 {[
-                  ['Infinia', '15,000 pts/mo', '3,000 pts/mo', '−80%'],
-                  ['Diners Club Black', '10,000 pts/mo', '3,000 pts/mo', '−70%'],
-                  ['BizBlack Metal', '10,000 pts/mo', '3,000 pts/mo', '−70%'],
-                  ['Regalia Gold', '4,000 pts/mo', '3,000 pts/mo', '−25%'],
-                ].map(([card, before, after, cut], i) => (
+                  ['Infinia', '3,000 pts', '~₹1.12L/mo', '~₹22,500/mo'],
+                  ['Diners Club Black', '3,000 pts', '~₹75,000/mo', '~₹22,500/mo'],
+                  ['BizBlack Metal', '3,000 pts', '~₹75,000/mo', '~₹22,500/mo'],
+                  ['Regalia Gold', '3,000 pts', '~₹30,000/mo', '~₹22,500/mo'],
+                  ['Most other cards', '1,000 pts', '—', 'much lower'],
+                ].map(([card, cap, before, after], i) => (
                   <tr key={i}>
                     <td className="py-2.5 px-3 font-medium" style={{ color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>{card}</td>
+                    <td className="py-2.5 px-2 text-center font-mono" style={{ color: 'var(--text-s)', borderBottom: '1px solid var(--border)' }}>{cap}</td>
                     <td className="py-2.5 px-2 text-center font-mono" style={{ color: 'var(--text-m)', borderBottom: '1px solid var(--border)' }}>{before}</td>
                     <td className="py-2.5 px-2 text-center font-mono font-bold" style={{ color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>{after}</td>
-                    <td className="py-2.5 px-2 text-center font-mono font-bold" style={{ color: 'var(--red)', borderBottom: '1px solid var(--border)' }}>{cut}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <p className="text-[11px] mt-2" style={{ color: 'var(--text-m)' }}>The overall accelerated caps (Infinia 15,000 / Diners Black 10,000 / Regalia Gold 4,000) are unchanged — only the voucher sub-cap is new. As of July 2026.</p>
+            <p className="text-[11px] mt-2" style={{ color: 'var(--text-m)' }}>The 5X rate is unchanged. "Sweet spot" = monthly voucher spend at which you hit the 3,000-point accelerated cap; beyond it you earn base points only. Overall SmartBuy caps (Infinia 15,000 / Diners Black 10,000 / Regalia Gold 4,000) are unchanged and still reachable via flights/hotels. As of July 2026.</p>
           </div>
 
           <H2 id="why-it-matters">Why it matters</H2>
@@ -128,7 +129,7 @@ export default function BlogPost() {
           </div>
 
           <H2 id="bottom-line">The bottom line</H2>
-          <p>The July 2026 SmartBuy voucher cap is a real, meaningful cut to the everyday earning power of HDFC's premium cards — an 80% reduction on Infinia's most popular route. But it's important to keep perspective: <S>the redemption value is untouched (still ₹1/point on travel), the overall caps are unchanged, and frequent travellers who book via SmartBuy are barely affected.</S> The people who lose most are those who relied on the voucher loop for everyday spend without booking travel.</p>
+          <p>The July 2026 SmartBuy voucher cap is a real, meaningful hit to the everyday earning power of HDFC's premium cards — the high-reward voucher sweet spot shrank from roughly ₹1.12 lakh to about ₹22,500 of monthly spend. But it's important to keep perspective: <S>the 5X rate is unchanged, you still earn base points past the cap, the redemption value is untouched (still ₹1/point on travel), the overall caps are unchanged, and frequent travellers who book via SmartBuy are barely affected.</S> The people who lose most are those who relied on the voucher loop for large everyday spend without booking travel.</p>
           <p>And with the change published for July only, there's a real chance it's reversed — as happened in January. For now, adjust your strategy toward SmartBuy travel bookings, use vouchers up to the cap, and keep an eye on how it evolves.</p>
           <p>See every HDFC change in context in our <a href="/blog/credit-card-devaluation-tracker-india-2026" style={{ color: 'var(--gold, #B8953E)', textDecoration: 'underline' }}>devaluation tracker</a>, the full strategy in our <a href="/blog/hdfc-smartbuy-guide-2026" style={{ color: 'var(--gold, #B8953E)', textDecoration: 'underline' }}>SmartBuy guide</a>, and reassess your card in our <a href="/blog/hdfc-infinia-credit-card-review-2026" style={{ color: 'var(--gold, #B8953E)', textDecoration: 'underline' }}>HDFC Infinia review</a>.</p>
 

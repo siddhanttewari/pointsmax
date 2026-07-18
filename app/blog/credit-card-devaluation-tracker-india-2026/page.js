@@ -23,7 +23,7 @@ const faqJsonLd = {
     {
       '@type': 'Question',
       name: 'Which Indian credit cards were devalued in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Major 2026 devaluations: HDFC Bank (July 2026) capped SmartBuy brand-voucher earning at 3,000 Reward Points/month, cutting Infinia voucher earning by 80% (from up to 15,000). Axis Bank (April 2026) removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners and cut transfer ratios from 5:4 to 5:2 on Magnus and Atlas. HDFC Bank (January 2026) reduced Turkish Airlines and Avianca LifeMiles transfer ratios from 1:1 to 2:1. SBI (2026) capped monthly cashback on SBI Cashback Card at ₹2,000. ICICI Bank reduced base reward rate on several cards.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Major 2026 devaluations: HDFC Bank (July 2026) capped accelerated SmartBuy brand-voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the Infinia voucher sweet spot shrank from roughly ₹1.12 lakh to about ₹22,500 of monthly spend. Axis Bank (April 2026) removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners and cut transfer ratios from 5:4 to 5:2 on Magnus and Atlas. HDFC Bank (January 2026) reduced Turkish Airlines and Avianca LifeMiles transfer ratios from 1:1 to 2:1. SBI (2026) capped monthly cashback on SBI Cashback Card at ₹2,000. ICICI Bank reduced base reward rate on several cards.' },
     },
     {
       '@type': 'Question',
@@ -33,12 +33,12 @@ const faqJsonLd = {
     {
       '@type': 'Question',
       name: 'Which Indian credit card has NOT been devalued and still offers the best rewards?',
-      acceptedAnswer: { '@type': 'Answer', text: 'HDFC Infinia and Diners Club Black remain among the least devalued premium cards for travel: SmartBuy still gives ₹1/point on flights and hotels, and KrisFlyer and Finnair transfers remain at 1:1. However, effective July 1, 2026, HDFC capped SmartBuy brand-voucher earning at 3,000 points/month (down from up to 15,000 on Infinia), so the popular voucher-loop earning strategy is now heavily limited — though this may be temporary. Amazon Pay ICICI remains the most stable, undevalued at 5% on Amazon for Prime members with no changes announced.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'HDFC Infinia and Diners Club Black remain among the least devalued premium cards for travel: SmartBuy still gives ₹1/point on flights and hotels, and KrisFlyer and Finnair transfers remain at 1:1. However, effective July 1, 2026, HDFC capped accelerated SmartBuy voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the Infinia voucher sweet spot shrank to about ₹22,500 of monthly spend (from roughly ₹1.12 lakh), so the popular voucher-loop strategy is now limited, though this may be temporary. Amazon Pay ICICI remains the most stable, undevalued at 5% on Amazon for Prime members with no changes announced.' },
     },
     {
       '@type': 'Question',
       name: 'Did HDFC SmartBuy reward rates change in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Yes, twice. HDFC announced a SmartBuy voucher earn rate cut from 5X to 3X in January 2026 but rolled it back on January 16 after backlash. Then, effective July 1, 2026, HDFC introduced a separate monthly cap of 3,000 Reward Points on brand voucher purchases via GyFTR/Woohoo. This cut voucher earning for Infinia from up to 15,000 points/month to 3,000 (an 80% reduction) and for Diners Club Black from 10,000 to 3,000. The overall SmartBuy accelerated caps are unchanged, but can now only be reached via flight/hotel bookings rather than vouchers. This July change is published for July 2026 only so far and may be a temporary experiment.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, twice. HDFC announced a SmartBuy voucher earn rate cut from 5X to 3X in January 2026 but rolled it back on January 16 after backlash. Then, effective July 1, 2026, HDFC introduced a separate monthly cap of 3,000 accelerated Reward Points on brand voucher purchases via GyFTR/Woohoo. The 5X rate itself is unchanged, but the cap means the Infinia voucher sweet spot is reached at only ~₹22,500 of monthly spend (down from ~₹1.12 lakh); beyond that, vouchers earn base points only. Diners Black and Regalia Gold are capped at 3,000 accelerated voucher points too, most other cards at 1,000. The overall SmartBuy caps are unchanged and still reachable via flight/hotel bookings. This July change is published for July 2026 only so far and may be a temporary experiment.' },
     },
   ],
 }
@@ -51,7 +51,7 @@ const DEVALUATIONS = [
     cards: ['Infinia', 'Diners Club Black', 'BizBlack', 'Regalia Gold'],
     changes: [
       { type: 'bad', text: 'New separate monthly cap of 3,000 Reward Points on SmartBuy Brand Voucher purchases (GyFTR/Woohoo), effective July 1, 2026' },
-      { type: 'bad', text: 'Infinia: voucher earning effectively cut from 15,000 → 3,000 points/month — an 80% reduction on the most popular earning route' },
+      { type: 'bad', text: 'Infinia: 5X rate unchanged, but voucher sweet spot shrinks from ~₹1.12L to ~₹22,500/month of spend (3,000 accelerated-point cap); base points continue beyond that' },
       { type: 'bad', text: 'Diners Club Black Metal: voucher earning cut from 10,000 → 3,000 points/month' },
       { type: 'bad', text: 'Regalia Gold: loses roughly a quarter of its voucher earning capacity' },
       { type: 'neutral', text: 'Overall SmartBuy accelerated caps UNCHANGED (Infinia 15,000 / Diners Black 10,000 / Regalia Gold 4,000) — but now only reachable via flights/hotels, not vouchers' },
@@ -321,7 +321,7 @@ export default function BlogPost() {
 
           <div className="space-y-3">
             {[
-              { name: 'HDFC Infinia', status: 'Voucher route cut', color: 'var(--gold, #B8953E)', desc: 'Still strong for travel: SmartBuy gives ₹1/point on flights/hotels, KrisFlyer and Finnair still 1:1. But the July 2026 change caps brand-voucher earning at 3,000 points/month (was up to 15,000) — an 80% cut to the most popular everyday-earning route. To hit the full cap you now must book travel via SmartBuy. May be temporary. The ₹18L retention requirement also applies from FY2026-27.', link: '/blog/hdfc-infinia-credit-card-review-2026' },
+              { name: 'HDFC Infinia', status: 'Voucher route capped', color: 'var(--gold, #B8953E)', desc: 'Still strong for travel: SmartBuy gives ₹1/point on flights/hotels, KrisFlyer and Finnair still 1:1. The July 2026 change caps accelerated voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the voucher sweet spot drops to ~₹22,500/month of spend (was ~₹1.12L); base points continue past that. To hit the full accelerated cap you now book travel via SmartBuy. May be temporary. The ₹18L retention requirement also applies from FY2026-27.', link: '/blog/hdfc-infinia-credit-card-review-2026' },
               { name: 'HDFC Diners Club Black', status: 'Voucher route cut', color: 'var(--gold, #B8953E)', desc: 'Same July 2026 voucher cap as Infinia — brand-voucher earning cut from 10,000 to 3,000 points/month. Travel redemption at ₹1/point and transfer partners unchanged. Still among the best in HDFC\'s stable, but the everyday voucher-loop advantage is gone for now.', link: '/blog/hdfc-diners-club-black-credit-card-review-2026' },
               { name: 'Amazon Pay ICICI', status: 'Unchanged', color: 'var(--green)', desc: 'No devaluations announced or implemented. 5% on Amazon for Prime members remains intact. Genuinely one of the most stable rewards propositions in India.', link: '/blog/best-lifetime-free-credit-cards-india-2026' },
               { name: 'Amex Membership Rewards', status: 'Largely intact', color: '#92782A', desc: 'Transfer ratios to most programmes unchanged. The ₹66,000 annual fee has always been the limiting factor, not devaluation.', link: '/blog/amex-platinum-charge-card-review-india-2026' },
