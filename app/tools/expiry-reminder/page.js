@@ -11,17 +11,19 @@ const supabase = createClient(
 )
 
 const CARDS_WITH_EXPIRY = [
-  { name: 'HDFC Infinia', expiry: 36, note: '3 years from accrual' },
-  { name: 'HDFC Diners Club Black', expiry: 36, note: '3 years from accrual' },
-  { name: 'HDFC Regalia Gold', expiry: 36, note: '3 years from accrual' },
-  { name: 'Axis Magnus', expiry: 36, note: '3 years from accrual' },
-  { name: 'Axis Atlas', expiry: 36, note: '3 years from accrual' },
-  { name: 'Amex Membership Rewards', expiry: 0, note: 'No expiry as long as account is active' },
-  { name: 'SBI Elite', expiry: 24, note: '2 years from accrual' },
-  { name: 'ICICI Bank', expiry: 36, note: '3 years from accrual' },
-  { name: 'Singapore Airlines KrisFlyer', expiry: 36, note: '3 years from last activity' },
-  { name: 'British Airways Avios', expiry: 36, note: '36 months of account inactivity' },
-  { name: 'Air India Flying Returns', expiry: 36, note: '3 years of account inactivity' },
+  { name: 'HDFC Infinia', expiry: 36, note: '3 years from accrual (super-premium)' },
+  { name: 'HDFC Diners Club Black', expiry: 36, note: '3 years from accrual (super-premium)' },
+  { name: 'HDFC Regalia Gold', expiry: 24, note: '2 years from accrual' },
+  { name: 'HDFC Millennia', expiry: 24, note: '2 years from accrual' },
+  { name: 'HDFC (other cards)', expiry: 24, note: '2 years from accrual' },
+  { name: 'SBI Card', expiry: 24, note: '2 years from accrual' },
+  { name: 'Axis (EDGE points)', expiry: 36, note: '3 years from allotment' },
+  { name: 'ICICI Bank', expiry: 36, note: '2-3 years by card (using 3)' },
+  { name: 'Amex Membership Rewards', expiry: 0, note: 'No expiry while account is active' },
+  { name: 'IDFC First', expiry: 0, note: 'Points never expire' },
+  { name: 'Singapore Airlines KrisFlyer', expiry: 36, note: '3 years from last activity (resets on activity)' },
+  { name: 'British Airways Avios', expiry: 36, note: '36 months of account inactivity (resets)' },
+  { name: 'Air India Flying Returns', expiry: 36, note: '3 years of account inactivity (resets)' },
 ]
 
 export default function ExpiryReminder() {
