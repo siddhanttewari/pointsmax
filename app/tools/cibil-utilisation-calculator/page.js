@@ -1,5 +1,6 @@
 'use client'
 import PageNav from '@/components/PageNav'
+import ResultCapture from '@/components/ResultCapture'
 import { useState, useMemo, useEffect } from 'react'
 import { cibil } from '@/lib/analytics'
 
@@ -153,6 +154,19 @@ export default function UtilisationCalculator() {
             <p className="text-[12px] mt-1" style={{ color: 'var(--text-m)' }}>We bust the 9 biggest credit score myths that cost Indians money.</p>
           </div>
           <a href="/blog/credit-card-cibil-score-myths-india-2026" onClick={() => cibil.clickCTA('cibil-myths')} className="shrink-0 px-5 py-2.5 rounded-lg text-[13px] font-semibold" style={{ background: 'var(--gold)', color: 'var(--dark)' }}>Read the guide →</a>
+        </div>
+
+        <div className="mt-6">
+          <ResultCapture
+            source="cibil-utilisation-calculator"
+            title="Save your utilisation report + get the free Cheat Sheet"
+            summary={[
+              { label: 'Utilisation', value: result.ratio.toFixed(1) + '%' },
+              { label: 'Band', value: result.band },
+              { label: 'Total limit', value: fmt(result.totalLimit) },
+              { label: 'Pay down to reach 30%', value: result.payToHealthy > 0 ? fmt(result.payToHealthy) : 'Already there' },
+            ]}
+          />
         </div>
 
         <p className="text-[11px] leading-relaxed mt-6" style={{ color: 'var(--text-m)' }}>

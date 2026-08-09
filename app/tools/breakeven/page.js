@@ -1,5 +1,6 @@
 'use client'
 import PageNav from '@/components/PageNav'
+import ResultCapture from '@/components/ResultCapture'
 
 import { useState, useMemo, useEffect } from 'react'
 import { breakeven as breakevenTrack } from '@/lib/analytics'
@@ -217,6 +218,19 @@ export default function BreakevenCalculator() {
             <a href="/tools/card-quiz" className="inline-block px-4 py-2 rounded-lg text-[13px] font-semibold mt-1" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
               Take the 2-min Card Quiz →
             </a>
+          </div>
+
+          <div className="mt-4">
+            <ResultCapture
+              source="breakeven"
+              title="Save your fee analysis + get the free Cheat Sheet"
+              summary={[
+                { label: 'Card', value: card.name },
+                { label: 'Net value/year', value: '₹' + Math.round(netAfterWaiver).toLocaleString('en-IN') },
+                { label: 'Fee', value: feeWaived ? 'Waived' : '₹' + card.fee.toLocaleString('en-IN') },
+                { label: 'Verdict', value: netAfterWaiver >= 0 ? 'Worth it' : 'Not worth it' },
+              ]}
+            />
           </div>
         </div>
       </main>

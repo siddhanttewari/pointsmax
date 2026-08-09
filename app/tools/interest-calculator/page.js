@@ -1,5 +1,6 @@
 'use client'
 import PageNav from '@/components/PageNav'
+import ResultCapture from '@/components/ResultCapture'
 import { useState, useMemo, useEffect } from 'react'
 import { debtTrap } from '@/lib/analytics'
 
@@ -207,6 +208,17 @@ export default function InterestCalculator() {
             </div>
             <a href="/blog/hidden-credit-card-charges-india-2026" onClick={() => debtTrap.clickCTA('hidden-charges')} className="shrink-0 px-5 py-2.5 rounded-lg text-[13px] font-semibold" style={{ background: 'var(--gold)', color: 'var(--dark)' }}>Read the guide →</a>
           </div>
+
+          <ResultCapture
+            source="interest-calculator"
+            title="Save your interest breakdown + get the free Cheat Sheet"
+            summary={[
+              { label: 'Balance', value: fmt(balance) },
+              { label: payMode === 'full' ? 'Monthly interest' : 'Time to clear', value: payMode === 'full' ? fmt(result.totalInterest) : yearsMonths(result.months) },
+              { label: 'Total interest', value: fmt(result.totalInterest) },
+              { label: 'Effective APR', value: result.effectiveApr.toFixed(1) + '%' },
+            ]}
+          />
 
           <p className="text-[11px] leading-relaxed" style={{ color: 'var(--text-m)' }}>
             <strong>Note:</strong> This calculator provides estimates using a simplified model of Indian credit card interest. Actual charges depend on your card's exact finance-charge rate, billing cycle, transaction dates, GST on interest (18%), and minimum-due formula, which vary by issuer. It's a guide to understand the scale of interest costs, not an exact figure. Always check your card's MITC (Most Important Terms & Conditions) and statement. Not financial advice.
