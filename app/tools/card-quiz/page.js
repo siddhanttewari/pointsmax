@@ -1,5 +1,6 @@
 'use client'
 import PageNav from '@/components/PageNav'
+import ResultCapture from '@/components/ResultCapture'
 
 import { useState, useEffect } from 'react'
 import { quiz as quizTrack } from '@/lib/analytics'
@@ -250,6 +251,14 @@ export default function CardQuiz() {
             <div className="mt-6 p-4 rounded-xl text-center" style={{ background: 'var(--bg-s)', border: '1px solid var(--border)' }}>
               <p className="text-[13px]" style={{ color: 'var(--text-s)' }}>Already have one of these? Check what your points are worth.</p>
               <a href="/" className="inline-block mt-2 px-5 py-2 rounded-lg text-[13px] font-semibold" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>Open Calculator →</a>
+            </div>
+
+            <div className="mt-4">
+              <ResultCapture
+                source="card-quiz"
+                title="Save your card matches + get the free Cheat Sheet"
+                summary={recs.slice(0, 3).map((rec, i) => ({ label: `#${i + 1} match`, value: rec.name }))}
+              />
             </div>
 
             <button onClick={reset} className="w-full mt-4 py-2.5 rounded-xl text-[13px] font-medium" style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-s)' }}>

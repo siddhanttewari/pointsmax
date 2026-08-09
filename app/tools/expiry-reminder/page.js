@@ -90,9 +90,14 @@ export default function ExpiryReminder() {
               We'll email you at <strong>{form.email}</strong> 60 days before your points expire.
             </p>
             {expiryDate && <p className="text-[13px] mt-2" style={{ color: 'var(--text-m)' }}>Expiry date: {expiryDate}</p>}
-            <a href="/" className="inline-block mt-4 px-5 py-2.5 rounded-xl text-[14px] font-semibold" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
-              Check Points Value →
-            </a>
+            <div className="flex flex-col sm:flex-row gap-2 justify-center mt-4">
+              <a href="/" className="inline-block px-5 py-2.5 rounded-xl text-[14px] font-semibold" style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
+                Check Points Value →
+              </a>
+              <a href="/points-cheat-sheet.pdf" download="PointsMax-Cheat-Sheet.pdf" className="inline-block px-5 py-2.5 rounded-xl text-[14px] font-semibold" style={{ background: 'var(--gold, #B8953E)', color: 'var(--dark)' }}>
+                Get the free Cheat Sheet →
+              </a>
+            </div>
           </div>
         ) : (
           <div className="space-y-5">
