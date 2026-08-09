@@ -33,15 +33,18 @@ export async function POST(request) {
     return Response.json({ error: 'Server not configured (missing service role key).' }, { status: 500 })
   }
 
-  const { data, error } = await supabase
-    .from('feedback')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(2000)
+  const [feedbackRes, leadsRes] = await Promise.all([
+    supabase.from('feedback').select('*').order('created_at', { ascending: false }).limit(2000),
+    supabase.from('leads').select('*').order('created_at', { ascending: false }).limit(5000),
+  ])
 
-  if (error) {
-    return Response.json({ error: error.message }, { status: 500 })
+  if (feedbackRes.error) {
+    return Response.json({ error: feedbackRes.error.message }, { status: 500 })
   }
 
-  return Response.json({ rows: data || [] })
+  return Response.json({
+    rows: feedbackRes.data || [],
+    leads: leadsRes.error ? [] : (leadsRes.data || []),
+    leadsError: leadsRes.error ? leadsRes.error.message : null,
+  })
 }
