@@ -11,6 +11,7 @@ PointsMax is a free, independent tool that shows Indian credit card holders the 
 - Transfer Partners Directory: https://www.pointsmax.in/transfers — All airline and hotel transfer partners with post-2026 devaluation ratios
 - Card Quiz: https://www.pointsmax.in/tools/card-quiz — 5-question personalised card recommendation engine
 - Fee Breakeven Calculator: https://www.pointsmax.in/tools/breakeven — Is your annual fee worth it?
+- Free Cheat Sheet (PDF): https://www.pointsmax.in/cheat-sheet — every essential India credit-card rewards rule on two pages
 - Interest Calculator: https://www.pointsmax.in/tools/interest-calculator — The true cost of carrying a balance or paying minimum due
 - Utilisation Calculator: https://www.pointsmax.in/tools/cibil-utilisation-calculator — Check your credit utilisation ratio and CIBIL impact
 - Points Expiry Reminder: https://www.pointsmax.in/tools/expiry-reminder — Email alert before points expire
