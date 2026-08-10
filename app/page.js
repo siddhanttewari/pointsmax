@@ -30,6 +30,13 @@ function track(name, params = {}) {
   if (typeof window !== 'undefined' && window.gtag) window.gtag('event', name, params)
 }
 
+const LATEST_POSTS = [
+  { slug: 'hsbc-live-plus-credit-card-review-2026', title: 'HSBC Live+ Credit Card Review 2026', tag: 'Card Review', excerpt: 'The upgraded cashback card: 10% on five categories, 1.99% forex, Visa Infinite. Is it worth it?' },
+  { slug: 'do-credit-card-points-expire-india-2026', title: 'Do Credit Card Points Expire? Guide by Bank', tag: 'Consumer Guide', excerpt: 'Most Indian points expire in 2-3 years — the full by-bank table and how to never lose a point.' },
+  { slug: 'credit-card-cibil-score-myths-india-2026', title: 'Credit Card & CIBIL Score Myths', tag: 'Consumer Guide', excerpt: 'Carrying a balance does NOT help your score. The 9 biggest myths, busted with facts.' },
+  { slug: 'points-maximisation-playbook-india-2026', title: 'The Points Maximisation Playbook', tag: 'The Complete System', excerpt: 'The master guide that connects everything — earn, hold, and redeem for maximum value.' },
+]
+
 export default function Home() {
   const [cards, setCards] = useState([])
   const [slug, setSlug] = useState('')
@@ -450,6 +457,33 @@ export default function Home() {
               </div>
             </div>
             <span className="text-[12px] font-semibold shrink-0 ml-4" style={{ color: 'var(--gold)' }}>View directory →</span>
+          </a>
+        </section>
+
+        {/* ── LATEST FROM THE BLOG ── */}
+        <section className="mt-16 pt-10" style={{ borderTop: '1px solid var(--border)' }}>
+          <div className="flex items-end justify-between mb-6">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--text-m)' }}>Learn</p>
+              <h2 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '20px', color: 'var(--text)', letterSpacing: '-0.01em' }}>Latest from the blog</h2>
+            </div>
+            <a href="/blog" className="text-[13px] font-semibold shrink-0" style={{ color: 'var(--gold)' }}>All articles →</a>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {LATEST_POSTS.map((p, i) => (
+              <a key={i} href={`/blog/${p.slug}`} className="block p-4 rounded-xl transition-all duration-200"
+                style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.background = 'var(--bg-s)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--card)' }}>
+                <span className="text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded" style={{ color: 'var(--gold)', background: 'rgba(184,149,62,0.08)' }}>{p.tag}</span>
+                <p className="text-[15px] font-semibold mt-2" style={{ color: 'var(--text)', lineHeight: 1.3 }}>{p.title}</p>
+                <p className="text-[12px] mt-1.5" style={{ color: 'var(--text-m)', lineHeight: 1.5 }}>{p.excerpt}</p>
+              </a>
+            ))}
+          </div>
+          <a href="/blog" className="mt-4 flex items-center justify-center p-3 rounded-xl text-[13px] font-semibold transition-all duration-200"
+            style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
+            Explore all 40+ guides →
           </a>
         </section>
 
