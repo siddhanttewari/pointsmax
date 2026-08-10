@@ -23,7 +23,7 @@ const faqJsonLd = {
     {
       '@type': 'Question',
       name: 'Which Indian credit cards were devalued in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Major 2026 devaluations: HDFC Bank (July 2026) capped accelerated SmartBuy brand-voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the Infinia voucher sweet spot shrank from roughly ₹1.12 lakh to about ₹22,500 of monthly spend. Axis Bank (April 2026) removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners and cut transfer ratios from 5:4 to 5:2 on Magnus and Atlas. HDFC Bank (January 2026) reduced Turkish Airlines and Avianca LifeMiles transfer ratios from 1:1 to 2:1. SBI (2026) capped monthly cashback on SBI Cashback Card at ₹2,000. ICICI Bank reduced base reward rate on several cards.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Major 2026 devaluations: American Express (September 10, 2026) revised Platinum Travel Card milestones — the ₹1.9 lakh milestone lost its 7,500 bonus points, and the ₹7 lakh milestone\'s 22,500 points were replaced by a ₹20,000 Taj e-Gift Card (second cut in 2026 after March). HDFC Bank (July 2026) capped accelerated SmartBuy brand-voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the Infinia voucher sweet spot shrank from roughly ₹1.12 lakh to about ₹22,500 of monthly spend. Axis Bank (April 2026) removed Marriott Bonvoy, Accor, and Qatar Airways as transfer partners and cut transfer ratios from 5:4 to 5:2 on Magnus and Atlas. HDFC Bank (January 2026) reduced Turkish Airlines and Avianca LifeMiles transfer ratios from 1:1 to 2:1. SBI (2026) capped monthly cashback on SBI Cashback Card at ₹2,000.' },
     },
     {
       '@type': 'Question',
@@ -44,6 +44,20 @@ const faqJsonLd = {
 }
 
 const DEVALUATIONS = [
+  {
+    month: 'September 2026',
+    severity: 'major',
+    bank: 'American Express',
+    cards: ['Platinum Travel Credit Card'],
+    changes: [
+      { type: 'bad', text: 'Effective September 10, 2026: the ₹1.9 lakh milestone loses its 7,500 bonus Membership Rewards points entirely — no reward at this tier anymore' },
+      { type: 'bad', text: '₹7 lakh milestone: the 22,500 bonus MR points are removed, replaced by a ₹20,000 Taj Experiences e-Gift Card' },
+      { type: 'neutral', text: '₹4 lakh milestone UNCHANGED — still 10,000 bonus MR points' },
+      { type: 'neutral', text: 'Net at ₹7L spend: 10,000 MR + ₹20,000 Taj (was 40,000 MR + ₹10,000 Taj) — Taj value doubled, but 30,000 milestone MR points gone' },
+      { type: 'note', text: 'Second milestone cut in 2026 (first was March 9). Eligibility determined by transaction posting date — spends posted on/before Sep 9 qualify under old benefits. Core MR earn rate and point value unchanged.' },
+    ],
+    impact: 'The Platinum Travel Card\'s whole appeal was its milestone-driven return. After the March 2026 cut pushed the sweet spot from ₹4L to ₹7L, this second cut strips the ₹1.9L reward entirely and swaps the ₹7L points for a Taj voucher. A ₹7 lakh spender who previously earned 40,000 MR + ₹10,000 Taj now gets 10,000 MR + ₹20,000 Taj — a heavy loss of flexible points for anyone who valued MR transfers over hotel vouchers. For MR-focused users, the card is now hard to justify on milestones alone.',
+  },
   {
     month: 'July 2026',
     severity: 'major',
@@ -324,7 +338,7 @@ export default function BlogPost() {
               { name: 'HDFC Infinia', status: 'Voucher route capped', color: 'var(--gold, #B8953E)', desc: 'Still strong for travel: SmartBuy gives ₹1/point on flights/hotels, KrisFlyer and Finnair still 1:1. The July 2026 change caps accelerated voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the voucher sweet spot drops to ~₹22,500/month of spend (was ~₹1.12L); base points continue past that. To hit the full accelerated cap you now book travel via SmartBuy. May be temporary. The ₹18L retention requirement also applies from FY2026-27.', link: '/blog/hdfc-infinia-credit-card-review-2026' },
               { name: 'HDFC Diners Club Black', status: 'Voucher route cut', color: 'var(--gold, #B8953E)', desc: 'Same July 2026 voucher cap as Infinia — brand-voucher earning cut from 10,000 to 3,000 points/month. Travel redemption at ₹1/point and transfer partners unchanged. Still among the best in HDFC\'s stable, but the everyday voucher-loop advantage is gone for now.', link: '/blog/hdfc-diners-club-black-credit-card-review-2026' },
               { name: 'Amazon Pay ICICI', status: 'Unchanged', color: 'var(--green)', desc: 'No devaluations announced or implemented. 5% on Amazon for Prime members remains intact. Genuinely one of the most stable rewards propositions in India.', link: '/blog/best-lifetime-free-credit-cards-india-2026' },
-              { name: 'Amex Membership Rewards', status: 'Largely intact', color: '#92782A', desc: 'Transfer ratios to most programmes unchanged. The ₹66,000 annual fee has always been the limiting factor, not devaluation.', link: '/blog/amex-platinum-charge-card-review-india-2026' },
+              { name: 'Amex Membership Rewards', status: 'Milestones cut twice in 2026', color: 'var(--red)', desc: 'Core MR transfer ratios remain largely intact, but the Platinum Travel Card\'s milestone rewards were cut twice in 2026 (March and September) — the ₹1.9L reward removed, and ₹7L points swapped for a Taj voucher. MR earn rate and point value unchanged. The Charge Card\'s ₹66,000 fee remains the limiting factor there.', link: '/blog/amex-platinum-travel-milestone-devaluation-september-2026' },
               { name: 'Axis Magnus', status: 'Heavily devalued', color: 'var(--red)', desc: 'Multiple rounds of devaluation since 2023. Transfer ratio halved. Best partners removed. Monthly milestone gone. No longer competitive at ₹12,500/year.', link: '/blog/axis-magnus-credit-card-review-2026' },
             ].map((c, i) => (
               <div key={i} className="p-4 rounded-xl flex items-start gap-3" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
