@@ -1,0 +1,48 @@
+# Devaluation Watch — scheduled monitoring via GitHub Actions
+# ============================================================
+# To use: move this file to .github/workflows/devaluation-watch.yml
+# It runs the watcher on a schedule and posts new hits to your webhook.
+#
+# Set a repo secret named WEBHOOK_URL (Settings > Secrets > Actions) with your
+# Slack/Discord/Telegram incoming-webhook URL to get pinged automatically.
+#
+# The seen.json is committed back so it remembers what it already reported
+# across runs (no duplicate alerts).
+
+name: Devaluation Watch
+
+on:
+  schedule:
+    - cron: '0 4 * * *'    # 04:00 UTC daily (~09:30 IST). Adjust as you like.
+  workflow_dispatch: {}     # allows manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write           # to commit the updated seen.json
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install deps
+        run: pip install feedparser requests
+
+      - name: Run devaluation watch
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: python3 scripts/devaluation_watch.py
+
+      - name: Persist seen.json
+        run: |
+          if [ -n "$(git status --porcelain scripts/seen.json)" ]; then
+            git config user.name "devaluation-watch"
+            git config user.email "actions@github.com"
+            git add scripts/seen.json
+            git commit -m "chore: update devaluation-watch seen.json [skip ci]"
+            git push
+          fi
