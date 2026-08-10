@@ -3,7 +3,7 @@
 import { crossPromo } from '@/lib/analytics'
 
 /**
- * Cross-promotion to OverlapIQ (the sibling "Decoder" money tool).
+ * Cross-promotion to OverlapIQ (sibling free money tool from the same team).
  * Placed on PointsMax to measure real audience overlap before any domain merge.
  *
  * Props:
@@ -36,7 +36,7 @@ export default function CrossPromo({ placement = 'unknown', variant = 'card' }) 
   return (
     <div className="rounded-2xl p-5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded" style={{ color: 'var(--gold)', background: 'rgba(184,149,62,0.08)' }}>More from Decoder</span>
+        <span className="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded" style={{ color: 'var(--gold)', background: 'rgba(184,149,62,0.08)' }}>Free Mutual Fund Overlap Analyser</span>
       </div>
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
