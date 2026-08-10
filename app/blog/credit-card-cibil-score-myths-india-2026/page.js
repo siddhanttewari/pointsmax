@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import FeedbackWidget from '@/components/FeedbackWidget'
 import PageNav from '@/components/PageNav'
+import CrossPromo from '@/components/CrossPromo'
 
 const faqJsonLd = {
   '@context': 'https://schema.org', '@type': 'FAQPage',
@@ -141,6 +142,10 @@ export default function BlogPost() {
           <p className="text-[11px] mt-8 leading-relaxed" style={{ color: 'var(--text-m)' }}>
             <strong>Disclaimer:</strong> Score-factor weightings are approximate and based on publicly available information about how Indian credit bureaus assess scores as of July 2026. Exact scoring models vary by bureau (CIBIL, Experian, CRIF, Equifax) and are proprietary. This is educational information, not financial advice. Check your actual score free via the official CIBIL website. PointsMax is not affiliated with any credit bureau or bank.
           </p>
+
+          <div className="mt-8">
+            <CrossPromo placement="blog-cibil" variant="compact" />
+          </div>
 
           <FeedbackWidget pageSlug="credit-card-cibil-score-myths-india-2026" pageTitle="Credit Card & CIBIL Score Myths in India 2026" />
         </div>

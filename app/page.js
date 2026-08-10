@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 import { getCards, getRedemptions, getTransferPartners } from '@/lib/supabase'
 import { HeaderAd, InFeedAd } from '@/components/AdUnit'
 import PushNotification from '@/components/PushNotification'
+import CrossPromo from '@/components/CrossPromo'
 
 const BANK_DOT = {
   HDFC: '#2563eb', Axis: '#be185d', SBI: '#0d9488', ICICI: '#ea580c',
@@ -485,6 +486,11 @@ export default function Home() {
             style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
             Explore all 40+ guides →
           </a>
+        </section>
+
+        {/* ── CROSS-PROMO: OverlapIQ ── */}
+        <section className="mt-16 pt-10" style={{ borderTop: '1px solid var(--border)' }}>
+          <CrossPromo placement="homepage" variant="card" />
         </section>
 
         {/* ── SEO CONTENT ── */}
