@@ -123,6 +123,22 @@ def notify_webhook(url, lines):
         print(f"  ! webhook error: {ex}", file=sys.stderr)
 
 
+def notify_telegram(token, chat_id, lines):
+    """Send the report to a Telegram chat via the Bot API."""
+    text = "\n".join(lines)
+    # Telegram caps messages at 4096 chars; chunk if needed.
+    for i in range(0, len(text), 3800):
+        chunk = text[i:i + 3800]
+        try:
+            requests.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id, "text": chunk, "disable_web_page_preview": True},
+                timeout=10,
+            )
+        except Exception as ex:
+            print(f"  ! telegram error: {ex}", file=sys.stderr)
+
+
 def main():
     show_all = "--all" in sys.argv
     if not HAVE_FEEDPARSER:
@@ -131,6 +147,8 @@ def main():
 
     seen = load_seen()
     webhook = os.environ.get("WEBHOOK_URL")
+    tg_token = os.environ.get("TELEGRAM_TOKEN")
+    tg_chat = os.environ.get("TELEGRAM_CHAT_ID")
 
     all_entries = []
     for name, url in RSS_SOURCES.items():
@@ -155,6 +173,7 @@ def main():
     if not hits:
         print(header)
         print("   No new devaluation-related posts found. (All quiet.)")
+        # Deliberately do NOT ping Telegram on quiet days — no daily spam.
         return
 
     lines = [header, ""]
@@ -174,6 +193,10 @@ def main():
     if webhook:
         notify_webhook(webhook, lines)
         print("(sent to webhook)")
+
+    if tg_token and tg_chat:
+        notify_telegram(tg_token, tg_chat, lines)
+        print("(sent to Telegram)")
 
 
 if __name__ == "__main__":
