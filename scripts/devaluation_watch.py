@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PointsMax Devaluation Watch
+PointsMax Card News Watch
 ===========================
 Monitors the key Indian credit-card news sources and flags posts that look
 like devaluations / reward changes — so you hear about them fast, from the
@@ -57,13 +57,44 @@ RSS_SOURCES = {
 }
 
 # ── Keywords that suggest a devaluation / reward change ──────────────────
-KEYWORDS = [
-    "devaluation", "devalued", "milestone", "reward rate", "reward points",
-    "cut", "reduced", "removed", "capped", "cap on", "nerf", "downgrade",
-    "transfer partner", "transfer ratio", "no longer", "discontinued",
-    "revised", "changes to", "lounge access", "annual fee",
-    "earning cap", "points expiry", "smartbuy", "membership rewards",
-]
+# ── Categorised keywords (Tier 1: "something changed" news) ──────────────
+# Each category has a tag shown in the alert. Order matters: first match wins
+# for the primary tag, but all matched categories are listed.
+CATEGORIES = {
+    "DEVALUATION": [
+        "devaluation", "devalued", "nerf", "downgrade", "cut", "reduced",
+        "removed", "capped", "cap on", "no longer", "discontinued", "scrapped",
+        "reward rate cut", "earning cap", "reduces", "slashed", "withdrawn",
+    ],
+    "LAUNCH": [
+        "launches", "launched", "launch", "new credit card", "unveiled",
+        "introduces", "introduced", "debuts", "rolls out", "now live",
+        "goes live", "new card", "announces new",
+    ],
+    "UPGRADE": [
+        "upgrade", "upgraded", "enhanced", "improved", "boosted", "increases",
+        "increased", "now offers", "added benefit", "better rewards",
+        "revamped", "refreshed", "more rewards",
+    ],
+    "OFFER": [
+        "welcome offer", "welcome benefit", "milestone", "bonus points",
+        "sign-up bonus", "signup bonus", "joining bonus", "milestone benefit",
+        "revised milestone", "spend-based",
+    ],
+    "TRANSFER": [
+        "transfer partner", "transfer ratio", "new partner", "airline partner",
+        "hotel partner", "points transfer", "1:1 transfer", "transfer bonus",
+        "added as a transfer", "transfer program",
+    ],
+    "CHANGE": [
+        "revised", "changes to", "change in", "updated", "new terms",
+        "effective from", "w.e.f", "with effect from", "important update",
+        "annual fee", "fee change", "lounge access", "points expiry",
+    ],
+}
+
+# Flatten for quick "any keyword at all" checks
+ALL_KEYWORDS = sorted({kw for kws in CATEGORIES.values() for kw in kws})
 
 # Card issuers / programmes worth always surfacing
 ISSUERS = [
@@ -90,12 +121,27 @@ def save_seen(seen):
 
 
 def score_entry(title, summary):
-    """Return (is_relevant, matched_keywords, mentioned_issuers)."""
+    """Return (is_relevant, category_tags, mentioned_issuers).
+
+    Relevant if it names a card issuer/programme AND matches at least one
+    Tier-1 news category — OR explicitly says 'devaluation'. Returns the list
+    of matched category tags (e.g. ['LAUNCH', 'OFFER']) so alerts can be tagged.
+    """
     text = f"{title} {summary}".lower()
-    kw = [k for k in KEYWORDS if k in text]
     iss = [i for i in ISSUERS if i in text]
-    relevant = ("devaluation" in text) or (len(kw) >= 1 and len(iss) >= 1)
-    return relevant, kw, iss
+
+    tags = []
+    for cat, kws in CATEGORIES.items():
+        if any(k in text for k in kws):
+            tags.append(cat)
+
+    # Must mention an issuer/programme to count (kills generic finance noise),
+    # except an explicit "devaluation" always counts.
+    explicit = "devaluation" in text
+    relevant = explicit or (bool(tags) and bool(iss))
+    if explicit and "DEVALUATION" not in tags:
+        tags.insert(0, "DEVALUATION")
+    return relevant, tags, iss
 
 
 def fetch_rss(name, url):
@@ -166,7 +212,7 @@ def main():
             r = requests.post(
                 f"https://api.telegram.org/bot{tg_token}/sendMessage",
                 json={"chat_id": tg_chat,
-                      "text": "✅ PointsMax Devaluation Watch test message — if you can read this, alerts are working!"},
+                      "text": "✅ PointsMax Card News Watch test message — if you can read this, alerts are working!"},
                 timeout=10,
             )
             print(f"Telegram API HTTP status: {r.status_code}")
@@ -186,32 +232,36 @@ def main():
 
     hits = []
     for e in all_entries:
-        relevant, kw, iss = score_entry(e["title"], e["summary"])
+        relevant, tags, iss = score_entry(e["title"], e["summary"])
         if not relevant:
             continue
         key = e["link"] or e["title"]
         is_new = key not in seen
         if is_new or show_all:
-            e["_kw"], e["_iss"], e["_new"] = kw, iss, is_new
+            e["_tags"], e["_iss"], e["_new"] = tags, iss, is_new
             hits.append(e)
         seen.add(key)
 
     save_seen(seen)
 
     stamp = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M")
-    header = f"PointsMax Devaluation Watch - {stamp}"
+    header = f"PointsMax Card News Watch - {stamp}"
     if not hits:
         print(header)
-        print("   No new devaluation-related posts found. (All quiet.)")
+        print("   No new relevant card news found. (All quiet.)")
         # Deliberately do NOT ping Telegram on quiet days — no daily spam.
         return
 
     lines = [header, ""]
     for e in hits:
-        tag = "[NEW]" if e["_new"] else "     "
-        lines.append(f"{tag} [{e['source']}] {e['title']}")
+        newflag = "[NEW] " if e["_new"] else ""
+        tagstr = " ".join(f"[{t}]" for t in e["_tags"]) or "[CARD NEWS]"
+        lines.append(f"{newflag}{tagstr} {e['title']}")
+        meta = []
         if e["_iss"]:
-            lines.append(f"      issuers: {', '.join(sorted(set(e['_iss'])))}")
+            meta.append(", ".join(sorted(set(e["_iss"]))))
+        meta.append(e["source"])
+        lines.append(f"      {' · '.join(meta)}")
         if e["published"]:
             lines.append(f"      {e['published']}")
         lines.append(f"      {e['link']}")
