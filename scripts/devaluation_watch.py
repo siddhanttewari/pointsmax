@@ -141,6 +141,7 @@ def notify_telegram(token, chat_id, lines):
 
 def main():
     show_all = "--all" in sys.argv
+    test_mode = "--test" in sys.argv
     if not HAVE_FEEDPARSER:
         print("Missing dependency. Run:  pip install feedparser requests", file=sys.stderr)
         sys.exit(1)
@@ -149,6 +150,35 @@ def main():
     webhook = os.environ.get("WEBHOOK_URL")
     tg_token = os.environ.get("TELEGRAM_TOKEN")
     tg_chat = os.environ.get("TELEGRAM_CHAT_ID")
+
+    # ── TEST MODE: verify Telegram delivery end-to-end, bypass all news logic ──
+    if test_mode:
+        print("=== TEST MODE ===")
+        print(f"TELEGRAM_TOKEN present: {bool(tg_token)}"
+              + (f" (…{tg_token[-6:]})" if tg_token else " — MISSING"))
+        print(f"TELEGRAM_CHAT_ID present: {bool(tg_chat)}"
+              + (f" ({tg_chat})" if tg_chat else " — MISSING"))
+        if not (tg_token and tg_chat):
+            print("Cannot send test — one or both secrets are missing. "
+                  "Check repo Settings > Secrets > Actions for TELEGRAM_TOKEN and TELEGRAM_CHAT_ID.")
+            sys.exit(1)
+        try:
+            r = requests.post(
+                f"https://api.telegram.org/bot{tg_token}/sendMessage",
+                json={"chat_id": tg_chat,
+                      "text": "✅ PointsMax Devaluation Watch test message — if you can read this, alerts are working!"},
+                timeout=10,
+            )
+            print(f"Telegram API HTTP status: {r.status_code}")
+            print(f"Telegram API response: {r.text[:400]}")
+            if r.status_code == 200 and '"ok":true' in r.text:
+                print("SUCCESS — test message delivered. Alerts will reach you.")
+            else:
+                print("FAILED — read the response above. Common causes: wrong token, "
+                      "wrong chat_id, or you haven't sent the bot a message from THIS account first.")
+        except Exception as ex:
+            print(f"Network/error sending test: {ex}")
+        return
 
     all_entries = []
     for name, url in RSS_SOURCES.items():
