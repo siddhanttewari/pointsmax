@@ -7,7 +7,7 @@ import PageNav from '@/components/PageNav'
 const faqJsonLd = {
   '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'How do I earn Accor, Hilton, or IHG points in India?', acceptedAnswer: { '@type': 'Answer', text: 'In India, the main paths are credit card point transfers. For Accor ALL, HSBC TravelOne transfers at 2:3 (and SBI Card MILES also converts to Accor). For Hilton Honors, American Express Membership Rewards transfers at roughly 1:0.9, with periodic 50% bonus promotions. For IHG One Rewards, Axis EDGE Rewards transfer at ratios that vary by card (around 5:2 on Magnus, 1:1 on some variants), and HDFC points can also route to IHG. Note that Axis removed Accor and Marriott as transfer partners in April 2026, so HSBC TravelOne is now the primary Accor path in India.' }},
+    { '@type': 'Question', name: 'How do I earn Accor, Hilton, or IHG points in India?', acceptedAnswer: { '@type': 'Answer', text: 'In India, the main paths are credit card point transfers. For Accor ALL, HSBC TravelOne transfers at 2:3 (and SBI Card MILES also converts to Accor). For Hilton Honors, American Express Membership Rewards transfers at 1:1.5 as of August 18, 2026 (improved from the long-standing 1:0.9) — so 1,000 MR now yields 1,500 Hilton points. For IHG One Rewards, Axis EDGE Rewards transfer at ratios that vary by card (around 5:2 on Magnus, 1:1 on some variants), and HDFC points can also route to IHG. Note that Axis removed Accor and Marriott as transfer partners in April 2026, so HSBC TravelOne is now the primary Accor path in India.' }},
     { '@type': 'Question', name: 'Which hotel loyalty program is best for Indian travellers?', acceptedAnswer: { '@type': 'Answer', text: 'Marriott Bonvoy remains the best single program for most Indian travellers due to its largest India and global footprint. Beyond Marriott, the choice depends on travel pattern: Accor ALL is best for Europe and Southeast Asia travel (Sofitel, Pullman, Novotel) and has the highest fixed point value; Hilton Honors suits US travel with generous earn rates and Amex transfer bonuses; IHG One Rewards fits Asia business travel and offers the standout 4th-night-free benefit on award stays. Occasional travellers should focus on opportunistic points accumulation via credit card transfers rather than chasing status.' }},
     { '@type': 'Question', name: 'What are Accor, Hilton, and IHG points worth?', acceptedAnswer: { '@type': 'Answer', text: 'Accor ALL points have a fixed value of approximately 2 euro cents each (around ₹1.80), the highest and most predictable among hotel currencies — 2,000 ALL points equal €40 off any eligible stay. Hilton Honors points are worth roughly 0.5 US cents each but earn rates are high, so the effective value holds up. IHG One Rewards points are worth about 0.5 to 0.7 US cents each, with value boosted significantly by the 4th-night-free benefit on award stays of four or more nights.' }},
   ],
@@ -47,7 +47,7 @@ export default function BlogPost() {
       value: '~0.5¢ per point (high earn offsets)',
       brands: 'Conrad, Waldorf Astoria, DoubleTree, Hampton, Canopy, Curio',
       footprint: 'Widest in US; solid Asia & India luxury (Conrad Bengaluru, etc.)',
-      earn: 'Amex Membership Rewards transfers at ~1:0.9, with periodic 50% bonus promotions (a 50% bonus ran in May 2026).',
+      earn: 'Amex Membership Rewards transfers at 1:1.5 as of Aug 18, 2026 (improved from 1:0.9) — 1,000 MR = 1,500 Hilton points.',
       sweet: 'Time transfers around the recurring Amex MR → Hilton 50% bonus windows — that turns 1 MR into ~1.35 Hilton points. Amex Platinum also grants Hilton Gold status (free breakfast, upgrades).',
       note: 'Hilton points are low-value individually, but high earn rates and the Amex transfer bonus make the effective return competitive. Gold status is reachable at 20 stays / 40 nights.',
     },
@@ -115,7 +115,7 @@ export default function BlogPost() {
               <tbody>
                 {[
                   ['Accor ALL', '~2¢ (fixed)', 'Europe / SE Asia', 'HSBC TravelOne 2:3'],
-                  ['Hilton Honors', '~0.5¢', 'US travel', 'Amex MR ~1:0.9 (+bonuses)'],
+                  ['Hilton Honors', '~0.5¢', 'US travel', 'Amex MR 1:1.5 (improved Aug 2026)'],
                   ['IHG One Rewards', '~0.5-0.7¢', 'Asia / long stays', 'Axis EDGE transfer'],
                   ['Marriott Bonvoy*', '~0.7-0.8¢', 'India / global default', 'HDFC Marriott card, Amex'],
                 ].map(([prog, val, best, earn], i) => (
@@ -179,7 +179,7 @@ export default function BlogPost() {
           </div>
 
           <H2 id="hilton-deep">Hilton Honors: ride the transfer bonuses</H2>
-          <p>Hilton points are individually low-value (~0.5¢), but the program compensates with <S>high earn rates and frequent Amex Membership Rewards transfer bonuses.</S> The base ratio is roughly 1 MR = 0.9 Hilton points, but Amex India periodically runs 50% bonus promotions — a 50% bonus ran in May 2026 — turning 1 MR into about 1.35 Hilton points.</p>
+          <p>Hilton points are individually low-value (~0.5¢), but the program compensates with <S>high earn rates and a strong Amex Membership Rewards transfer ratio.</S> As of <S>August 18, 2026</S>, Amex India improved the Hilton transfer ratio from 1:0.9 to <S>1:1.5</S> — so 1,000 MR now converts to 1,500 Hilton points (a ~67% boost), effectively a permanent transfer bonus without needing a promo window.</p>
           <p>The strategy is simple: <S>accumulate Amex MR points, then transfer to Hilton only during a bonus window.</S> Combined with the Hilton Gold status that comes with the Amex Platinum Card (free breakfast, room upgrades), this makes Hilton genuinely rewarding for Amex-heavy Indian cardholders. India luxury properties like Conrad Bengaluru are strong redemption targets.</p>
 
           <H2 id="ihg-deep">IHG One Rewards: the 4th-night-free king</H2>

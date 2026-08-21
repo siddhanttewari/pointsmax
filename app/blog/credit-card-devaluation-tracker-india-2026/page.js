@@ -59,6 +59,19 @@ const DEVALUATIONS = [
     impact: 'The Platinum Travel Card\'s whole appeal was its milestone-driven return. After the March 2026 cut pushed the sweet spot from ₹4L to ₹7L, this second cut strips the ₹1.9L reward entirely and swaps the ₹7L points for a Taj voucher. A ₹7 lakh spender who previously earned 40,000 MR + ₹10,000 Taj now gets 10,000 MR + ₹20,000 Taj — a heavy loss of flexible points for anyone who valued MR transfers over hotel vouchers. For MR-focused users, the card is now hard to justify on milestones alone.',
   },
   {
+    month: 'August 2026',
+    severity: 'positive',
+    bank: 'American Express',
+    cards: ['All Membership Rewards cards'],
+    changes: [
+      { type: 'good', text: 'Effective August 18, 2026: Virgin Atlantic Flying Club transfer ratio IMPROVED from 2:1 to 5:4 — 1,000 MR now converts to 800 Virgin points (was 500), a 60% increase' },
+      { type: 'good', text: 'Hilton Honors transfer ratio IMPROVED from 1:0.9 to 1:1.5 — 1,000 MR now yields 1,500 Hilton points (was 900), a ~67% increase' },
+      { type: 'neutral', text: 'For a 100,000 MR balance: now 80,000 Virgin points (was 50,000) or 150,000 Hilton points (was 90,000)' },
+      { type: 'note', text: 'A rare positive rerating amid Amex\'s 2026 cuts (Etihad dropped July 1, Platinum Travel milestones cut). Still transfer only when you have a specific redemption — transfers are one-way and can\'t be reversed.' },
+    ],
+    impact: 'A genuinely good — and unusual — piece of news for Indian Amex cardholders. Two of the most useful MR transfer partners became materially more rewarding overnight, effectively a permanent transfer bonus without a promo window. It doesn\'t undo the milestone cuts, but it meaningfully increases what an existing MR balance can become, especially for Hilton stays and Virgin Atlantic partner awards.',
+  },
+  {
     month: 'July 2026',
     severity: 'major',
     bank: 'HDFC Bank',
@@ -185,6 +198,7 @@ const SEVERITY_CONFIG = {
   major: { label: 'Major', color: '#92782A', bg: '#FBF8F0', border: '#E8DFC5' },
   moderate: { label: 'Moderate', color: '#0891b2', bg: '#ECFEFF', border: '#CFFAFE' },
   minor: { label: 'Minor', color: 'var(--text-m)', bg: 'var(--bg-s)', border: 'var(--border)' },
+  positive: { label: 'Improvement', color: 'var(--green)', bg: '#EDF5F0', border: '#C8DDD0' },
 }
 
 export default function BlogPost() {
@@ -338,7 +352,7 @@ export default function BlogPost() {
               { name: 'HDFC Infinia', status: 'Voucher route capped', color: 'var(--gold, #B8953E)', desc: 'Still strong for travel: SmartBuy gives ₹1/point on flights/hotels, KrisFlyer and Finnair still 1:1. The July 2026 change caps accelerated voucher rewards at 3,000 points/month — the 5X rate is unchanged, but the voucher sweet spot drops to ~₹22,500/month of spend (was ~₹1.12L); base points continue past that. To hit the full accelerated cap you now book travel via SmartBuy. May be temporary. The ₹18L retention requirement also applies from FY2026-27.', link: '/blog/hdfc-infinia-credit-card-review-2026' },
               { name: 'HDFC Diners Club Black', status: 'Voucher route cut', color: 'var(--gold, #B8953E)', desc: 'Same July 2026 voucher cap as Infinia — brand-voucher earning cut from 10,000 to 3,000 points/month. Travel redemption at ₹1/point and transfer partners unchanged. Still among the best in HDFC\'s stable, but the everyday voucher-loop advantage is gone for now.', link: '/blog/hdfc-diners-club-black-credit-card-review-2026' },
               { name: 'Amazon Pay ICICI', status: 'Unchanged', color: 'var(--green)', desc: 'No devaluations announced or implemented. 5% on Amazon for Prime members remains intact. Genuinely one of the most stable rewards propositions in India.', link: '/blog/best-lifetime-free-credit-cards-india-2026' },
-              { name: 'Amex Membership Rewards', status: 'Milestones cut twice in 2026', color: 'var(--red)', desc: 'Core MR transfer ratios remain largely intact, but the Platinum Travel Card\'s milestone rewards were cut twice in 2026 (March and September) — the ₹1.9L reward removed, and ₹7L points swapped for a Taj voucher. MR earn rate and point value unchanged. The Charge Card\'s ₹66,000 fee remains the limiting factor there.', link: '/blog/amex-platinum-travel-milestone-devaluation-september-2026' },
+              { name: 'Amex Membership Rewards', status: 'Mixed: milestones cut, transfers improved', color: 'var(--gold, #B8953E)', desc: 'A mixed 2026. Platinum Travel milestones were cut twice (March and September) — the ₹1.9L reward removed, ₹7L points swapped for a Taj voucher — and Etihad Guest was dropped as a partner (July 1). But in a rare positive move, Amex improved two MR transfer ratios on August 18, 2026: Virgin Atlantic went from 2:1 to 5:4, and Hilton Honors from 1:0.9 to 1:1.5 — a ~60-67% boost on those transfers. MR earn rate and point value unchanged.', link: '/blog/amex-platinum-travel-milestone-devaluation-september-2026' },
               { name: 'Axis Magnus', status: 'Heavily devalued', color: 'var(--red)', desc: 'Multiple rounds of devaluation since 2023. Transfer ratio halved. Best partners removed. Monthly milestone gone. No longer competitive at ₹12,500/year.', link: '/blog/axis-magnus-credit-card-review-2026' },
             ].map((c, i) => (
               <div key={i} className="p-4 rounded-xl flex items-start gap-3" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
