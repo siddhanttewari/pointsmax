@@ -55,6 +55,7 @@ const QUESTIONS = [
       { label: 'Travel — flights & hotels', value: 'travel', icon: '✈️' },
       { label: 'Fuel', value: 'fuel', icon: '⛽' },
       { label: 'Utilities & bills', value: 'utilities', icon: '💡' },
+      { label: 'UPI / QR payments', value: 'upi', icon: '📱' },
       { label: 'Everyday / mixed spends', value: 'mixed', icon: '🔀' },
     ],
   },
@@ -116,6 +117,11 @@ const ALL_CARDS = {
   scapia: { name: 'Scapia Federal', fee: '₹0 forever', returns: '2% + zero forex + lounges', why: 'Only free card with zero forex markup AND lounge access. Must-have for anyone who travels internationally.', link: '/blog/best-lifetime-free-credit-cards-india-2026', tag: 'Travel Free', tagColor: '#0891b2', minCibil: 720, minIncome: 'mid-low', cats: ['travel','mixed'] },
   idfcSelect: { name: 'IDFC FIRST Select', fee: '₹999 (waived ₹1.25L)', returns: '3-4% select categories', why: 'Great semi-free card with strong category rewards. Enable your top spend category quarterly for 4X returns.', link: '/blog/best-lifetime-free-credit-cards-india-2026', tag: 'Smart Pick', tagColor: 'var(--gold)', minCibil: 700, minIncome: 'low', cats: ['groceries','fuel','utilities','mixed'] },
   fuelCard: { name: 'IndianOil / BPCL Fuel Card', fee: '₹0–₹500', returns: '4-5% on fuel', why: 'If fuel is a big chunk of your spend, a co-branded fuel card (IndianOil RBL, BPCL SBI) beats general cards on fuel surcharge waiver + fuel points.', link: '/blog/best-credit-cards-india-2026', tag: 'Fuel Pick', tagColor: '#0891b2', minCibil: 700, minIncome: 'low', cats: ['fuel'] },
+  hsbcPremier: { name: 'HSBC Premier Metal', fee: '₹20,000 (waived for Premier customers)', returns: '3% flat + 0.99% forex', why: 'Premium metal card for HSBC Premier banking customers. 3% flat rewards, 0.99% forex (among India\'s lowest), unlimited lounges, points never expire, 1:1 to 20+ partners. Requires an HSBC Premier relationship (₹40-50L balance or ₹3L/mo salary with HSBC).', link: '/blog/best-hsbc-credit-cards-india-2026', tag: 'Premier Only', tagColor: '#7c3aed', minCibil: 750, minIncome: 'ultra', invite: 'HSBC Premier banking relationship', cats: ['travel','online','utilities','mixed'] },
+  hsbcTravelOne: { name: 'HSBC TravelOne', fee: '₹4,999 (waivable)', returns: '4 RP/₹100 on travel', why: 'HSBC\'s travel card — accelerated points on flights/travel/international, 1:1 transfers to 20+ airline & hotel partners, strong lounge access and a welcome bundle. Good mid-premium travel pick.', link: '/blog/best-hsbc-credit-cards-india-2026', tag: 'Travel Pick', tagColor: '#2563eb', minCibil: 740, minIncome: 'mid', cats: ['travel'] },
+  hsbcRupayCashback: { name: 'HSBC RuPay Cashback', fee: '₹499', returns: '10% dining/groceries (capped)', why: 'The best UPI-linked cashback card — 10% on dining, groceries and food delivery (₹400/mo cap), plus domestic lounge access. Works on UPI (RuPay), so you earn on QR payments too.', link: '/blog/best-hsbc-credit-cards-india-2026', tag: 'Best UPI Cashback', tagColor: 'var(--green)', minCibil: 720, minIncome: 'mid-low', cats: ['dining','groceries','upi'] },
+  iciciEmeralde: { name: 'ICICI Emeralde Private Metal', fee: '₹12,499 (waived ₹10L)', returns: '3% flat, up to 36% on iShop', why: 'ICICI\'s flagship super-premium metal card — closest rival to Infinia. 6 RP/₹200 (₹1/pt), up to 36% on hotels / 18% on flights via iShop, unlimited lounges, Taj Epicure + EazyDiner memberships. Largely invite-only; public applications need ~₹3-5L/month income.', link: '/blog/best-credit-cards-india-2026', tag: 'Super Premium', tagColor: '#7c3aed', minCibil: 780, minIncome: 'ultra', invite: 'invite-only / ₹3-5L/mo income', cats: ['travel','online','utilities','mixed'] },
+  amexMrcc: { name: 'Amex Membership Rewards (MRCC)', fee: '₹1,500 (waived ₹1.5L)', returns: '~1-2% + milestone bonuses', why: 'Best entry to the Amex Membership Rewards ecosystem. Strong milestone bonuses (bonus points at spend thresholds), MR points transfer to airline/hotel partners. Great starter points card if Amex is accepted where you shop.', link: '/blog/amex-mrcc-credit-card-review-india-2026', tag: 'Points Starter', tagColor: 'var(--gold)', minCibil: 730, minIncome: 'mid-low', cats: ['online','dining','mixed'] },
 }
 
 const INCOME_RANK = { low: 0, 'mid-low': 1, mid: 2, high: 3, ultra: 4 }
@@ -143,6 +149,10 @@ const getRecommendations = (answers) => {
     if (userIncomeRank < (INCOME_RANK[c.minIncome] ?? 0) - 1) {
       eligibility[k] = false
     }
+    // Invite-only / relationship cards: only realistic for ultra-income profiles
+    if (c.invite && userIncomeRank < 4) {
+      eligibility[k] = false
+    }
   })
 
   // ── CATEGORY MATCHING (biggest lever) ──
@@ -153,36 +163,36 @@ const getRecommendations = (answers) => {
   })
 
   // Spend level
-  if (spend === 'ultra' || spend === 'high') { scores.infinia += 35; scores.diners += 30; scores.magnus += 18; scores.amexPlat += 15 }
-  if (spend === 'mid') { scores.regaliaGold += 30; scores.atlas += 25; scores.diners += 18; scores.hsbcLive += 20; scores.infinia += 12 }
-  if (spend === 'mid-low') { scores.regaliaGold += 22; scores.idfcSelect += 25; scores.amazon += 22; scores.sbiCashback += 22; scores.hsbcLive += 22 }
-  if (spend === 'low') { scores.amazon += 32; scores.sbiCashback += 28; scores.scapia += 20; scores.idfcSelect += 18; scores.hsbcLive += 15 }
+  if (spend === 'ultra' || spend === 'high') { scores.infinia += 35; scores.diners += 30; scores.magnus += 18; scores.amexPlat += 15; scores.hsbcPremier += 30; scores.iciciEmeralde += 32 }
+  if (spend === 'mid') { scores.regaliaGold += 30; scores.atlas += 25; scores.diners += 18; scores.hsbcLive += 20; scores.infinia += 12; scores.hsbcTravelOne += 20; scores.amexMrcc += 15 }
+  if (spend === 'mid-low') { scores.regaliaGold += 22; scores.idfcSelect += 25; scores.amazon += 22; scores.sbiCashback += 22; scores.hsbcLive += 22; scores.hsbcRupayCashback += 22; scores.amexMrcc += 20 }
+  if (spend === 'low') { scores.amazon += 32; scores.sbiCashback += 28; scores.scapia += 20; scores.idfcSelect += 18; scores.hsbcLive += 15; scores.hsbcRupayCashback += 18 }
 
   // Travel
-  if (travel === 'heavy') { scores.amexPlat += 30; scores.infinia += 18; scores.scapia += 15 }
-  if (travel === 'moderate') { scores.infinia += 15; scores.magnus += 15; scores.scapia += 18; scores.atlas += 10 }
-  if (travel === 'light') { scores.scapia += 22; scores.atlas += 10 }
-  if (travel === 'none') { scores.amazon += 12; scores.sbiCashback += 12; scores.hsbcLive += 12 }
+  if (travel === 'heavy') { scores.amexPlat += 30; scores.infinia += 18; scores.scapia += 15; scores.hsbcPremier += 25; scores.iciciEmeralde += 22; scores.hsbcTravelOne += 20 }
+  if (travel === 'moderate') { scores.infinia += 15; scores.magnus += 15; scores.scapia += 18; scores.atlas += 10; scores.hsbcTravelOne += 18; scores.iciciEmeralde += 12 }
+  if (travel === 'light') { scores.scapia += 22; scores.atlas += 10; scores.hsbcTravelOne += 12 }
+  if (travel === 'none') { scores.amazon += 12; scores.sbiCashback += 12; scores.hsbcLive += 12; scores.hsbcRupayCashback += 12 }
 
   // Priority
-  if (priority === 'cashback') { scores.amazon += 28; scores.sbiCashback += 28; scores.hsbcLive += 28 }
-  if (priority === 'travel') { scores.infinia += 25; scores.magnus += 20; scores.scapia += 15; scores.atlas += 15 }
-  if (priority === 'lifestyle') { scores.amexPlat += 25; scores.infinia += 15 }
-  if (priority === 'points') { scores.infinia += 28; scores.diners += 24 }
+  if (priority === 'cashback') { scores.amazon += 28; scores.sbiCashback += 28; scores.hsbcLive += 28; scores.hsbcRupayCashback += 26 }
+  if (priority === 'travel') { scores.infinia += 25; scores.magnus += 20; scores.scapia += 15; scores.atlas += 15; scores.hsbcTravelOne += 24; scores.hsbcPremier += 20; scores.iciciEmeralde += 20 }
+  if (priority === 'lifestyle') { scores.amexPlat += 25; scores.infinia += 15; scores.hsbcPremier += 22; scores.iciciEmeralde += 22 }
+  if (priority === 'points') { scores.infinia += 28; scores.diners += 24; scores.amexMrcc += 24; scores.iciciEmeralde += 22; scores.hsbcTravelOne += 18 }
   if (priority === 'free') { scores.amazon += 35; scores.scapia += 28; scores.sbiCashback += 28 }
 
   // Fee tolerance
   if (fee === 0) { scores.amazon += 30; scores.scapia += 30; scores.sbiCashback += 26 }
-  if (fee === 2500) { scores.regaliaGold += 28; scores.idfcSelect += 22; scores.hsbcLive += 22; scores.amazon += 15 }
-  if (fee === 5000) { scores.atlas += 22; scores.regaliaGold += 18; scores.hsbcLive += 15 }
-  if (fee === 12500) { scores.infinia += 22; scores.diners += 22; scores.magnus += 18 }
-  if (fee === 99999) { scores.infinia += 28; scores.amexPlat += 20; scores.diners += 22 }
+  if (fee === 2500) { scores.regaliaGold += 28; scores.idfcSelect += 22; scores.hsbcLive += 22; scores.amazon += 15; scores.hsbcRupayCashback += 24; scores.amexMrcc += 22 }
+  if (fee === 5000) { scores.atlas += 22; scores.regaliaGold += 18; scores.hsbcLive += 15; scores.hsbcTravelOne += 22 }
+  if (fee === 12500) { scores.infinia += 22; scores.diners += 22; scores.magnus += 18; scores.iciciEmeralde += 22 }
+  if (fee === 99999) { scores.infinia += 28; scores.amexPlat += 20; scores.diners += 22; scores.hsbcPremier += 24; scores.iciciEmeralde += 24 }
 
   // Bank preference
   if (bank === 'hdfc') { scores.infinia += 18; scores.diners += 18; scores.regaliaGold += 14 }
   if (bank === 'axis') { scores.magnus += 22; scores.atlas += 22 }
   if (bank === 'sbi') { scores.sbiCashback += 18; scores.regaliaGold += 5 }
-  if (bank === 'icici') { scores.amazon += 15 }
+  if (bank === 'icici') { scores.amazon += 15; scores.iciciEmeralde += 18 }
 
   // Apply eligibility: ineligible cards get heavily penalised (not fully removed,
   // so we can still surface an "aspirational" note if nothing else fits)
@@ -400,6 +410,11 @@ export default function CardQuiz() {
                   {!rec.eligible && (
                     <p className="text-[11px] mt-2 p-2 rounded-lg" style={{ background: 'rgba(197,48,48,0.05)', color: 'var(--red)' }}>
                       Likely above your current eligibility (CIBIL/income). A goal card — improve your profile and revisit.
+                    </p>
+                  )}
+                  {rec.eligible && rec.invite && (
+                    <p className="text-[11px] mt-2 p-2 rounded-lg" style={{ background: 'rgba(124,58,237,0.06)', color: '#7c3aed' }}>
+                      🔑 Needs an {rec.invite}. Best suited if you already have that relationship.
                     </p>
                   )}
                   <p className="text-[13px] mt-3 leading-relaxed" style={{ color: 'var(--text-s)' }}>{rec.why}</p>
