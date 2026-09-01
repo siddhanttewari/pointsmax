@@ -214,6 +214,7 @@ const getRecommendations = (answers) => {
 
 export default function CardQuiz() {
   const [step, setStep] = useState(0)
+  const [started, setStarted] = useState(false)
   const [answers, setAnswers] = useState({})
   const [done, setDone] = useState(false)
   const [recs, setRecs] = useState([])
@@ -260,7 +261,7 @@ export default function CardQuiz() {
 
   const reset = () => {
     quizTrack.retake()
-    setStep(0); setAnswers({}); setDone(false); setRecs([]); setMultiSel([])
+    setStep(0); setAnswers({}); setDone(false); setRecs([]); setMultiSel([]); setStarted(false)
   }
 
   return (
@@ -268,7 +269,44 @@ export default function CardQuiz() {
       <PageNav />
 
       <main className="max-w-lg mx-auto px-5 py-12">
-        {!done ? (
+        {!started && !done ? (
+          <div style={{ animation: 'fadeUp 0.4s ease both' }}>
+            <div className="text-center">
+              <span className="text-[11px] font-bold uppercase tracking-widest px-2 py-1 rounded" style={{ color: 'var(--gold)', background: 'rgba(184,149,62,0.08)' }}>Free · 2 minutes · No signup</span>
+              <h1 className="mt-4" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: 'clamp(26px,5vw,36px)', lineHeight: 1.15, letterSpacing: '-0.02em', color: 'var(--text)' }}>
+                Which credit card is right for you?
+              </h1>
+              <p className="mt-3 text-[16px] leading-relaxed" style={{ color: 'var(--text-s)' }}>
+                Answer 8 quick questions about your spending, income, and preferences. We'll match you to the best Indian credit cards you're actually eligible for — with no bank affiliations, just the real numbers.
+              </p>
+            </div>
+
+            <div className="mt-8 space-y-3">
+              {[
+                ['🎯', 'Matched to your eligibility', 'We factor in your CIBIL score and income so you only see cards you can actually get.'],
+                ['🛒', 'Based on where you spend', 'Your top spend categories drive the recommendation — not generic "best card" lists.'],
+                ['🔒', 'Independent & unaffiliated', 'We earn no commission from banks. The picks are what the numbers say, not what pays us.'],
+              ].map(([icon, title, desc], i) => (
+                <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+                  <span className="text-[20px] shrink-0">{icon}</span>
+                  <div>
+                    <p className="text-[14px] font-semibold" style={{ color: 'var(--text)' }}>{title}</p>
+                    <p className="text-[12px] mt-0.5" style={{ color: 'var(--text-m)' }}>{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <button onClick={() => setStarted(true)}
+              className="w-full mt-8 py-3.5 rounded-xl text-[15px] font-semibold transition-all"
+              style={{ background: 'var(--dark)', color: '#FAF8F5' }}>
+              Find my card →
+            </button>
+            <p className="text-center text-[12px] mt-3" style={{ color: 'var(--text-m)' }}>
+              Don't know your CIBIL score? We'll show you how to check it free.
+            </p>
+          </div>
+        ) : !done ? (
           <>
             {/* Progress */}
             <div className="flex gap-1.5 mb-8">
